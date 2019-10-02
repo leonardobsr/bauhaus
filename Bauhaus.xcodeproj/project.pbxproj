@@ -1,0 +1,640 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F32F1A7234514D60083A483 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32F1A6234514D60083A483 /* AppDelegate.swift */; };
+		1F32F1A9234514D60083A483 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32F1A8234514D60083A483 /* GameViewController.swift */; };
+		1F32F1AC234514D60083A483 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F1AA234514D60083A483 /* Main.storyboard */; };
+		1F32F1AF234514D60083A483 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F1AD234514D60083A483 /* LaunchScreen.storyboard */; };
+		1F32F1B8234514D60083A483 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32F1B7234514D60083A483 /* AppDelegate.swift */; };
+		1F32F1BA234514D60083A483 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32F1B9234514D60083A483 /* GameViewController.swift */; };
+		1F32F1BD234514D60083A483 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F1BB234514D60083A483 /* Main.storyboard */; };
+		1F32F1C0234514D60083A483 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F1BE234514D60083A483 /* LaunchScreen.storyboard */; };
+		1F32F1C9234514D60083A483 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32F1C8234514D60083A483 /* AppDelegate.swift */; };
+		1F32F1CB234514D60083A483 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32F1CA234514D60083A483 /* GameViewController.swift */; };
+		1F32F1CE234514D60083A483 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F1CC234514D60083A483 /* Main.storyboard */; };
+		1F32F1D0234514D60083A483 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19B234514D10083A483 /* Actions.sks */; };
+		1F32F1D1234514D60083A483 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19B234514D10083A483 /* Actions.sks */; };
+		1F32F1D2234514D60083A483 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19B234514D10083A483 /* Actions.sks */; };
+		1F32F1D3234514D60083A483 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19C234514D10083A483 /* GameScene.sks */; };
+		1F32F1D4234514D60083A483 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19C234514D10083A483 /* GameScene.sks */; };
+		1F32F1D5234514D60083A483 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19C234514D10083A483 /* GameScene.sks */; };
+		1F32F1D6234514D60083A483 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32F19D234514D10083A483 /* GameScene.swift */; };
+		1F32F1D7234514D60083A483 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32F19D234514D10083A483 /* GameScene.swift */; };
+		1F32F1D8234514D60083A483 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32F19D234514D10083A483 /* GameScene.swift */; };
+		1F32F1D9234514D60083A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19E234514D50083A483 /* Assets.xcassets */; };
+		1F32F1DA234514D60083A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19E234514D50083A483 /* Assets.xcassets */; };
+		1F32F1DB234514D60083A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19E234514D50083A483 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1F32F19B234514D10083A483 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		1F32F19C234514D10083A483 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		1F32F19D234514D10083A483 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		1F32F19E234514D50083A483 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1F32F1A3234514D60083A483 /* Bauhaus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bauhaus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F32F1A6234514D60083A483 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1F32F1A8234514D60083A483 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		1F32F1AB234514D60083A483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1F32F1AE234514D60083A483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1F32F1B0234514D60083A483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F32F1B5234514D60083A483 /* Bauhaus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bauhaus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F32F1B7234514D60083A483 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1F32F1B9234514D60083A483 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		1F32F1BC234514D60083A483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1F32F1BF234514D60083A483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1F32F1C1234514D60083A483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F32F1C6234514D60083A483 /* Bauhaus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bauhaus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F32F1C8234514D60083A483 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1F32F1CA234514D60083A483 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		1F32F1CD234514D60083A483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1F32F1CF234514D60083A483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1F32F1A0234514D50083A483 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F32F1B2234514D60083A483 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F32F1C3234514D60083A483 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1F32F195234514D10083A483 = {
+			isa = PBXGroup;
+			children = (
+				1F32F19A234514D10083A483 /* Bauhaus Shared */,
+				1F32F1A5234514D60083A483 /* Bauhaus iOS */,
+				1F32F1B6234514D60083A483 /* Bauhaus tvOS */,
+				1F32F1C7234514D60083A483 /* Bauhaus macOS */,
+				1F32F1A4234514D60083A483 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1F32F19A234514D10083A483 /* Bauhaus Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1F32F19B234514D10083A483 /* Actions.sks */,
+				1F32F19C234514D10083A483 /* GameScene.sks */,
+				1F32F19D234514D10083A483 /* GameScene.swift */,
+				1F32F19E234514D50083A483 /* Assets.xcassets */,
+			);
+			path = "Bauhaus Shared";
+			sourceTree = "<group>";
+		};
+		1F32F1A4234514D60083A483 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F32F1A3234514D60083A483 /* Bauhaus.app */,
+				1F32F1B5234514D60083A483 /* Bauhaus.app */,
+				1F32F1C6234514D60083A483 /* Bauhaus.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1F32F1A5234514D60083A483 /* Bauhaus iOS */ = {
+			isa = PBXGroup;
+			children = (
+				1F32F1A6234514D60083A483 /* AppDelegate.swift */,
+				1F32F1A8234514D60083A483 /* GameViewController.swift */,
+				1F32F1AA234514D60083A483 /* Main.storyboard */,
+				1F32F1AD234514D60083A483 /* LaunchScreen.storyboard */,
+				1F32F1B0234514D60083A483 /* Info.plist */,
+			);
+			path = "Bauhaus iOS";
+			sourceTree = "<group>";
+		};
+		1F32F1B6234514D60083A483 /* Bauhaus tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				1F32F1B7234514D60083A483 /* AppDelegate.swift */,
+				1F32F1B9234514D60083A483 /* GameViewController.swift */,
+				1F32F1BB234514D60083A483 /* Main.storyboard */,
+				1F32F1BE234514D60083A483 /* LaunchScreen.storyboard */,
+				1F32F1C1234514D60083A483 /* Info.plist */,
+			);
+			path = "Bauhaus tvOS";
+			sourceTree = "<group>";
+		};
+		1F32F1C7234514D60083A483 /* Bauhaus macOS */ = {
+			isa = PBXGroup;
+			children = (
+				1F32F1C8234514D60083A483 /* AppDelegate.swift */,
+				1F32F1CA234514D60083A483 /* GameViewController.swift */,
+				1F32F1CC234514D60083A483 /* Main.storyboard */,
+				1F32F1CF234514D60083A483 /* Info.plist */,
+			);
+			path = "Bauhaus macOS";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1F32F1A2234514D50083A483 /* Bauhaus iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F32F1DE234514D60083A483 /* Build configuration list for PBXNativeTarget "Bauhaus iOS" */;
+			buildPhases = (
+				1F32F19F234514D50083A483 /* Sources */,
+				1F32F1A0234514D50083A483 /* Frameworks */,
+				1F32F1A1234514D50083A483 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bauhaus iOS";
+			productName = "Bauhaus iOS";
+			productReference = 1F32F1A3234514D60083A483 /* Bauhaus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1F32F1B4234514D60083A483 /* Bauhaus tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F32F1E1234514D60083A483 /* Build configuration list for PBXNativeTarget "Bauhaus tvOS" */;
+			buildPhases = (
+				1F32F1B1234514D60083A483 /* Sources */,
+				1F32F1B2234514D60083A483 /* Frameworks */,
+				1F32F1B3234514D60083A483 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bauhaus tvOS";
+			productName = "Bauhaus tvOS";
+			productReference = 1F32F1B5234514D60083A483 /* Bauhaus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1F32F1C5234514D60083A483 /* Bauhaus macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F32F1E4234514D60083A483 /* Build configuration list for PBXNativeTarget "Bauhaus macOS" */;
+			buildPhases = (
+				1F32F1C2234514D60083A483 /* Sources */,
+				1F32F1C3234514D60083A483 /* Frameworks */,
+				1F32F1C4234514D60083A483 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bauhaus macOS";
+			productName = "Bauhaus macOS";
+			productReference = 1F32F1C6234514D60083A483 /* Bauhaus.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1F32F196234514D10083A483 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = LeonardoBSR;
+				TargetAttributes = {
+					1F32F1A2234514D50083A483 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					1F32F1B4234514D60083A483 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					1F32F1C5234514D60083A483 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+				};
+			};
+			buildConfigurationList = 1F32F199234514D10083A483 /* Build configuration list for PBXProject "Bauhaus" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1F32F195234514D10083A483;
+			productRefGroup = 1F32F1A4234514D60083A483 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1F32F1A2234514D50083A483 /* Bauhaus iOS */,
+				1F32F1B4234514D60083A483 /* Bauhaus tvOS */,
+				1F32F1C5234514D60083A483 /* Bauhaus macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1F32F1A1234514D50083A483 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F32F1D3234514D60083A483 /* GameScene.sks in Resources */,
+				1F32F1AC234514D60083A483 /* Main.storyboard in Resources */,
+				1F32F1D0234514D60083A483 /* Actions.sks in Resources */,
+				1F32F1AF234514D60083A483 /* LaunchScreen.storyboard in Resources */,
+				1F32F1D9234514D60083A483 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F32F1B3234514D60083A483 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F32F1D4234514D60083A483 /* GameScene.sks in Resources */,
+				1F32F1BD234514D60083A483 /* Main.storyboard in Resources */,
+				1F32F1D1234514D60083A483 /* Actions.sks in Resources */,
+				1F32F1C0234514D60083A483 /* LaunchScreen.storyboard in Resources */,
+				1F32F1DA234514D60083A483 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F32F1C4234514D60083A483 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F32F1CE234514D60083A483 /* Main.storyboard in Resources */,
+				1F32F1D5234514D60083A483 /* GameScene.sks in Resources */,
+				1F32F1DB234514D60083A483 /* Assets.xcassets in Resources */,
+				1F32F1D2234514D60083A483 /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1F32F19F234514D50083A483 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F32F1D6234514D60083A483 /* GameScene.swift in Sources */,
+				1F32F1A9234514D60083A483 /* GameViewController.swift in Sources */,
+				1F32F1A7234514D60083A483 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F32F1B1234514D60083A483 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F32F1D7234514D60083A483 /* GameScene.swift in Sources */,
+				1F32F1BA234514D60083A483 /* GameViewController.swift in Sources */,
+				1F32F1B8234514D60083A483 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F32F1C2234514D60083A483 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F32F1D8234514D60083A483 /* GameScene.swift in Sources */,
+				1F32F1CB234514D60083A483 /* GameViewController.swift in Sources */,
+				1F32F1C9234514D60083A483 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1F32F1AA234514D60083A483 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F32F1AB234514D60083A483 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1F32F1AD234514D60083A483 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F32F1AE234514D60083A483 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		1F32F1BB234514D60083A483 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F32F1BC234514D60083A483 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1F32F1BE234514D60083A483 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F32F1BF234514D60083A483 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		1F32F1CC234514D60083A483 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F32F1CD234514D60083A483 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1F32F1DC234514D60083A483 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1F32F1DD234514D60083A483 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		1F32F1DF234514D60083A483 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				INFOPLIST_FILE = "Bauhaus iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.Bauhaus;
+				PRODUCT_NAME = Bauhaus;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		1F32F1E0234514D60083A483 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				INFOPLIST_FILE = "Bauhaus iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.Bauhaus;
+				PRODUCT_NAME = Bauhaus;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F32F1E2234514D60083A483 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				INFOPLIST_FILE = "Bauhaus tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.Bauhaus;
+				PRODUCT_NAME = Bauhaus;
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		1F32F1E3234514D60083A483 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				INFOPLIST_FILE = "Bauhaus tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.Bauhaus;
+				PRODUCT_NAME = Bauhaus;
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F32F1E5234514D60083A483 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "Bauhaus macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.Bauhaus;
+				PRODUCT_NAME = Bauhaus;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1F32F1E6234514D60083A483 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "Bauhaus macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.Bauhaus;
+				PRODUCT_NAME = Bauhaus;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1F32F199234514D10083A483 /* Build configuration list for PBXProject "Bauhaus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F32F1DC234514D60083A483 /* Debug */,
+				1F32F1DD234514D60083A483 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F32F1DE234514D60083A483 /* Build configuration list for PBXNativeTarget "Bauhaus iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F32F1DF234514D60083A483 /* Debug */,
+				1F32F1E0234514D60083A483 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F32F1E1234514D60083A483 /* Build configuration list for PBXNativeTarget "Bauhaus tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F32F1E2234514D60083A483 /* Debug */,
+				1F32F1E3234514D60083A483 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F32F1E4234514D60083A483 /* Build configuration list for PBXNativeTarget "Bauhaus macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F32F1E5234514D60083A483 /* Debug */,
+				1F32F1E6234514D60083A483 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1F32F196234514D10083A483 /* Project object */;
+}
