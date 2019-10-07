@@ -30,6 +30,15 @@
 		1F32F1D9234514D60083A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19E234514D50083A483 /* Assets.xcassets */; };
 		1F32F1DA234514D60083A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19E234514D50083A483 /* Assets.xcassets */; };
 		1F32F1DB234514D60083A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19E234514D50083A483 /* Assets.xcassets */; };
+		1F586D3A234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
+		1F586D3B234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
+		1F586D3C234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
+		1F586D3D234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
+		1F586D3E234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
+		1F586D3F234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
+		1F586D40234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
+		1F586D41234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
+		1F586D42234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
 		1F754E57234BA8B100EED3B7 /* BauhausiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E56234BA8B100EED3B7 /* BauhausiOSUITests.swift */; };
 		1F754E65234BA8C600EED3B7 /* BauhausiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E64234BA8C600EED3B7 /* BauhausiOSTests.swift */; };
 		1F754E74234BA90300EED3B7 /* BauhaustvOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E73234BA90300EED3B7 /* BauhaustvOSUITests.swift */; };
@@ -116,6 +125,7 @@
 		1F32F1CA234514D60083A483 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		1F32F1CD234514D60083A483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F32F1CF234514D60083A483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F586D39234BC09600C23821 /* EntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 		1F754E54234BA8B100EED3B7 /* BauhausiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BauhausiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F754E56234BA8B100EED3B7 /* BauhausiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BauhausiOSUITests.swift; sourceTree = "<group>"; };
 		1F754E58234BA8B100EED3B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -258,6 +268,7 @@
 		1F32F19A234514D10083A483 /* Bauhaus Shared */ = {
 			isa = PBXGroup;
 			children = (
+				1F586D38234BC05E00C23821 /* Utils */,
 				1F45A2152347CD3100D83DB2 /* Components */,
 				1F45A2142347CD1D00D83DB2 /* StatesMachine */,
 				1F45A2132347CD1200D83DB2 /* Entities */,
@@ -339,6 +350,14 @@
 			children = (
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		1F586D38234BC05E00C23821 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1F586D39234BC09600C23821 /* EntityManager.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		1F754E55234BA8B100EED3B7 /* BauhausiOSUITests */ = {
@@ -1091,6 +1110,7 @@
 			files = (
 				1F32F1D6234514D60083A483 /* GameScene.swift in Sources */,
 				1F32F1A9234514D60083A483 /* GameViewController.swift in Sources */,
+				1F586D3A234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F32F1A7234514D60083A483 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1101,6 +1121,7 @@
 			files = (
 				1F32F1D7234514D60083A483 /* GameScene.swift in Sources */,
 				1F32F1BA234514D60083A483 /* GameViewController.swift in Sources */,
+				1F586D3B234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F32F1B8234514D60083A483 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1111,6 +1132,7 @@
 			files = (
 				1F32F1D8234514D60083A483 /* GameScene.swift in Sources */,
 				1F32F1CB234514D60083A483 /* GameViewController.swift in Sources */,
+				1F586D3C234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F32F1C9234514D60083A483 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1119,6 +1141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F586D3D234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F754E57234BA8B100EED3B7 /* BauhausiOSUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1127,6 +1150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F586D3E234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F754E65234BA8C600EED3B7 /* BauhausiOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1135,6 +1159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F586D3F234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F754E74234BA90300EED3B7 /* BauhaustvOSUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1143,6 +1168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F586D40234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F754E82234BA91400EED3B7 /* BauhaustvOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1151,6 +1177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F586D41234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F754E90234BA94500EED3B7 /* BauhausmacOSUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1159,6 +1186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F586D42234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F754E9E234BA96800EED3B7 /* BauhausmacOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
