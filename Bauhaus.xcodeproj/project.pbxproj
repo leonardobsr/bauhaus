@@ -30,6 +30,15 @@
 		1F32F1D9234514D60083A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19E234514D50083A483 /* Assets.xcassets */; };
 		1F32F1DA234514D60083A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19E234514D50083A483 /* Assets.xcassets */; };
 		1F32F1DB234514D60083A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19E234514D50083A483 /* Assets.xcassets */; };
+		1F586D3A234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
+		1F586D3B234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
+		1F586D3C234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
+		1F586D3D234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
+		1F586D3E234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
+		1F586D3F234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
+		1F586D40234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
+		1F586D41234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
+		1F586D42234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
 		1F754E57234BA8B100EED3B7 /* BauhausiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E56234BA8B100EED3B7 /* BauhausiOSUITests.swift */; };
 		1F754E65234BA8C600EED3B7 /* BauhausiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E64234BA8C600EED3B7 /* BauhausiOSTests.swift */; };
 		1F754E74234BA90300EED3B7 /* BauhaustvOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E73234BA90300EED3B7 /* BauhaustvOSUITests.swift */; };
@@ -251,6 +260,7 @@
 		1F32F1CA234514D60083A483 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		1F32F1CD234514D60083A483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F32F1CF234514D60083A483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F586D39234BC09600C23821 /* EntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 		1F754E54234BA8B100EED3B7 /* BauhausiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BauhausiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F754E56234BA8B100EED3B7 /* BauhausiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BauhausiOSUITests.swift; sourceTree = "<group>"; };
 		1F754E58234BA8B100EED3B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -409,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				5C61A636234BB93C00F34E99 /* Direction+Axis.swift */,
+				1F586D38234BC05E00C23821 /* Utils */,
 				1F45A2152347CD3100D83DB2 /* Components */,
 				1F45A2142347CD1D00D83DB2 /* StateMachines */,
 				5C61A640234BBA7400F34E99 /* UI Entities */,
@@ -503,6 +514,14 @@
 				5C61A656234BBBF200F34E99 /* GridComponent.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		1F586D38234BC05E00C23821 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1F586D39234BC09600C23821 /* EntityManager.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		1F754E55234BA8B100EED3B7 /* BauhausiOSUITests */ = {
@@ -1282,6 +1301,7 @@
 				5C61A5FD234BB90E00F34E99 /* Dot.swift in Sources */,
 				5C61A642234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A661234BC21000F34E99 /* Box.swift in Sources */,
+				1F586D3A234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F32F1A7234514D60083A483 /* AppDelegate.swift in Sources */,
 				5C61A624234BB91A00F34E99 /* SpriteComponent.swift in Sources */,
 				5C61A61B234BB91A00F34E99 /* ConnectionComponent.swift in Sources */,
@@ -1306,6 +1326,7 @@
 				5C61A5FE234BB90E00F34E99 /* Dot.swift in Sources */,
 				5C61A643234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A662234BC21000F34E99 /* Box.swift in Sources */,
+				1F586D3B234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F32F1B8234514D60083A483 /* AppDelegate.swift in Sources */,
 				5C61A625234BB91A00F34E99 /* SpriteComponent.swift in Sources */,
 				5C61A61C234BB91A00F34E99 /* ConnectionComponent.swift in Sources */,
@@ -1330,6 +1351,7 @@
 				5C61A5FF234BB90E00F34E99 /* Dot.swift in Sources */,
 				5C61A644234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A663234BC21000F34E99 /* Box.swift in Sources */,
+				1F586D3C234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F32F1C9234514D60083A483 /* AppDelegate.swift in Sources */,
 				5C61A626234BB91A00F34E99 /* SpriteComponent.swift in Sources */,
 				5C61A61D234BB91A00F34E99 /* ConnectionComponent.swift in Sources */,
@@ -1351,6 +1373,7 @@
 				5C61A630234BB91A00F34E99 /* RenderComponent.swift in Sources */,
 				5C61A664234BC21000F34E99 /* Box.swift in Sources */,
 				5C61A66E234BC38200F34E99 /* GameStateMachine.swift in Sources */,
+				1F586D3D234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F754E57234BA8B100EED3B7 /* BauhausiOSUITests.swift in Sources */,
 				5C61A645234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63A234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
@@ -1373,6 +1396,7 @@
 				5C61A631234BB91A00F34E99 /* RenderComponent.swift in Sources */,
 				5C61A665234BC21000F34E99 /* Box.swift in Sources */,
 				5C61A66F234BC38200F34E99 /* GameStateMachine.swift in Sources */,
+				1F586D3E234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F754E65234BA8C600EED3B7 /* BauhausiOSTests.swift in Sources */,
 				5C61A646234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63B234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
@@ -1395,6 +1419,7 @@
 				5C61A632234BB91A00F34E99 /* RenderComponent.swift in Sources */,
 				5C61A666234BC21000F34E99 /* Box.swift in Sources */,
 				5C61A670234BC38200F34E99 /* GameStateMachine.swift in Sources */,
+				1F586D3F234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F754E74234BA90300EED3B7 /* BauhaustvOSUITests.swift in Sources */,
 				5C61A647234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63C234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
@@ -1417,6 +1442,7 @@
 				5C61A633234BB91A00F34E99 /* RenderComponent.swift in Sources */,
 				5C61A667234BC21000F34E99 /* Box.swift in Sources */,
 				5C61A671234BC38200F34E99 /* GameStateMachine.swift in Sources */,
+				1F586D40234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F754E82234BA91400EED3B7 /* BauhaustvOSTests.swift in Sources */,
 				5C61A648234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63D234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
@@ -1439,6 +1465,7 @@
 				5C61A634234BB91A00F34E99 /* RenderComponent.swift in Sources */,
 				5C61A668234BC21000F34E99 /* Box.swift in Sources */,
 				5C61A672234BC38200F34E99 /* GameStateMachine.swift in Sources */,
+				1F586D41234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F754E90234BA94500EED3B7 /* BauhausmacOSUITests.swift in Sources */,
 				5C61A649234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63E234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
@@ -1461,6 +1488,7 @@
 				5C61A635234BB91A00F34E99 /* RenderComponent.swift in Sources */,
 				5C61A669234BC21000F34E99 /* Box.swift in Sources */,
 				5C61A673234BC38200F34E99 /* GameStateMachine.swift in Sources */,
+				1F586D42234BC09600C23821 /* EntityManager.swift in Sources */,
 				1F754E9E234BA96800EED3B7 /* BauhausmacOSTests.swift in Sources */,
 				5C61A64A234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63F234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
