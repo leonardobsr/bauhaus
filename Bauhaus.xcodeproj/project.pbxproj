@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,9 +30,71 @@
 		1F32F1D9234514D60083A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19E234514D50083A483 /* Assets.xcassets */; };
 		1F32F1DA234514D60083A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19E234514D50083A483 /* Assets.xcassets */; };
 		1F32F1DB234514D60083A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19E234514D50083A483 /* Assets.xcassets */; };
+		1F754E57234BA8B100EED3B7 /* BauhausiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E56234BA8B100EED3B7 /* BauhausiOSUITests.swift */; };
+		1F754E65234BA8C600EED3B7 /* BauhausiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E64234BA8C600EED3B7 /* BauhausiOSTests.swift */; };
+		1F754E74234BA90300EED3B7 /* BauhaustvOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E73234BA90300EED3B7 /* BauhaustvOSUITests.swift */; };
+		1F754E82234BA91400EED3B7 /* BauhaustvOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E81234BA91400EED3B7 /* BauhaustvOSTests.swift */; };
+		1F754E90234BA94500EED3B7 /* BauhausmacOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E8F234BA94500EED3B7 /* BauhausmacOSUITests.swift */; };
+		1F754E9E234BA96800EED3B7 /* BauhausmacOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E9D234BA96800EED3B7 /* BauhausmacOSTests.swift */; };
+		3AB14A3DEFB7D7174ECF39C2 /* Pods_BauhaustvOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8D9F2E216C1FA5BEBE99BC /* Pods_BauhaustvOSUITests.framework */; };
+		551AD599E79AF2AEDA386A6A /* Pods_BauhaustvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AA6EAD3D86F8D5571B2C82D /* Pods_BauhaustvOSTests.framework */; };
+		6E4C8622AB032D80A7FE70EF /* Pods_Bauhaus_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 901AA257EE1FC1F369F653BB /* Pods_Bauhaus_tvOS.framework */; };
+		815F3C046F8B7CF4F0162580 /* Pods_BauhausmacOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A3A889DA21C7DB8A47CB43 /* Pods_BauhausmacOSTests.framework */; };
+		C1427A97E7CA7F7DDEAF2B33 /* Pods_Bauhaus_iOS_BauhausiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761409E27074D27C2899A76C /* Pods_Bauhaus_iOS_BauhausiOSUITests.framework */; };
+		C650FA41EE03129F28DEA085 /* Pods_Bauhaus_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3F74F27D95B3794DD82CB2 /* Pods_Bauhaus_macOS.framework */; };
+		DCB8B510D3231D876DB914BD /* Pods_Bauhaus_iOS_BauhausiOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21426EB512B65852D252231B /* Pods_Bauhaus_iOS_BauhausiOSTests.framework */; };
+		F692282D7C68CB19C74659E6 /* Pods_Bauhaus_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E452D3943A94AF8D13FD317F /* Pods_Bauhaus_iOS.framework */; };
+		FC314487326ABD8D7433DFC2 /* Pods_BauhausmacOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA672AEAAFDE1B480320913 /* Pods_BauhausmacOSUITests.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1F754E59234BA8B100EED3B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F32F196234514D10083A483 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F32F1A2234514D50083A483;
+			remoteInfo = "Bauhaus iOS";
+		};
+		1F754E67234BA8C600EED3B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F32F196234514D10083A483 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F32F1A2234514D50083A483;
+			remoteInfo = "Bauhaus iOS";
+		};
+		1F754E76234BA90300EED3B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F32F196234514D10083A483 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F32F1B4234514D60083A483;
+			remoteInfo = "Bauhaus tvOS";
+		};
+		1F754E84234BA91400EED3B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F32F196234514D10083A483 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F32F1B4234514D60083A483;
+			remoteInfo = "Bauhaus tvOS";
+		};
+		1F754E92234BA94500EED3B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F32F196234514D10083A483 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F32F1C5234514D60083A483;
+			remoteInfo = "Bauhaus macOS";
+		};
+		1F754EA0234BA96800EED3B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F32F196234514D10083A483 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F32F1C5234514D60083A483;
+			remoteInfo = "Bauhaus macOS";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		04AD8C2805CC21C3009BF163 /* Pods-Bauhaus iOS-BauhausiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bauhaus iOS-BauhausiOSTests.release.xcconfig"; path = "Target Support Files/Pods-Bauhaus iOS-BauhausiOSTests/Pods-Bauhaus iOS-BauhausiOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		07B8B210B80D6D49D882B57F /* Pods-Bauhaus iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bauhaus iOS.debug.xcconfig"; path = "Target Support Files/Pods-Bauhaus iOS/Pods-Bauhaus iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		1F32F19B234514D10083A483 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		1F32F19C234514D10083A483 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		1F32F19D234514D10083A483 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -54,6 +116,53 @@
 		1F32F1CA234514D60083A483 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		1F32F1CD234514D60083A483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F32F1CF234514D60083A483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F754E54234BA8B100EED3B7 /* BauhausiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BauhausiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F754E56234BA8B100EED3B7 /* BauhausiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BauhausiOSUITests.swift; sourceTree = "<group>"; };
+		1F754E58234BA8B100EED3B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F754E62234BA8C600EED3B7 /* BauhausiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BauhausiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F754E64234BA8C600EED3B7 /* BauhausiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BauhausiOSTests.swift; sourceTree = "<group>"; };
+		1F754E66234BA8C600EED3B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F754E71234BA90300EED3B7 /* BauhaustvOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BauhaustvOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F754E73234BA90300EED3B7 /* BauhaustvOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BauhaustvOSUITests.swift; sourceTree = "<group>"; };
+		1F754E75234BA90300EED3B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F754E7F234BA91400EED3B7 /* BauhaustvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BauhaustvOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F754E81234BA91400EED3B7 /* BauhaustvOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BauhaustvOSTests.swift; sourceTree = "<group>"; };
+		1F754E83234BA91400EED3B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F754E8D234BA94500EED3B7 /* BauhausmacOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BauhausmacOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F754E8F234BA94500EED3B7 /* BauhausmacOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BauhausmacOSUITests.swift; sourceTree = "<group>"; };
+		1F754E91234BA94500EED3B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F754E9B234BA96800EED3B7 /* BauhausmacOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BauhausmacOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F754E9D234BA96800EED3B7 /* BauhausmacOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BauhausmacOSTests.swift; sourceTree = "<group>"; };
+		1F754E9F234BA96800EED3B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FE2F7249806DF2372A50516 /* Pods-BauhaustvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BauhaustvOSTests.release.xcconfig"; path = "Target Support Files/Pods-BauhaustvOSTests/Pods-BauhaustvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		21426EB512B65852D252231B /* Pods_Bauhaus_iOS_BauhausiOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bauhaus_iOS_BauhausiOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2575C91CCA2767FE5DF3C5F2 /* Pods-Bauhaus iOS-BauhausiOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bauhaus iOS-BauhausiOSUITests.release.xcconfig"; path = "Target Support Files/Pods-Bauhaus iOS-BauhausiOSUITests/Pods-Bauhaus iOS-BauhausiOSUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2EFB1B53C9BD8023F11764B9 /* Pods-Bauhaus tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bauhaus tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Bauhaus tvOS/Pods-Bauhaus tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		2F4A1DACFC3A4279CE516282 /* Pods-BauhausmacOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BauhausmacOSUITests.release.xcconfig"; path = "Target Support Files/Pods-BauhausmacOSUITests/Pods-BauhausmacOSUITests.release.xcconfig"; sourceTree = "<group>"; };
+		38353BDD3405FDB57AB581FE /* Pods-Bauhaus macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bauhaus macOS.release.xcconfig"; path = "Target Support Files/Pods-Bauhaus macOS/Pods-Bauhaus macOS.release.xcconfig"; sourceTree = "<group>"; };
+		387B0A92E238089A90BD8D29 /* Pods-Bauhaus iOS-BauhausiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bauhaus iOS-BauhausiOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Bauhaus iOS-BauhausiOSTests/Pods-Bauhaus iOS-BauhausiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3C2D8366D500168A963F39E4 /* Pods-BauhausiOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BauhausiOSUITests.release.xcconfig"; path = "Target Support Files/Pods-BauhausiOSUITests/Pods-BauhausiOSUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3FA672AEAAFDE1B480320913 /* Pods_BauhausmacOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BauhausmacOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49DFB915F07FDD5B0DE8493F /* Pods-BauhausiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BauhausiOSTests.release.xcconfig"; path = "Target Support Files/Pods-BauhausiOSTests/Pods-BauhausiOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		5B8D9F2E216C1FA5BEBE99BC /* Pods_BauhaustvOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BauhaustvOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AA6EAD3D86F8D5571B2C82D /* Pods_BauhaustvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BauhaustvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D3F74F27D95B3794DD82CB2 /* Pods_Bauhaus_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bauhaus_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		70AFBA67A87561B0A07BEC7C /* Pods-BauhausiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BauhausiOSTests.debug.xcconfig"; path = "Target Support Files/Pods-BauhausiOSTests/Pods-BauhausiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		760BF4E903AAA5B33C3C640A /* Pods-BauhausiOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BauhausiOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-BauhausiOSUITests/Pods-BauhausiOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		761409E27074D27C2899A76C /* Pods_Bauhaus_iOS_BauhausiOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bauhaus_iOS_BauhausiOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E4178DD64B9DC759C9E9139 /* Pods-Bauhaus iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bauhaus iOS.release.xcconfig"; path = "Target Support Files/Pods-Bauhaus iOS/Pods-Bauhaus iOS.release.xcconfig"; sourceTree = "<group>"; };
+		901AA257EE1FC1F369F653BB /* Pods_Bauhaus_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bauhaus_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A060116D4F7129E792D06DB4 /* Pods-BauhausmacOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BauhausmacOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-BauhausmacOSUITests/Pods-BauhausmacOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AF74708F171767E1854A88A5 /* Pods-BauhaustvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BauhaustvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-BauhaustvOSTests/Pods-BauhaustvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BBCA73E547D9309CA0C3A34D /* Pods-BauhausmacOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BauhausmacOSTests.debug.xcconfig"; path = "Target Support Files/Pods-BauhausmacOSTests/Pods-BauhausmacOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C9A3A889DA21C7DB8A47CB43 /* Pods_BauhausmacOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BauhausmacOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D29F7FDA5BE02330661D1C5D /* Pods-BauhausmacOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BauhausmacOSTests.release.xcconfig"; path = "Target Support Files/Pods-BauhausmacOSTests/Pods-BauhausmacOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		D4FB3D20656A03235C6CAE4D /* Pods-Bauhaus macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bauhaus macOS.debug.xcconfig"; path = "Target Support Files/Pods-Bauhaus macOS/Pods-Bauhaus macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		DF1237874B439834D110CBF6 /* Pods-Bauhaus iOS-BauhausiOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bauhaus iOS-BauhausiOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-Bauhaus iOS-BauhausiOSUITests/Pods-Bauhaus iOS-BauhausiOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E42EBA7449D086D0637C83AB /* Pods-BauhaustvOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BauhaustvOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-BauhaustvOSUITests/Pods-BauhaustvOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E452D3943A94AF8D13FD317F /* Pods_Bauhaus_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bauhaus_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE2B070B1CFC5CEB3B2FC3EA /* Pods-Bauhaus tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bauhaus tvOS.release.xcconfig"; path = "Target Support Files/Pods-Bauhaus tvOS/Pods-Bauhaus tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		F314C101BB3654516178F8E3 /* Pods-BauhaustvOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BauhaustvOSUITests.release.xcconfig"; path = "Target Support Files/Pods-BauhaustvOSUITests/Pods-BauhaustvOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F692282D7C68CB19C74659E6 /* Pods_Bauhaus_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E4C8622AB032D80A7FE70EF /* Pods_Bauhaus_tvOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +186,55 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C650FA41EE03129F28DEA085 /* Pods_Bauhaus_macOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754E51234BA8B100EED3B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1427A97E7CA7F7DDEAF2B33 /* Pods_Bauhaus_iOS_BauhausiOSUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754E5F234BA8C600EED3B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCB8B510D3231D876DB914BD /* Pods_Bauhaus_iOS_BauhausiOSTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754E6E234BA90300EED3B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AB14A3DEFB7D7174ECF39C2 /* Pods_BauhaustvOSUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754E7C234BA91400EED3B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				551AD599E79AF2AEDA386A6A /* Pods_BauhaustvOSTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754E8A234BA94500EED3B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC314487326ABD8D7433DFC2 /* Pods_BauhausmacOSUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754E98234BA96800EED3B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				815F3C046F8B7CF4F0162580 /* Pods_BauhausmacOSTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,13 +248,19 @@
 				1F32F1A5234514D60083A483 /* Bauhaus iOS */,
 				1F32F1B6234514D60083A483 /* Bauhaus tvOS */,
 				1F32F1C7234514D60083A483 /* Bauhaus macOS */,
+				1F754E6C234BA8D000EED3B7 /* Tests */,
 				1F32F1A4234514D60083A483 /* Products */,
+				2502A5E43B579DC49E79B17F /* Pods */,
+				521D391A8B8D339F69DCF396 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		1F32F19A234514D10083A483 /* Bauhaus Shared */ = {
 			isa = PBXGroup;
 			children = (
+				1F45A2152347CD3100D83DB2 /* Components */,
+				1F45A2142347CD1D00D83DB2 /* StatesMachine */,
+				1F45A2132347CD1200D83DB2 /* Entities */,
 				1F32F19B234514D10083A483 /* Actions.sks */,
 				1F32F19C234514D10083A483 /* GameScene.sks */,
 				1F32F19D234514D10083A483 /* GameScene.swift */,
@@ -109,6 +275,12 @@
 				1F32F1A3234514D60083A483 /* Bauhaus.app */,
 				1F32F1B5234514D60083A483 /* Bauhaus.app */,
 				1F32F1C6234514D60083A483 /* Bauhaus.app */,
+				1F754E54234BA8B100EED3B7 /* BauhausiOSUITests.xctest */,
+				1F754E62234BA8C600EED3B7 /* BauhausiOSTests.xctest */,
+				1F754E71234BA90300EED3B7 /* BauhaustvOSUITests.xctest */,
+				1F754E7F234BA91400EED3B7 /* BauhaustvOSTests.xctest */,
+				1F754E8D234BA94500EED3B7 /* BauhausmacOSUITests.xctest */,
+				1F754E9B234BA96800EED3B7 /* BauhausmacOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,6 +320,139 @@
 			path = "Bauhaus macOS";
 			sourceTree = "<group>";
 		};
+		1F45A2132347CD1200D83DB2 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		1F45A2142347CD1D00D83DB2 /* StatesMachine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = StatesMachine;
+			sourceTree = "<group>";
+		};
+		1F45A2152347CD3100D83DB2 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		1F754E55234BA8B100EED3B7 /* BauhausiOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1F754E56234BA8B100EED3B7 /* BauhausiOSUITests.swift */,
+				1F754E58234BA8B100EED3B7 /* Info.plist */,
+			);
+			path = BauhausiOSUITests;
+			sourceTree = "<group>";
+		};
+		1F754E63234BA8C600EED3B7 /* BauhausiOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				1F754E64234BA8C600EED3B7 /* BauhausiOSTests.swift */,
+				1F754E66234BA8C600EED3B7 /* Info.plist */,
+			);
+			path = BauhausiOSTests;
+			sourceTree = "<group>";
+		};
+		1F754E6C234BA8D000EED3B7 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1F754E9C234BA96800EED3B7 /* BauhausmacOSTests */,
+				1F754E8E234BA94500EED3B7 /* BauhausmacOSUITests */,
+				1F754E80234BA91400EED3B7 /* BauhaustvOSTests */,
+				1F754E72234BA90300EED3B7 /* BauhaustvOSUITests */,
+				1F754E63234BA8C600EED3B7 /* BauhausiOSTests */,
+				1F754E55234BA8B100EED3B7 /* BauhausiOSUITests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		1F754E72234BA90300EED3B7 /* BauhaustvOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1F754E73234BA90300EED3B7 /* BauhaustvOSUITests.swift */,
+				1F754E75234BA90300EED3B7 /* Info.plist */,
+			);
+			path = BauhaustvOSUITests;
+			sourceTree = "<group>";
+		};
+		1F754E80234BA91400EED3B7 /* BauhaustvOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				1F754E81234BA91400EED3B7 /* BauhaustvOSTests.swift */,
+				1F754E83234BA91400EED3B7 /* Info.plist */,
+			);
+			path = BauhaustvOSTests;
+			sourceTree = "<group>";
+		};
+		1F754E8E234BA94500EED3B7 /* BauhausmacOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1F754E8F234BA94500EED3B7 /* BauhausmacOSUITests.swift */,
+				1F754E91234BA94500EED3B7 /* Info.plist */,
+			);
+			path = BauhausmacOSUITests;
+			sourceTree = "<group>";
+		};
+		1F754E9C234BA96800EED3B7 /* BauhausmacOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				1F754E9D234BA96800EED3B7 /* BauhausmacOSTests.swift */,
+				1F754E9F234BA96800EED3B7 /* Info.plist */,
+			);
+			path = BauhausmacOSTests;
+			sourceTree = "<group>";
+		};
+		2502A5E43B579DC49E79B17F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				07B8B210B80D6D49D882B57F /* Pods-Bauhaus iOS.debug.xcconfig */,
+				8E4178DD64B9DC759C9E9139 /* Pods-Bauhaus iOS.release.xcconfig */,
+				D4FB3D20656A03235C6CAE4D /* Pods-Bauhaus macOS.debug.xcconfig */,
+				38353BDD3405FDB57AB581FE /* Pods-Bauhaus macOS.release.xcconfig */,
+				2EFB1B53C9BD8023F11764B9 /* Pods-Bauhaus tvOS.debug.xcconfig */,
+				EE2B070B1CFC5CEB3B2FC3EA /* Pods-Bauhaus tvOS.release.xcconfig */,
+				70AFBA67A87561B0A07BEC7C /* Pods-BauhausiOSTests.debug.xcconfig */,
+				49DFB915F07FDD5B0DE8493F /* Pods-BauhausiOSTests.release.xcconfig */,
+				760BF4E903AAA5B33C3C640A /* Pods-BauhausiOSUITests.debug.xcconfig */,
+				3C2D8366D500168A963F39E4 /* Pods-BauhausiOSUITests.release.xcconfig */,
+				BBCA73E547D9309CA0C3A34D /* Pods-BauhausmacOSTests.debug.xcconfig */,
+				D29F7FDA5BE02330661D1C5D /* Pods-BauhausmacOSTests.release.xcconfig */,
+				A060116D4F7129E792D06DB4 /* Pods-BauhausmacOSUITests.debug.xcconfig */,
+				2F4A1DACFC3A4279CE516282 /* Pods-BauhausmacOSUITests.release.xcconfig */,
+				AF74708F171767E1854A88A5 /* Pods-BauhaustvOSTests.debug.xcconfig */,
+				1FE2F7249806DF2372A50516 /* Pods-BauhaustvOSTests.release.xcconfig */,
+				E42EBA7449D086D0637C83AB /* Pods-BauhaustvOSUITests.debug.xcconfig */,
+				F314C101BB3654516178F8E3 /* Pods-BauhaustvOSUITests.release.xcconfig */,
+				387B0A92E238089A90BD8D29 /* Pods-Bauhaus iOS-BauhausiOSTests.debug.xcconfig */,
+				04AD8C2805CC21C3009BF163 /* Pods-Bauhaus iOS-BauhausiOSTests.release.xcconfig */,
+				DF1237874B439834D110CBF6 /* Pods-Bauhaus iOS-BauhausiOSUITests.debug.xcconfig */,
+				2575C91CCA2767FE5DF3C5F2 /* Pods-Bauhaus iOS-BauhausiOSUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		521D391A8B8D339F69DCF396 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E452D3943A94AF8D13FD317F /* Pods_Bauhaus_iOS.framework */,
+				6D3F74F27D95B3794DD82CB2 /* Pods_Bauhaus_macOS.framework */,
+				901AA257EE1FC1F369F653BB /* Pods_Bauhaus_tvOS.framework */,
+				C9A3A889DA21C7DB8A47CB43 /* Pods_BauhausmacOSTests.framework */,
+				3FA672AEAAFDE1B480320913 /* Pods_BauhausmacOSUITests.framework */,
+				6AA6EAD3D86F8D5571B2C82D /* Pods_BauhaustvOSTests.framework */,
+				5B8D9F2E216C1FA5BEBE99BC /* Pods_BauhaustvOSUITests.framework */,
+				21426EB512B65852D252231B /* Pods_Bauhaus_iOS_BauhausiOSTests.framework */,
+				761409E27074D27C2899A76C /* Pods_Bauhaus_iOS_BauhausiOSUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -155,6 +460,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F32F1DE234514D60083A483 /* Build configuration list for PBXNativeTarget "Bauhaus iOS" */;
 			buildPhases = (
+				8343FE5A186E5D3AA0D11A04 /* [CP] Check Pods Manifest.lock */,
 				1F32F19F234514D50083A483 /* Sources */,
 				1F32F1A0234514D50083A483 /* Frameworks */,
 				1F32F1A1234514D50083A483 /* Resources */,
@@ -172,6 +478,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F32F1E1234514D60083A483 /* Build configuration list for PBXNativeTarget "Bauhaus tvOS" */;
 			buildPhases = (
+				26CB0ED3D4219F1D347CCD0B /* [CP] Check Pods Manifest.lock */,
 				1F32F1B1234514D60083A483 /* Sources */,
 				1F32F1B2234514D60083A483 /* Frameworks */,
 				1F32F1B3234514D60083A483 /* Resources */,
@@ -189,6 +496,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F32F1E4234514D60083A483 /* Build configuration list for PBXNativeTarget "Bauhaus macOS" */;
 			buildPhases = (
+				F31E118DB867036DE3C49473 /* [CP] Check Pods Manifest.lock */,
 				1F32F1C2234514D60083A483 /* Sources */,
 				1F32F1C3234514D60083A483 /* Frameworks */,
 				1F32F1C4234514D60083A483 /* Resources */,
@@ -201,6 +509,126 @@
 			productName = "Bauhaus macOS";
 			productReference = 1F32F1C6234514D60083A483 /* Bauhaus.app */;
 			productType = "com.apple.product-type.application";
+		};
+		1F754E53234BA8B100EED3B7 /* BauhausiOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F754E5D234BA8B100EED3B7 /* Build configuration list for PBXNativeTarget "BauhausiOSUITests" */;
+			buildPhases = (
+				FF72B98575DBD8121C0D3102 /* [CP] Check Pods Manifest.lock */,
+				1F754E50234BA8B100EED3B7 /* Sources */,
+				1F754E51234BA8B100EED3B7 /* Frameworks */,
+				1F754E52234BA8B100EED3B7 /* Resources */,
+				EDB229A46A233A184B28286D /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F754E5A234BA8B100EED3B7 /* PBXTargetDependency */,
+			);
+			name = BauhausiOSUITests;
+			productName = BauhausiOSUITests;
+			productReference = 1F754E54234BA8B100EED3B7 /* BauhausiOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		1F754E61234BA8C600EED3B7 /* BauhausiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F754E69234BA8C600EED3B7 /* Build configuration list for PBXNativeTarget "BauhausiOSTests" */;
+			buildPhases = (
+				8EF4114933B5BB7C1BC26BCA /* [CP] Check Pods Manifest.lock */,
+				1F754E5E234BA8C600EED3B7 /* Sources */,
+				1F754E5F234BA8C600EED3B7 /* Frameworks */,
+				1F754E60234BA8C600EED3B7 /* Resources */,
+				BC654328A7B3FC28C5FAF268 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F754E68234BA8C600EED3B7 /* PBXTargetDependency */,
+			);
+			name = BauhausiOSTests;
+			productName = BauhausiOSTests;
+			productReference = 1F754E62234BA8C600EED3B7 /* BauhausiOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1F754E70234BA90300EED3B7 /* BauhaustvOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F754E78234BA90300EED3B7 /* Build configuration list for PBXNativeTarget "BauhaustvOSUITests" */;
+			buildPhases = (
+				34C3ABC2E5446F3BE2D12CAA /* [CP] Check Pods Manifest.lock */,
+				1F754E6D234BA90300EED3B7 /* Sources */,
+				1F754E6E234BA90300EED3B7 /* Frameworks */,
+				1F754E6F234BA90300EED3B7 /* Resources */,
+				6C828B6EDE96FCBEB01712CD /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F754E77234BA90300EED3B7 /* PBXTargetDependency */,
+			);
+			name = BauhaustvOSUITests;
+			productName = BauhaustvOSUITests;
+			productReference = 1F754E71234BA90300EED3B7 /* BauhaustvOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		1F754E7E234BA91400EED3B7 /* BauhaustvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F754E86234BA91400EED3B7 /* Build configuration list for PBXNativeTarget "BauhaustvOSTests" */;
+			buildPhases = (
+				73FF7E101B903F4CCFDCB9D3 /* [CP] Check Pods Manifest.lock */,
+				1F754E7B234BA91400EED3B7 /* Sources */,
+				1F754E7C234BA91400EED3B7 /* Frameworks */,
+				1F754E7D234BA91400EED3B7 /* Resources */,
+				BFAC3778B0CABDBDEF31025C /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F754E85234BA91400EED3B7 /* PBXTargetDependency */,
+			);
+			name = BauhaustvOSTests;
+			productName = BauhaustvOSTests;
+			productReference = 1F754E7F234BA91400EED3B7 /* BauhaustvOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1F754E8C234BA94500EED3B7 /* BauhausmacOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F754E94234BA94500EED3B7 /* Build configuration list for PBXNativeTarget "BauhausmacOSUITests" */;
+			buildPhases = (
+				E7069DAF7945A187633007FC /* [CP] Check Pods Manifest.lock */,
+				1F754E89234BA94500EED3B7 /* Sources */,
+				1F754E8A234BA94500EED3B7 /* Frameworks */,
+				1F754E8B234BA94500EED3B7 /* Resources */,
+				EAE49B1D8CA856A148E11F3A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F754E93234BA94500EED3B7 /* PBXTargetDependency */,
+			);
+			name = BauhausmacOSUITests;
+			productName = BauhausmacOSUITests;
+			productReference = 1F754E8D234BA94500EED3B7 /* BauhausmacOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		1F754E9A234BA96800EED3B7 /* BauhausmacOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F754EA2234BA96800EED3B7 /* Build configuration list for PBXNativeTarget "BauhausmacOSTests" */;
+			buildPhases = (
+				28AB6DC6EACFB397F7369504 /* [CP] Check Pods Manifest.lock */,
+				1F754E97234BA96800EED3B7 /* Sources */,
+				1F754E98234BA96800EED3B7 /* Frameworks */,
+				1F754E99234BA96800EED3B7 /* Resources */,
+				C8B3BF806BA7903D51070D4D /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F754EA1234BA96800EED3B7 /* PBXTargetDependency */,
+			);
+			name = BauhausmacOSTests;
+			productName = BauhausmacOSTests;
+			productReference = 1F754E9B234BA96800EED3B7 /* BauhausmacOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -221,6 +649,30 @@
 					1F32F1C5234514D60083A483 = {
 						CreatedOnToolsVersion = 11.0;
 					};
+					1F754E53234BA8B100EED3B7 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 1F32F1A2234514D50083A483;
+					};
+					1F754E61234BA8C600EED3B7 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 1F32F1A2234514D50083A483;
+					};
+					1F754E70234BA90300EED3B7 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 1F32F1B4234514D60083A483;
+					};
+					1F754E7E234BA91400EED3B7 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 1F32F1B4234514D60083A483;
+					};
+					1F754E8C234BA94500EED3B7 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 1F32F1C5234514D60083A483;
+					};
+					1F754E9A234BA96800EED3B7 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 1F32F1C5234514D60083A483;
+					};
 				};
 			};
 			buildConfigurationList = 1F32F199234514D10083A483 /* Build configuration list for PBXProject "Bauhaus" */;
@@ -239,6 +691,12 @@
 				1F32F1A2234514D50083A483 /* Bauhaus iOS */,
 				1F32F1B4234514D60083A483 /* Bauhaus tvOS */,
 				1F32F1C5234514D60083A483 /* Bauhaus macOS */,
+				1F754E53234BA8B100EED3B7 /* BauhausiOSUITests */,
+				1F754E61234BA8C600EED3B7 /* BauhausiOSTests */,
+				1F754E70234BA90300EED3B7 /* BauhaustvOSUITests */,
+				1F754E7E234BA91400EED3B7 /* BauhaustvOSTests */,
+				1F754E8C234BA94500EED3B7 /* BauhausmacOSUITests */,
+				1F754E9A234BA96800EED3B7 /* BauhausmacOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -279,7 +737,352 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1F754E52234BA8B100EED3B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754E60234BA8C600EED3B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754E6F234BA90300EED3B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754E7D234BA91400EED3B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754E8B234BA94500EED3B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754E99234BA96800EED3B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26CB0ED3D4219F1D347CCD0B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bauhaus tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28AB6DC6EACFB397F7369504 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BauhausmacOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		34C3ABC2E5446F3BE2D12CAA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BauhaustvOSUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6C828B6EDE96FCBEB01712CD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BauhaustvOSUITests/Pods-BauhaustvOSUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BauhaustvOSUITests/Pods-BauhaustvOSUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BauhaustvOSUITests/Pods-BauhaustvOSUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73FF7E101B903F4CCFDCB9D3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BauhaustvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8343FE5A186E5D3AA0D11A04 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bauhaus iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8EF4114933B5BB7C1BC26BCA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bauhaus iOS-BauhausiOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC654328A7B3FC28C5FAF268 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bauhaus iOS-BauhausiOSTests/Pods-Bauhaus iOS-BauhausiOSTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bauhaus iOS-BauhausiOSTests/Pods-Bauhaus iOS-BauhausiOSTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bauhaus iOS-BauhausiOSTests/Pods-Bauhaus iOS-BauhausiOSTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFAC3778B0CABDBDEF31025C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BauhaustvOSTests/Pods-BauhaustvOSTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BauhaustvOSTests/Pods-BauhaustvOSTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BauhaustvOSTests/Pods-BauhaustvOSTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8B3BF806BA7903D51070D4D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BauhausmacOSTests/Pods-BauhausmacOSTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BauhausmacOSTests/Pods-BauhausmacOSTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BauhausmacOSTests/Pods-BauhausmacOSTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7069DAF7945A187633007FC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BauhausmacOSUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAE49B1D8CA856A148E11F3A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BauhausmacOSUITests/Pods-BauhausmacOSUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BauhausmacOSUITests/Pods-BauhausmacOSUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BauhausmacOSUITests/Pods-BauhausmacOSUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDB229A46A233A184B28286D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bauhaus iOS-BauhausiOSUITests/Pods-Bauhaus iOS-BauhausiOSUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bauhaus iOS-BauhausiOSUITests/Pods-Bauhaus iOS-BauhausiOSUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bauhaus iOS-BauhausiOSUITests/Pods-Bauhaus iOS-BauhausiOSUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F31E118DB867036DE3C49473 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bauhaus macOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF72B98575DBD8121C0D3102 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bauhaus iOS-BauhausiOSUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1F32F19F234514D50083A483 /* Sources */ = {
@@ -312,7 +1115,88 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1F754E50234BA8B100EED3B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F754E57234BA8B100EED3B7 /* BauhausiOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754E5E234BA8C600EED3B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F754E65234BA8C600EED3B7 /* BauhausiOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754E6D234BA90300EED3B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F754E74234BA90300EED3B7 /* BauhaustvOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754E7B234BA91400EED3B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F754E82234BA91400EED3B7 /* BauhaustvOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754E89234BA94500EED3B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F754E90234BA94500EED3B7 /* BauhausmacOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754E97234BA96800EED3B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F754E9E234BA96800EED3B7 /* BauhausmacOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1F754E5A234BA8B100EED3B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F32F1A2234514D50083A483 /* Bauhaus iOS */;
+			targetProxy = 1F754E59234BA8B100EED3B7 /* PBXContainerItemProxy */;
+		};
+		1F754E68234BA8C600EED3B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F32F1A2234514D50083A483 /* Bauhaus iOS */;
+			targetProxy = 1F754E67234BA8C600EED3B7 /* PBXContainerItemProxy */;
+		};
+		1F754E77234BA90300EED3B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F32F1B4234514D60083A483 /* Bauhaus tvOS */;
+			targetProxy = 1F754E76234BA90300EED3B7 /* PBXContainerItemProxy */;
+		};
+		1F754E85234BA91400EED3B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F32F1B4234514D60083A483 /* Bauhaus tvOS */;
+			targetProxy = 1F754E84234BA91400EED3B7 /* PBXContainerItemProxy */;
+		};
+		1F754E93234BA94500EED3B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F32F1C5234514D60083A483 /* Bauhaus macOS */;
+			targetProxy = 1F754E92234BA94500EED3B7 /* PBXContainerItemProxy */;
+		};
+		1F754EA1234BA96800EED3B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F32F1C5234514D60083A483 /* Bauhaus macOS */;
+			targetProxy = 1F754EA0234BA96800EED3B7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1F32F1AA234514D60083A483 /* Main.storyboard */ = {
@@ -473,6 +1357,7 @@
 		};
 		1F32F1DF234514D60083A483 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07B8B210B80D6D49D882B57F /* Pods-Bauhaus iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -493,6 +1378,7 @@
 		};
 		1F32F1E0234514D60083A483 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E4178DD64B9DC759C9E9139 /* Pods-Bauhaus iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -514,6 +1400,7 @@
 		};
 		1F32F1E2234514D60083A483 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EFB1B53C9BD8023F11764B9 /* Pods-Bauhaus tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
 				CODE_SIGN_STYLE = Automatic;
@@ -534,6 +1421,7 @@
 		};
 		1F32F1E3234514D60083A483 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE2B070B1CFC5CEB3B2FC3EA /* Pods-Bauhaus tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
 				CODE_SIGN_STYLE = Automatic;
@@ -555,8 +1443,10 @@
 		};
 		1F32F1E5234514D60083A483 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4FB3D20656A03235C6CAE4D /* Pods-Bauhaus macOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = MC7C9J5LVA;
@@ -576,8 +1466,10 @@
 		};
 		1F32F1E6234514D60083A483 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38353BDD3405FDB57AB581FE /* Pods-Bauhaus macOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = MC7C9J5LVA;
@@ -592,6 +1484,276 @@
 				PRODUCT_NAME = Bauhaus;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		1F754E5B234BA8B100EED3B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF1237874B439834D110CBF6 /* Pods-Bauhaus iOS-BauhausiOSUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				INFOPLIST_FILE = BauhausiOSUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.BauhausiOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Bauhaus iOS";
+			};
+			name = Debug;
+		};
+		1F754E5C234BA8B100EED3B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2575C91CCA2767FE5DF3C5F2 /* Pods-Bauhaus iOS-BauhausiOSUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				INFOPLIST_FILE = BauhausiOSUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.BauhausiOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Bauhaus iOS";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F754E6A234BA8C600EED3B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 387B0A92E238089A90BD8D29 /* Pods-Bauhaus iOS-BauhausiOSTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				INFOPLIST_FILE = BauhausiOSTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.BauhausiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bauhaus.app/Bauhaus";
+			};
+			name = Debug;
+		};
+		1F754E6B234BA8C600EED3B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04AD8C2805CC21C3009BF163 /* Pods-Bauhaus iOS-BauhausiOSTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				INFOPLIST_FILE = BauhausiOSTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.BauhausiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bauhaus.app/Bauhaus";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F754E79234BA90300EED3B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E42EBA7449D086D0637C83AB /* Pods-BauhaustvOSUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				INFOPLIST_FILE = BauhaustvOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.BauhaustvOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_TARGET_NAME = "Bauhaus tvOS";
+				TVOS_DEPLOYMENT_TARGET = 13.0;
+			};
+			name = Debug;
+		};
+		1F754E7A234BA90300EED3B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F314C101BB3654516178F8E3 /* Pods-BauhaustvOSUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				INFOPLIST_FILE = BauhaustvOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.BauhaustvOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_TARGET_NAME = "Bauhaus tvOS";
+				TVOS_DEPLOYMENT_TARGET = 13.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F754E87234BA91400EED3B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF74708F171767E1854A88A5 /* Pods-BauhaustvOSTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				INFOPLIST_FILE = BauhaustvOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.BauhaustvOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bauhaus.app/Bauhaus";
+				TVOS_DEPLOYMENT_TARGET = 13.0;
+			};
+			name = Debug;
+		};
+		1F754E88234BA91400EED3B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FE2F7249806DF2372A50516 /* Pods-BauhaustvOSTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				INFOPLIST_FILE = BauhaustvOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.BauhaustvOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bauhaus.app/Bauhaus";
+				TVOS_DEPLOYMENT_TARGET = 13.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F754E95234BA94500EED3B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A060116D4F7129E792D06DB4 /* Pods-BauhausmacOSUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				INFOPLIST_FILE = BauhausmacOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.BauhausmacOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "Bauhaus macOS";
+			};
+			name = Debug;
+		};
+		1F754E96234BA94500EED3B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F4A1DACFC3A4279CE516282 /* Pods-BauhausmacOSUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				INFOPLIST_FILE = BauhausmacOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.BauhausmacOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "Bauhaus macOS";
+			};
+			name = Release;
+		};
+		1F754EA3234BA96800EED3B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBCA73E547D9309CA0C3A34D /* Pods-BauhausmacOSTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				INFOPLIST_FILE = BauhausmacOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.BauhausmacOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bauhaus.app/Contents/MacOS/Bauhaus";
+			};
+			name = Debug;
+		};
+		1F754EA4234BA96800EED3B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D29F7FDA5BE02330661D1C5D /* Pods-BauhausmacOSTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				INFOPLIST_FILE = BauhausmacOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.BauhausmacOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bauhaus.app/Contents/MacOS/Bauhaus";
 			};
 			name = Release;
 		};
@@ -630,6 +1792,60 @@
 			buildConfigurations = (
 				1F32F1E5234514D60083A483 /* Debug */,
 				1F32F1E6234514D60083A483 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F754E5D234BA8B100EED3B7 /* Build configuration list for PBXNativeTarget "BauhausiOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F754E5B234BA8B100EED3B7 /* Debug */,
+				1F754E5C234BA8B100EED3B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F754E69234BA8C600EED3B7 /* Build configuration list for PBXNativeTarget "BauhausiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F754E6A234BA8C600EED3B7 /* Debug */,
+				1F754E6B234BA8C600EED3B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F754E78234BA90300EED3B7 /* Build configuration list for PBXNativeTarget "BauhaustvOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F754E79234BA90300EED3B7 /* Debug */,
+				1F754E7A234BA90300EED3B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F754E86234BA91400EED3B7 /* Build configuration list for PBXNativeTarget "BauhaustvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F754E87234BA91400EED3B7 /* Debug */,
+				1F754E88234BA91400EED3B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F754E94234BA94500EED3B7 /* Build configuration list for PBXNativeTarget "BauhausmacOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F754E95234BA94500EED3B7 /* Debug */,
+				1F754E96234BA94500EED3B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F754EA2234BA96800EED3B7 /* Build configuration list for PBXNativeTarget "BauhausmacOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F754EA3234BA96800EED3B7 /* Debug */,
+				1F754EA4234BA96800EED3B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
