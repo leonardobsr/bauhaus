@@ -10,7 +10,9 @@ import GameplayKit
 
 class Piece : GKEntity {
     
-    override init() {
+    init(pathType: PathType) {
+        super.init()
+        
         // Visual Components
         let renderComponent = RenderComponent()
         self.addComponent(renderComponent)
@@ -19,10 +21,10 @@ class Piece : GKEntity {
         renderComponent.node.addChild(spriteComponent.spriteNode)
         self.addComponent(spriteComponent)
                 
-        // edge size
-        // shape
+        // Game Logic Components
+        let pathComponent = PathComponent(pathType: pathType)
+        self.addComponent(pathComponent)
         
-        super.init()
     }
     
     required init?(coder: NSCoder) {

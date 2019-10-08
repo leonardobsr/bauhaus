@@ -11,21 +11,22 @@ import GameplayKit
 class Dot : GKEntity {
         
     override init() {
+        super.init()
+
         // Visual Components
+        
         let renderComponent = RenderComponent()
+        renderComponent.node.zPosition = CGFloat(RenderingPosition.dot.rawValue)
         self.addComponent(renderComponent)
         
         let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode())
         renderComponent.node.addChild(spriteComponent.spriteNode)
         self.addComponent(spriteComponent)
         
-        // Z Position = 1
-        
         // Game Logic Components
+        
         let connectionComponent = ConnectionComponent()
         self.addComponent(connectionComponent)
-        
-        super.init()
     }
     
     required init?(coder: NSCoder) {

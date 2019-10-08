@@ -11,9 +11,12 @@ import GameplayKit
 class Board : GKEntity {
     
     override init() {
+        super.init()
+        
         // Visual Components
         
         let renderComponent = RenderComponent()
+        renderComponent.node.zPosition = CGFloat(RenderingPosition.board.rawValue)
         self.addComponent(renderComponent)
         
         let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode())
@@ -24,8 +27,6 @@ class Board : GKEntity {
         
         let gridComponent = GridComponent()
         self.addComponent(gridComponent)
-        
-        super.init()
     }
     
     required init?(coder: NSCoder) {

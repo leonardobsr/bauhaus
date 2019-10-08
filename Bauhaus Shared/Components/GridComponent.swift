@@ -23,6 +23,8 @@ class GridComponent : GKComponent {
         self.dotGrid = [[]]
         self.horizontalLineGrid = [[]]
         self.verticalLineGrid = [[]]
+        
+        super.init()
     }
     
     func setGrid(width: Int, height: Int) {

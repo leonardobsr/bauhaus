@@ -15,32 +15,32 @@ class EntityManager {
     var entities = Set<GKEntity>()
     let scene: SKScene
 
-    lazy var componentSystems: [GKComponentSystem] = {
-//      let castleSystem = GKComponentSystem(componentClass: CastleComponent.self)
-//      let moveSystem = GKComponentSystem(componentClass: MoveComponent.self)
-//      return [castleSystem, moveSystem]
-    }()
+//    lazy var componentSystems: [GKComponentSystem] = {
+//        let castleSystem = GKComponentSystem(componentClass: CastleComponent.self)
+//        let moveSystem = GKComponentSystem(componentClass: MoveComponent.self)
+//        return [castleSystem, moveSystem]
+//    }()
 
     var toRemove = Set<GKEntity>()
 
     init(scene: SKScene) {
-      self.scene = scene
+        self.scene = scene
     }
 
     func add(_ entity: GKEntity) {
-      entities.insert(entity)
+        entities.insert(entity)
 
-      if let spriteNode = entity.component(ofType: SpriteComponent.self)?.node {
-        scene.addChild(spriteNode)
-      }
+        if let spriteNode = entity.component(ofType: SpriteComponent.self)?.spriteNode {
+            scene.addChild(spriteNode)
+        }
 
-      for componentSystem in componentSystems {
-        componentSystem.addComponent(foundIn: entity)
-      }
+//        for componentSystem in componentSystems {
+//            componentSystem.addComponent(foundIn: entity)
+//        }
     }
 
     func remove(_ entity: GKEntity) {
-      if let spriteNode = entity.component(ofType: SpriteComponent.self)?.node {
+      if let spriteNode = entity.component(ofType: SpriteComponent.self)?.spriteNode {
         spriteNode.removeFromParent()
       }
 
@@ -49,15 +49,15 @@ class EntityManager {
     }
 
     func update(_ deltaTime: CFTimeInterval) {
-      for componentSystem in componentSystems {
-        componentSystem.update(deltaTime: deltaTime)
-      }
-
-      for currentRemove in toRemove {
-        for componentSystem in componentSystems {
-          componentSystem.removeComponent(foundIn: currentRemove)
-        }
-      }
+//      for componentSystem in componentSystems {
+//        componentSystem.update(deltaTime: deltaTime)
+//      }
+//
+//      for currentRemove in toRemove {
+//        for componentSystem in componentSystems {
+//          componentSystem.removeComponent(foundIn: currentRemove)
+//        }
+//      }
       toRemove.removeAll()
     }
 

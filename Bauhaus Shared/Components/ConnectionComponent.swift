@@ -13,7 +13,9 @@ class ConnectionComponent : GKComponent {
     var connections : [Direction : Dot]
     
     override init() {
-        self.connections = [:] 
+        self.connections = [:]
+        
+        super.init()
     }
     
     required init?(coder: NSCoder) {

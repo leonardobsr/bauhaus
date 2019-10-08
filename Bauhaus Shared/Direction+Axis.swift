@@ -32,3 +32,14 @@ enum Axis {
     case X, Y
 }
 
+enum RenderingPosition : Int {
+    case background = 0
+    case board = 1
+    case dot = 2
+    case box = 3
+    case line = 4
+}
+
+enum PathType {
+    case I, L, T, Z, U
+}

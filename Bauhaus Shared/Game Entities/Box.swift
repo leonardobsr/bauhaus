@@ -11,19 +11,14 @@ import GameplayKit
 class Box : GKEntity {
     
     override init() {
+        super.init()
+        
         // Visual Components
         
         let renderComponent = RenderComponent()
+        renderComponent.node.zPosition = CGFloat(RenderingPosition.box.rawValue)
         self.addComponent(renderComponent)
         
-        // Z Position = 2
-        
-        // shape node component
-        // color
-        // size
-        // position
-        
-        super.init()
     }
     
     required init?(coder: NSCoder) {

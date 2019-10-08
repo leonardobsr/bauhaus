@@ -11,19 +11,23 @@ import GameplayKit
 class Line : GKEntity {
     
     override init() {
+        super.init()
+        
         // Visual Components
+        
         let renderComponent = RenderComponent()
+        renderComponent.node.zPosition = CGFloat(RenderingPosition.line.rawValue)
         self.addComponent(renderComponent)
         
         let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode())
         renderComponent.node.addChild(spriteComponent.spriteNode)
         self.addComponent(spriteComponent)
         
-        // Z Position = 3
+        // Game Logic Components
         
-        // turn on/off -> state machine ?
-        
-        super.init()
+        let lightSwitchComponent = LightSwitchComponent(node: renderComponent.node)
+        self.addComponent(lightSwitchComponent)
+
     }
     
     required init?(coder: NSCoder) {
