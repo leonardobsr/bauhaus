@@ -45,6 +45,24 @@
 		1F754E82234BA91400EED3B7 /* BauhaustvOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E81234BA91400EED3B7 /* BauhaustvOSTests.swift */; };
 		1F754E90234BA94500EED3B7 /* BauhausmacOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E8F234BA94500EED3B7 /* BauhausmacOSUITests.swift */; };
 		1F754E9E234BA96800EED3B7 /* BauhausmacOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E9D234BA96800EED3B7 /* BauhausmacOSTests.swift */; };
+		1FA4681F234D1E8900F93A8E /* DotComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4681E234D1E8900F93A8E /* DotComponent.swift */; };
+		1FA46820234D1E8900F93A8E /* DotComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4681E234D1E8900F93A8E /* DotComponent.swift */; };
+		1FA46821234D1E8900F93A8E /* DotComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4681E234D1E8900F93A8E /* DotComponent.swift */; };
+		1FA46822234D1E8900F93A8E /* DotComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4681E234D1E8900F93A8E /* DotComponent.swift */; };
+		1FA46823234D1E8900F93A8E /* DotComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4681E234D1E8900F93A8E /* DotComponent.swift */; };
+		1FA46824234D1E8900F93A8E /* DotComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4681E234D1E8900F93A8E /* DotComponent.swift */; };
+		1FA46825234D1E8900F93A8E /* DotComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4681E234D1E8900F93A8E /* DotComponent.swift */; };
+		1FA46826234D1E8900F93A8E /* DotComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4681E234D1E8900F93A8E /* DotComponent.swift */; };
+		1FA46827234D1E8900F93A8E /* DotComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4681E234D1E8900F93A8E /* DotComponent.swift */; };
+		1FA46829234D214B00F93A8E /* BoardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA46828234D214B00F93A8E /* BoardComponent.swift */; };
+		1FA4682A234D214B00F93A8E /* BoardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA46828234D214B00F93A8E /* BoardComponent.swift */; };
+		1FA4682B234D214B00F93A8E /* BoardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA46828234D214B00F93A8E /* BoardComponent.swift */; };
+		1FA4682C234D214B00F93A8E /* BoardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA46828234D214B00F93A8E /* BoardComponent.swift */; };
+		1FA4682D234D214B00F93A8E /* BoardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA46828234D214B00F93A8E /* BoardComponent.swift */; };
+		1FA4682E234D214B00F93A8E /* BoardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA46828234D214B00F93A8E /* BoardComponent.swift */; };
+		1FA4682F234D214B00F93A8E /* BoardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA46828234D214B00F93A8E /* BoardComponent.swift */; };
+		1FA46830234D214B00F93A8E /* BoardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA46828234D214B00F93A8E /* BoardComponent.swift */; };
+		1FA46831234D214B00F93A8E /* BoardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA46828234D214B00F93A8E /* BoardComponent.swift */; };
 		3AB14A3DEFB7D7174ECF39C2 /* Pods_BauhaustvOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8D9F2E216C1FA5BEBE99BC /* Pods_BauhaustvOSUITests.framework */; };
 		551AD599E79AF2AEDA386A6A /* Pods_BauhaustvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AA6EAD3D86F8D5571B2C82D /* Pods_BauhaustvOSTests.framework */; };
 		5C61A5F4234BB90E00F34E99 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C61A5F0234BB90D00F34E99 /* Line.swift */; };
@@ -306,6 +324,8 @@
 		1F754E9B234BA96800EED3B7 /* BauhausmacOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BauhausmacOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F754E9D234BA96800EED3B7 /* BauhausmacOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BauhausmacOSTests.swift; sourceTree = "<group>"; };
 		1F754E9F234BA96800EED3B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FA4681E234D1E8900F93A8E /* DotComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotComponent.swift; sourceTree = "<group>"; };
+		1FA46828234D214B00F93A8E /* BoardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardComponent.swift; sourceTree = "<group>"; };
 		1FE2F7249806DF2372A50516 /* Pods-BauhaustvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BauhaustvOSTests.release.xcconfig"; path = "Target Support Files/Pods-BauhaustvOSTests/Pods-BauhaustvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		21426EB512B65852D252231B /* Pods_Bauhaus_iOS_BauhausiOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bauhaus_iOS_BauhausiOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2575C91CCA2767FE5DF3C5F2 /* Pods-Bauhaus iOS-BauhausiOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bauhaus iOS-BauhausiOSUITests.release.xcconfig"; path = "Target Support Files/Pods-Bauhaus iOS-BauhausiOSUITests/Pods-Bauhaus iOS-BauhausiOSUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -545,6 +565,8 @@
 				5C7B673B234D080B0044C0BB /* RectangleComponent.swift */,
 				5C7B6745234D09670044C0BB /* LightSwitchComponent.swift */,
 				5C7B674F234D0C990044C0BB /* PathComponent.swift */,
+				1FA4681E234D1E8900F93A8E /* DotComponent.swift */,
+				1FA46828234D214B00F93A8E /* BoardComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1337,7 +1359,9 @@
 				5C61A5FD234BB90E00F34E99 /* Dot.swift in Sources */,
 				5C61A642234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A661234BC21000F34E99 /* Box.swift in Sources */,
+				1FA46829234D214B00F93A8E /* BoardComponent.swift in Sources */,
 				1F586D3A234BC09600C23821 /* EntityManager.swift in Sources */,
+				1FA4681F234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				1F32F1A7234514D60083A483 /* AppDelegate.swift in Sources */,
 				5C61A624234BB91A00F34E99 /* SpriteComponent.swift in Sources */,
 				5C61A61B234BB91A00F34E99 /* ConnectionComponent.swift in Sources */,
@@ -1365,7 +1389,9 @@
 				5C61A5FE234BB90E00F34E99 /* Dot.swift in Sources */,
 				5C61A643234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A662234BC21000F34E99 /* Box.swift in Sources */,
+				1FA4682A234D214B00F93A8E /* BoardComponent.swift in Sources */,
 				1F586D3B234BC09600C23821 /* EntityManager.swift in Sources */,
+				1FA46820234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				1F32F1B8234514D60083A483 /* AppDelegate.swift in Sources */,
 				5C61A625234BB91A00F34E99 /* SpriteComponent.swift in Sources */,
 				5C61A61C234BB91A00F34E99 /* ConnectionComponent.swift in Sources */,
@@ -1393,7 +1419,9 @@
 				5C61A5FF234BB90E00F34E99 /* Dot.swift in Sources */,
 				5C61A644234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A663234BC21000F34E99 /* Box.swift in Sources */,
+				1FA4682B234D214B00F93A8E /* BoardComponent.swift in Sources */,
 				1F586D3C234BC09600C23821 /* EntityManager.swift in Sources */,
+				1FA46821234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				1F32F1C9234514D60083A483 /* AppDelegate.swift in Sources */,
 				5C61A626234BB91A00F34E99 /* SpriteComponent.swift in Sources */,
 				5C61A61D234BB91A00F34E99 /* ConnectionComponent.swift in Sources */,
@@ -1422,7 +1450,9 @@
 				5C61A645234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63A234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
 				5C7B6753234D0C990044C0BB /* PathComponent.swift in Sources */,
+				1FA46822234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				5C61A612234BB90E00F34E99 /* Board.swift in Sources */,
+				1FA4682C234D214B00F93A8E /* BoardComponent.swift in Sources */,
 				5C61A5F7234BB90E00F34E99 /* Line.swift in Sources */,
 				5C61A678234BC3C500F34E99 /* LineStateMachine.swift in Sources */,
 				5C61A600234BB90E00F34E99 /* Dot.swift in Sources */,
@@ -1448,7 +1478,9 @@
 				5C61A646234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63B234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
 				5C7B6754234D0C990044C0BB /* PathComponent.swift in Sources */,
+				1FA46823234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				5C61A613234BB90E00F34E99 /* Board.swift in Sources */,
+				1FA4682D234D214B00F93A8E /* BoardComponent.swift in Sources */,
 				5C61A5F8234BB90E00F34E99 /* Line.swift in Sources */,
 				5C61A679234BC3C500F34E99 /* LineStateMachine.swift in Sources */,
 				5C61A601234BB90E00F34E99 /* Dot.swift in Sources */,
@@ -1474,7 +1506,9 @@
 				5C61A647234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63C234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
 				5C7B6755234D0C990044C0BB /* PathComponent.swift in Sources */,
+				1FA46824234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				5C61A614234BB90E00F34E99 /* Board.swift in Sources */,
+				1FA4682E234D214B00F93A8E /* BoardComponent.swift in Sources */,
 				5C61A5F9234BB90E00F34E99 /* Line.swift in Sources */,
 				5C61A67A234BC3C500F34E99 /* LineStateMachine.swift in Sources */,
 				5C61A602234BB90E00F34E99 /* Dot.swift in Sources */,
@@ -1500,7 +1534,9 @@
 				5C61A648234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63D234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
 				5C7B6756234D0C990044C0BB /* PathComponent.swift in Sources */,
+				1FA46825234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				5C61A615234BB90E00F34E99 /* Board.swift in Sources */,
+				1FA4682F234D214B00F93A8E /* BoardComponent.swift in Sources */,
 				5C61A5FA234BB90E00F34E99 /* Line.swift in Sources */,
 				5C61A67B234BC3C500F34E99 /* LineStateMachine.swift in Sources */,
 				5C61A603234BB90E00F34E99 /* Dot.swift in Sources */,
@@ -1526,7 +1562,9 @@
 				5C61A649234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63E234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
 				5C7B6757234D0C990044C0BB /* PathComponent.swift in Sources */,
+				1FA46826234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				5C61A616234BB90E00F34E99 /* Board.swift in Sources */,
+				1FA46830234D214B00F93A8E /* BoardComponent.swift in Sources */,
 				5C61A5FB234BB90E00F34E99 /* Line.swift in Sources */,
 				5C61A67C234BC3C500F34E99 /* LineStateMachine.swift in Sources */,
 				5C61A604234BB90E00F34E99 /* Dot.swift in Sources */,
@@ -1552,7 +1590,9 @@
 				5C61A64A234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63F234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
 				5C7B6758234D0C990044C0BB /* PathComponent.swift in Sources */,
+				1FA46827234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				5C61A617234BB90E00F34E99 /* Board.swift in Sources */,
+				1FA46831234D214B00F93A8E /* BoardComponent.swift in Sources */,
 				5C61A5FC234BB90E00F34E99 /* Line.swift in Sources */,
 				5C61A67D234BC3C500F34E99 /* LineStateMachine.swift in Sources */,
 				5C61A605234BB90E00F34E99 /* Dot.swift in Sources */,
