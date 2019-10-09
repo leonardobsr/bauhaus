@@ -24,7 +24,6 @@ class Piece : GKEntity {
         // Game Logic Components
         let pathComponent = PathComponent(pathType: pathType)
         self.addComponent(pathComponent)
-        
     }
     
     required init?(coder: NSCoder) {

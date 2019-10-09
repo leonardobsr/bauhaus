@@ -10,7 +10,7 @@ import GameplayKit
 
 class Box : GKEntity {
     
-    override init() {
+    init(color: UIColor, size: CGSize, position: CGPoint) {
         super.init()
         
         // Visual Components
@@ -19,6 +19,9 @@ class Box : GKEntity {
         renderComponent.node.zPosition = CGFloat(RenderingPosition.box.rawValue)
         self.addComponent(renderComponent)
         
+        let rectangleComponent = RectangleComponent(color: color, size: size, position: position)
+        renderComponent.node.addChild(rectangleComponent.shapeNode)
+        self.addComponent(rectangleComponent)
     }
     
     required init?(coder: NSCoder) {

@@ -11,9 +11,11 @@ import GameplayKit
 class LightSwitchComponent : GKComponent {
  
     var node : SKNode
+    var stateMachine : GKStateMachine
  
     init(node: SKNode) {
         self.node = node
+        self.stateMachine = GKStateMachine(states: [OnState(), OffState()])
         
         super.init()
     }
@@ -23,11 +25,15 @@ class LightSwitchComponent : GKComponent {
     }
     
     func turnOn() {
-        self.node.isHidden = false
+        if self.stateMachine.enter(OnState.self) {
+            self.node.isHidden = false
+        }
     }
     
     func turnOff() {
-        self.node.isHidden = true
+        if self.stateMachine.enter(OffState.self) {
+            self.node.isHidden = true
+        }
     }
     
 }

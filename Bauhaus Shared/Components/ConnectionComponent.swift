@@ -10,7 +10,7 @@ import GameplayKit
 
 class ConnectionComponent : GKComponent {
     
-    var connections : [Direction : Dot]
+    private var connections : [Direction : Dot]
     
     override init() {
         self.connections = [:]
@@ -20,6 +20,14 @@ class ConnectionComponent : GKComponent {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func connect(direction: Direction, to dot: Dot ) {
+        self.connections[direction] = dot
+    }
+    
+    func disconnect(direction: Direction) {
+        self.connections.removeValue(forKey: direction)
     }
     
 }

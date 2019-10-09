@@ -22,7 +22,7 @@ class PathComponent : GKComponent {
         self.pathMatrix = buildPathMatrix(pathType: pathType)
     }
     
-    func buildPathMatrix(pathType: PathType) -> [[Int]]{
+    func buildPathMatrix(pathType: PathType) -> [[Int]] {
         return [[]]
     }
     
