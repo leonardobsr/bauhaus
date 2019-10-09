@@ -15,7 +15,7 @@ class Board : GKEntity {
         
         // Visual Components
         
-        let renderComponent = RenderComponent()
+        let renderComponent = RenderComponent(node: SKNode())
         renderComponent.node.zPosition = CGFloat(RenderingPosition.board.rawValue)
         self.addComponent(renderComponent)
         
@@ -27,6 +27,9 @@ class Board : GKEntity {
         
         let gridComponent = GridComponent()
         self.addComponent(gridComponent)
+        
+        let boardComponent = BoardComponent()
+        self.addComponent(boardComponent)
     }
     
     required init?(coder: NSCoder) {

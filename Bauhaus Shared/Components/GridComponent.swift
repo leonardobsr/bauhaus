@@ -20,9 +20,9 @@ class GridComponent : GKComponent {
     
     override init() {
         self.gridNode = SKNode()
-        self.dotGrid = [[]]
-        self.horizontalLineGrid = [[]]
-        self.verticalLineGrid = [[]]
+        self.dotGrid = []
+        self.horizontalLineGrid = []
+        self.verticalLineGrid = []
         
         super.init()
     }
@@ -33,7 +33,11 @@ class GridComponent : GKComponent {
         for _ in 0 ..< height {
             line = []
             for _ in 0 ..< width {
-                line.append(Dot())
+                let newDot = Dot()
+                if let renderComponent = newDot.component(ofType: RenderComponent.self) {
+                    renderComponent.node.position = CGPoint(x: CGFloat(0), y: CGFloat(0))
+                }
+                line.append(newDot)
             }
             self.dotGrid.append(line)
         }

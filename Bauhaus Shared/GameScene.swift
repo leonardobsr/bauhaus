@@ -11,11 +11,11 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    var entityManager: EntityManager?
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
     private var lastUpdateTime : TimeInterval = 0
-    private var label : SKLabelNode?
 
     class func newGameScene() -> GameScene {
         // Load 'GameScene.sks' as an SKScene.
@@ -32,10 +32,34 @@ class GameScene: SKScene {
     
     func setUpScene() {
         self.lastUpdateTime = 0
+        
+        self.backgroundColor = .red
+        
+        entityManager = EntityManager(scene: self)
+        
+        var dots = [[Dot]]()
+        let newBoard = Board()
+        if let boardComponent = newBoard.component(ofType: GridComponent.self) {
+            boardComponent.setGrid(width: 10, height: 10)
+            dots = boardComponent.dotGrid
+        }
+        
+        if let renderComponent = newBoard.component(ofType: RenderComponent.self) {
+//            spriteComponent.spriteNode.color = .white
+            renderComponent.node.position = CGPoint(x: CGFloat(0), y: CGFloat(0))
+        }
+        
+        entityManager?.add(newBoard)
+        
+        for i in 0 ..< 10 {
+            for j in 0 ..< 10 {
+                entityManager?.add(dots[i][j])
+            }
+        }
     }
     
     #if os(watchOS)
-    override func sceneDidLoad() {
+    override func sceneDidLoad() {r
         self.setUpScene()
     }
     #else

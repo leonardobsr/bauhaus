@@ -15,11 +15,13 @@ class Dot : GKEntity {
 
         // Visual Components
         
-        let renderComponent = RenderComponent()
+        let renderComponent = RenderComponent(node: SKNode())
         renderComponent.node.zPosition = CGFloat(RenderingPosition.dot.rawValue)
         self.addComponent(renderComponent)
         
-        let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode())
+        let texture = SKTexture(imageNamed: "dot")
+        let node = SKSpriteNode(texture: texture, color: .black, size: texture.size())
+        let spriteComponent = SpriteComponent(spriteNode: node)
         renderComponent.node.addChild(spriteComponent.spriteNode)
         self.addComponent(spriteComponent)
         
@@ -27,6 +29,9 @@ class Dot : GKEntity {
         
         let connectionComponent = ConnectionComponent()
         self.addComponent(connectionComponent)
+        
+        let dotComponent = DotComponent()
+        self.addComponent(dotComponent)
     }
     
     required init?(coder: NSCoder) {
