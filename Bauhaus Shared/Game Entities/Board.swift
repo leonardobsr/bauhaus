@@ -20,12 +20,17 @@ class Board : GKEntity {
         self.addComponent(renderComponent)
         
         let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode())
+        spriteComponent.spriteNode.position = CGPoint(x: -150, y: 0)
+        spriteComponent.spriteNode.size = CGSize(width: 900, height: 900)
+        spriteComponent.spriteNode.color = .white
         renderComponent.node.addChild(spriteComponent.spriteNode)
         self.addComponent(spriteComponent)
         
         // Game Logic Components
         
-        let gridComponent = GridComponent()
+        let gridComponent = GridComponent(gridNode: SKNode())
+        gridComponent.gridNode.position = CGPoint(x: -500, y: -350)
+        renderComponent.node.addChild(gridComponent.gridNode)
         self.addComponent(gridComponent)
         
         let boardComponent = BoardComponent()

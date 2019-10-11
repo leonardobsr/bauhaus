@@ -45,7 +45,6 @@ class GameScene: SKScene {
         }
         
         if let renderComponent = newBoard.component(ofType: RenderComponent.self) {
-//            spriteComponent.spriteNode.color = .white
             renderComponent.node.position = CGPoint(x: CGFloat(0), y: CGFloat(0))
         }
         
@@ -56,7 +55,14 @@ class GameScene: SKScene {
                 entityManager?.add(dots[i][j])
             }
         }
+        
+        // Rovane
+        let piece = Piece(pathType: .Z, edgeSize: 2)
+        printMatrix(piece.component(ofType: PathComponent.self)!.pathMatrix)
+
     }
+    
+    func printMatrix(_ matrix: [[Any]]) { for i in 0 ..< matrix.count { print(matrix[i]) } }
     
     #if os(watchOS)
     override func sceneDidLoad() {r
@@ -93,7 +99,19 @@ class GameScene: SKScene {
 // Touch-based event handling
 extension GameScene {
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {}
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let t = touches.first {
+            let node = atPoint(t.location(in: self))
+            
+            if let light = node.entity?.component(ofType: LightSwitchComponent.self) {
+                if light.stateMachine.currentState is OnState {
+                    light.turnOff()
+                } else {
+                    light.turnOn()
+                }
+            }
+        }
+    }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {}
     
