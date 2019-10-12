@@ -45,6 +45,7 @@
 		1F754E82234BA91400EED3B7 /* BauhaustvOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E81234BA91400EED3B7 /* BauhaustvOSTests.swift */; };
 		1F754E90234BA94500EED3B7 /* BauhausmacOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E8F234BA94500EED3B7 /* BauhausmacOSUITests.swift */; };
 		1F754E9E234BA96800EED3B7 /* BauhausmacOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F754E9D234BA96800EED3B7 /* BauhausmacOSTests.swift */; };
+		1F968E16234E58F900F92B5F /* QNTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F968E15234E58F900F92B5F /* QNTests.swift */; };
 		1FA4681F234D1E8900F93A8E /* DotComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4681E234D1E8900F93A8E /* DotComponent.swift */; };
 		1FA46820234D1E8900F93A8E /* DotComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4681E234D1E8900F93A8E /* DotComponent.swift */; };
 		1FA46821234D1E8900F93A8E /* DotComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4681E234D1E8900F93A8E /* DotComponent.swift */; };
@@ -324,6 +325,7 @@
 		1F754E9B234BA96800EED3B7 /* BauhausmacOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BauhausmacOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F754E9D234BA96800EED3B7 /* BauhausmacOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BauhausmacOSTests.swift; sourceTree = "<group>"; };
 		1F754E9F234BA96800EED3B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F968E15234E58F900F92B5F /* QNTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QNTests.swift; sourceTree = "<group>"; };
 		1FA4681E234D1E8900F93A8E /* DotComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotComponent.swift; sourceTree = "<group>"; };
 		1FA46828234D214B00F93A8E /* BoardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardComponent.swift; sourceTree = "<group>"; };
 		1FE2F7249806DF2372A50516 /* Pods-BauhaustvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BauhaustvOSTests.release.xcconfig"; path = "Target Support Files/Pods-BauhaustvOSTests/Pods-BauhaustvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -600,6 +602,7 @@
 		1F754E6C234BA8D000EED3B7 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				1F968E14234E588200F92B5F /* BDD */,
 				1F754E9C234BA96800EED3B7 /* BauhausmacOSTests */,
 				1F754E8E234BA94500EED3B7 /* BauhausmacOSUITests */,
 				1F754E80234BA91400EED3B7 /* BauhaustvOSTests */,
@@ -644,6 +647,14 @@
 				1F754E9F234BA96800EED3B7 /* Info.plist */,
 			);
 			path = BauhausmacOSTests;
+			sourceTree = "<group>";
+		};
+		1F968E14234E588200F92B5F /* BDD */ = {
+			isa = PBXGroup;
+			children = (
+				1F968E15234E58F900F92B5F /* QNTests.swift */,
+			);
+			path = BDD;
 			sourceTree = "<group>";
 		};
 		2502A5E43B579DC49E79B17F /* Pods */ = {
@@ -1355,6 +1366,7 @@
 				5C7B6746234D09670044C0BB /* LightSwitchComponent.swift in Sources */,
 				1F32F1A9234514D60083A483 /* GameViewController.swift in Sources */,
 				5C7B673C234D080B0044C0BB /* RectangleComponent.swift in Sources */,
+				1F968E16234E58F900F92B5F /* QNTests.swift in Sources */,
 				5C61A60F234BB90E00F34E99 /* Board.swift in Sources */,
 				5C61A5FD234BB90E00F34E99 /* Dot.swift in Sources */,
 				5C61A642234BBA8B00F34E99 /* Button.swift in Sources */,
