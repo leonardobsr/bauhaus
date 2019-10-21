@@ -1797,14 +1797,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				DEVELOPMENT_TEAM = 932KMPL8YS;
 				INFOPLIST_FILE = "Bauhaus iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.Bauhaus;
+				PRODUCT_BUNDLE_IDENTIFIER = RovaneMoura.Bauhaus;
 				PRODUCT_NAME = Bauhaus;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -1818,14 +1818,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MC7C9J5LVA;
+				DEVELOPMENT_TEAM = 932KMPL8YS;
 				INFOPLIST_FILE = "Bauhaus iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = LeonardoBSR.Bauhaus;
+				PRODUCT_BUNDLE_IDENTIFIER = RovaneMoura.Bauhaus;
 				PRODUCT_NAME = Bauhaus;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;

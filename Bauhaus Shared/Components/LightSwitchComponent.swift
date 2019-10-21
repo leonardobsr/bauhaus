@@ -26,13 +26,13 @@ class LightSwitchComponent : GKComponent {
     
     func turnOn() {
         if self.stateMachine.enter(OnState.self) {
-            self.node.isHidden = false
+            self.node.alpha = 1
         }
     }
     
     func turnOff() {
         if self.stateMachine.enter(OffState.self) {
-            self.node.isHidden = true
+            self.node.alpha = 0
         }
     }
     

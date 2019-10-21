@@ -33,8 +33,10 @@ class EntityManager {
 //            componentSystem.addComponent(foundIn: entity)
 //        }
 
-        if let node = entity.component(ofType: RenderComponent.self)?.node {
-            scene.addChild(node)
+        if !(entity is Dot) && !(entity is Line) {
+            if let node = entity.component(ofType: RenderComponent.self)?.node {
+                scene.addChild(node)
+            }
         }
     }
 

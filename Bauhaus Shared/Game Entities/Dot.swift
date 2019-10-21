@@ -19,9 +19,8 @@ class Dot : GKEntity {
         renderComponent.node.zPosition = CGFloat(RenderingPosition.dot.rawValue)
         self.addComponent(renderComponent)
         
-        let texture = SKTexture(imageNamed: "dot")
-        let node = SKSpriteNode(texture: texture, color: .black, size: texture.size())
-        let spriteComponent = SpriteComponent(spriteNode: node)
+        let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode(imageNamed: "dot"))
+        spriteComponent.spriteNode.entity = self
         renderComponent.node.addChild(spriteComponent.spriteNode)
         self.addComponent(spriteComponent)
         
