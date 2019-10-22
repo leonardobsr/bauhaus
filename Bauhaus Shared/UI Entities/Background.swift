@@ -10,13 +10,14 @@ import GameplayKit
 
 class Background : GKEntity {
     
-    override init() {
+    init(position: CGPoint) {
         super.init()
         
-        let renderComponent = RenderComponent()
+        let renderComponent = RenderComponent(node: SKNode())
+        renderComponent.node.position = position
         self.addComponent(renderComponent)
         
-        let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode())
+        let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode(imageNamed: "background"))
         renderComponent.node.addChild(spriteComponent.spriteNode)
         self.addComponent(spriteComponent)
     }

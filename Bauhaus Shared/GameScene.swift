@@ -65,7 +65,7 @@ class GameScene: SKScene {
     func printMatrix(_ matrix: [[Any]]) { for i in 0 ..< matrix.count { print(matrix[i]) } }
     
     #if os(watchOS)
-    override func sceneDidLoad() {r
+    override func sceneDidLoad() {
         self.setUpScene()
     }
     #else

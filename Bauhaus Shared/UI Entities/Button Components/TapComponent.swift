@@ -1,19 +1,19 @@
 //
-//  SpriteComponent.swift
-//  Bauhaus
+//  TappableComponent.swift
+//  Bauhaus iOS
 //
-//  Created by Rovane Moura on 04/10/19.
+//  Created by Rovane Moura on 21/10/19.
 //  Copyright © 2019 LeonardoBSR. All rights reserved.
 //
 
 import GameplayKit
 
-class SpriteComponent : GKComponent {
+class TapComponent : GKComponent {
     
-    var spriteNode : SKSpriteNode
+    var node : SKNode
     
-    init(spriteNode: SKSpriteNode) {
-        self.spriteNode = spriteNode
+    init(node: SKNode) {
+        self.node = node
         super.init()
     }
     
