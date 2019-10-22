@@ -10,10 +10,11 @@ import GameplayKit
 
 class Button : GKEntity {
     
-    override init() {
+    init(position: CGPoint) {
         super.init()
         
-        let renderComponent = RenderComponent()
+        let renderComponent = RenderComponent(node: SKNode())
+        renderComponent.node.position = position
         self.addComponent(renderComponent)
         
         let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode())
