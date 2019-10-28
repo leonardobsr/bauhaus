@@ -10,15 +10,24 @@ import GameplayKit
 
 class TapComponent : GKComponent {
     
-    var node : SKNode
-    
-    init(node: SKNode) {
-        self.node = node
+    var stateMachine : GKStateMachine
+        
+    override init() {
+        self.stateMachine = GKStateMachine(states: [ActState(), RestState()])
         super.init()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func changeState() {
+        switch stateMachine.currentState {
+        case is ActState : stateMachine.enter(RestState.self)
+        case is RestState : stateMachine.enter(ActState.self)
+        default : return
+        }
+    }
+
     
 }

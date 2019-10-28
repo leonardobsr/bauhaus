@@ -27,13 +27,13 @@ class StartScene : SKScene {
         
         self.background = Background(position: .zero)
         
-        self.playButton = Button(position: .zero)
-        self.infoButton = Button(position: .zero)
+//        self.playButton = Button(position: .zero)
+//        self.infoButton = Button(position: .zero)
         
         if  let entityManager = self.entityManager,
-            let background = self.background,
-            let playButton = self.playButton,
-            let infoButton = self.infoButton {
+            let background = self.background {
+//            let playButton = self.playButton,
+//            let infoButton = self.infoButton {
             
             entityManager.add(background)
 //            entityManager.add(playButton)
