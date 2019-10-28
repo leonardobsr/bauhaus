@@ -21,4 +21,9 @@ class SpriteComponent : GKComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setTexture(imageNamed: String) {
+        let texture = SKTexture(imageNamed: imageNamed)
+        self.spriteNode.texture = texture
+        self.spriteNode.size = texture.size()
+    }
 }
