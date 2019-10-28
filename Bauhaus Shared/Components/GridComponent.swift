@@ -30,8 +30,8 @@ class GridComponent : GKComponent {
     func setGrid(width: Int, height: Int) {
         // Set Dots
         var dotRow : [Dot]
-        let dotDistanceX : CGFloat = 80
-        let dotDistanceY : CGFloat = 80
+        let dotDistanceX : CGFloat = 56
+        let dotDistanceY : CGFloat = 56
 
         for i in 0 ..< height {
             dotRow = []
@@ -76,12 +76,12 @@ class GridComponent : GKComponent {
             self.verticalLineGrid.append(vLineRow)
         }
         
-        for _ in 0 ... 39 {
-            self.verticalLineGrid.randomElement()!.randomElement()!.component(ofType: LightSwitchComponent.self)?.turnOff()
+        for _ in 0 ... 50 {
+            self.verticalLineGrid.randomElement()!.randomElement()!.component(ofType: LightSwitchComponent.self)?.turnOn()
         }
-        
-        for _ in 0 ... 39 {
-            self.horizontalLineGrid.randomElement()!.randomElement()!.component(ofType: LightSwitchComponent.self)?.turnOff()
+
+        for _ in 0 ... 50 {
+            self.horizontalLineGrid.randomElement()!.randomElement()!.component(ofType: LightSwitchComponent.self)?.turnOn()
         }
     }
     

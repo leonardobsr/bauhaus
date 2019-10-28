@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "61067.png",
+      "filename" : "Grupo 2193.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Grupo 2193@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Grupo 2193@3x.png",
       "scale" : "3x"
     }
   ],

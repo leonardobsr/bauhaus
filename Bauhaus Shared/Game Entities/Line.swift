@@ -23,21 +23,21 @@ class Line : GKEntity {
         renderComponent.node.zPosition = CGFloat(RenderingPosition.line.rawValue)
         self.addComponent(renderComponent)
         
-        let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode(imageNamed: "line"))
+        let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode(imageNamed: "lineOff"))
         spriteComponent.spriteNode.entity = self
-        renderComponent.node.setScale(0.17)
+//        spriteComponent.spriteNode.setScale(0.5)
         renderComponent.node.addChild(spriteComponent.spriteNode)
         self.addComponent(spriteComponent)
         
         switch lineOrientation {
-        case .vertical : spriteComponent.spriteNode.zRotation = .pi/2
-        case .horizontal : spriteComponent.spriteNode.zRotation = 0
+        case .vertical : spriteComponent.spriteNode.zRotation = 0
+        case .horizontal : spriteComponent.spriteNode.zRotation = .pi/2
         }
         
         // Game Logic Components
         
-        let lightSwitchComponent = LightSwitchComponent(node: renderComponent.node)
-        lightSwitchComponent.stateMachine.enter(OnState.self)
+        let lightSwitchComponent = LightSwitchComponent(node: spriteComponent.spriteNode)
+        lightSwitchComponent.stateMachine.enter(OffState.self)
         self.addComponent(lightSwitchComponent)
 
     }

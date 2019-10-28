@@ -10,10 +10,10 @@ import GameplayKit
 
 class LightSwitchComponent : GKComponent {
  
-    var node : SKNode
+    var node : SKSpriteNode
     var stateMachine : GKStateMachine
  
-    init(node: SKNode) {
+    init(node: SKSpriteNode) {
         self.node = node
         self.stateMachine = GKStateMachine(states: [OnState(), OffState()])
         
@@ -26,13 +26,13 @@ class LightSwitchComponent : GKComponent {
     
     func turnOn() {
         if self.stateMachine.enter(OnState.self) {
-            self.node.alpha = 1
+            self.node.texture = SKTexture(imageNamed: "lineOn")
         }
     }
     
     func turnOff() {
         if self.stateMachine.enter(OffState.self) {
-            self.node.alpha = 0
+            self.node.texture = SKTexture(imageNamed: "lineOff")
         }
     }
     

@@ -234,6 +234,20 @@
 		5CC45D80235E456000853BAD /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC45D7D235E456000853BAD /* StartScene.swift */; };
 		5CC45D81235E456000853BAD /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC45D7D235E456000853BAD /* StartScene.swift */; };
 		5CC45D82235E456000853BAD /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC45D7D235E456000853BAD /* StartScene.swift */; };
+		5CDFD9F3236633C2008DB386 /* ButtonStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFD9F2236633C2008DB386 /* ButtonStates.swift */; };
+		5CDFD9F4236633C2008DB386 /* ButtonStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFD9F2236633C2008DB386 /* ButtonStates.swift */; };
+		5CDFD9F5236633C2008DB386 /* ButtonStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFD9F2236633C2008DB386 /* ButtonStates.swift */; };
+		5CDFD9F6236633C2008DB386 /* ButtonStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFD9F2236633C2008DB386 /* ButtonStates.swift */; };
+		5CDFD9F7236633C2008DB386 /* ButtonStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFD9F2236633C2008DB386 /* ButtonStates.swift */; };
+		5CDFD9F8236633C2008DB386 /* ButtonStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFD9F2236633C2008DB386 /* ButtonStates.swift */; };
+		5CDFD9F9236633C2008DB386 /* ButtonStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFD9F2236633C2008DB386 /* ButtonStates.swift */; };
+		5CDFD9FA236633C2008DB386 /* ButtonStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFD9F2236633C2008DB386 /* ButtonStates.swift */; };
+		5CDFD9FB236633C2008DB386 /* ButtonStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFD9F2236633C2008DB386 /* ButtonStates.swift */; };
+		5CEA00CA23621FFF00944C69 /* PathSprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA00C923621FFF00944C69 /* PathSprites.swift */; };
+		5CEA00CB23621FFF00944C69 /* PathSprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA00C923621FFF00944C69 /* PathSprites.swift */; };
+		5CEA00CC23621FFF00944C69 /* PathSprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA00C923621FFF00944C69 /* PathSprites.swift */; };
+		5CEA00CD23621FFF00944C69 /* PathSprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA00C923621FFF00944C69 /* PathSprites.swift */; };
+		5CEA00CE23621FFF00944C69 /* PathSprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA00C923621FFF00944C69 /* PathSprites.swift */; };
 		6E4C8622AB032D80A7FE70EF /* Pods_Bauhaus_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 901AA257EE1FC1F369F653BB /* Pods_Bauhaus_tvOS.framework */; };
 		815F3C046F8B7CF4F0162580 /* Pods_BauhausmacOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A3A889DA21C7DB8A47CB43 /* Pods_BauhausmacOSTests.framework */; };
 		C1427A97E7CA7F7DDEAF2B33 /* Pods_Bauhaus_iOS_BauhausiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761409E27074D27C2899A76C /* Pods_Bauhaus_iOS_BauhausiOSUITests.framework */; };
@@ -365,6 +379,8 @@
 		5CC45D79235E431600853BAD /* TapComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapComponent.swift; sourceTree = "<group>"; };
 		5CC45D7B235E436C00853BAD /* VisualResponseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualResponseComponent.swift; sourceTree = "<group>"; };
 		5CC45D7D235E456000853BAD /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
+		5CDFD9F2236633C2008DB386 /* ButtonStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStates.swift; sourceTree = "<group>"; };
+		5CEA00C923621FFF00944C69 /* PathSprites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathSprites.swift; sourceTree = "<group>"; };
 		6AA6EAD3D86F8D5571B2C82D /* Pods_BauhaustvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BauhaustvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D3F74F27D95B3794DD82CB2 /* Pods_Bauhaus_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bauhaus_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70AFBA67A87561B0A07BEC7C /* Pods-BauhausiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BauhausiOSTests.debug.xcconfig"; path = "Target Support Files/Pods-BauhausiOSTests/Pods-BauhausiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -479,11 +495,12 @@
 			isa = PBXGroup;
 			children = (
 				5C61A636234BB93C00F34E99 /* Direction+Axis.swift */,
+				5CEA00C923621FFF00944C69 /* PathSprites.swift */,
 				1F586D38234BC05E00C23821 /* Utils */,
+				1F45A2132347CD1200D83DB2 /* Game Entities */,
 				1F45A2152347CD3100D83DB2 /* Components */,
 				1F45A2142347CD1D00D83DB2 /* StateMachines */,
 				5C61A640234BBA7400F34E99 /* UI Entities */,
-				1F45A2132347CD1200D83DB2 /* Game Entities */,
 				1F32F19B234514D10083A483 /* Actions.sks */,
 				1F32F19C234514D10083A483 /* GameScene.sks */,
 				5C61A67E234BC54900F34E99 /* MenuScene.sks */,
@@ -560,6 +577,7 @@
 		1F45A2142347CD1D00D83DB2 /* StateMachines */ = {
 			isa = PBXGroup;
 			children = (
+				5CDFD9F2236633C2008DB386 /* ButtonStates.swift */,
 				5C61A66A234BC38200F34E99 /* GameStateMachine.swift */,
 				5C61A674234BC3C500F34E99 /* LineStates.swift */,
 			);
@@ -1373,6 +1391,7 @@
 				5C61A62D234BB91A00F34E99 /* RenderComponent.swift in Sources */,
 				5C61A5F4234BB90E00F34E99 /* Line.swift in Sources */,
 				5C61A606234BB90E00F34E99 /* Piece.swift in Sources */,
+				5CEA00CA23621FFF00944C69 /* PathSprites.swift in Sources */,
 				5C7B6746234D09670044C0BB /* LightSwitchComponent.swift in Sources */,
 				1F32F1A9234514D60083A483 /* GameViewController.swift in Sources */,
 				5C7B673C234D080B0044C0BB /* RectangleComponent.swift in Sources */,
@@ -1386,6 +1405,7 @@
 				1F32F1A7234514D60083A483 /* AppDelegate.swift in Sources */,
 				5C61A624234BB91A00F34E99 /* SpriteComponent.swift in Sources */,
 				5C61A61B234BB91A00F34E99 /* ConnectionComponent.swift in Sources */,
+				5CDFD9F3236633C2008DB386 /* ButtonStates.swift in Sources */,
 				5CC45D7C235E436C00853BAD /* VisualResponseComponent.swift in Sources */,
 				5CC45D7E235E456000853BAD /* StartScene.swift in Sources */,
 				5C61A675234BC3C500F34E99 /* LineStates.swift in Sources */,
@@ -1400,6 +1420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F32F1D7234514D60083A483 /* GameScene.swift in Sources */,
+				5CDFD9F4236633C2008DB386 /* ButtonStates.swift in Sources */,
 				5C7B6751234D0C990044C0BB /* PathComponent.swift in Sources */,
 				5C61A66C234BC38200F34E99 /* GameStateMachine.swift in Sources */,
 				5C61A658234BBBF200F34E99 /* GridComponent.swift in Sources */,
@@ -1413,6 +1434,7 @@
 				5C61A610234BB90E00F34E99 /* Board.swift in Sources */,
 				5C61A5FE234BB90E00F34E99 /* Dot.swift in Sources */,
 				5C61A643234BBA8B00F34E99 /* Button.swift in Sources */,
+				5CEA00CB23621FFF00944C69 /* PathSprites.swift in Sources */,
 				5C61A662234BC21000F34E99 /* Box.swift in Sources */,
 				1FA4682A234D214B00F93A8E /* BoardComponent.swift in Sources */,
 				1F586D3B234BC09600C23821 /* EntityManager.swift in Sources */,
@@ -1431,6 +1453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F32F1D8234514D60083A483 /* GameScene.swift in Sources */,
+				5CDFD9F5236633C2008DB386 /* ButtonStates.swift in Sources */,
 				5C7B6752234D0C990044C0BB /* PathComponent.swift in Sources */,
 				5C61A66D234BC38200F34E99 /* GameStateMachine.swift in Sources */,
 				5C61A659234BBBF200F34E99 /* GridComponent.swift in Sources */,
@@ -1444,6 +1467,7 @@
 				5C61A611234BB90E00F34E99 /* Board.swift in Sources */,
 				5C61A5FF234BB90E00F34E99 /* Dot.swift in Sources */,
 				5C61A644234BBA8B00F34E99 /* Button.swift in Sources */,
+				5CEA00CC23621FFF00944C69 /* PathSprites.swift in Sources */,
 				5C61A663234BC21000F34E99 /* Box.swift in Sources */,
 				1FA4682B234D214B00F93A8E /* BoardComponent.swift in Sources */,
 				1F586D3C234BC09600C23821 /* EntityManager.swift in Sources */,
@@ -1466,6 +1490,7 @@
 				5C7B673F234D080B0044C0BB /* RectangleComponent.swift in Sources */,
 				5C61A61E234BB91A00F34E99 /* ConnectionComponent.swift in Sources */,
 				5C7B6749234D09670044C0BB /* LightSwitchComponent.swift in Sources */,
+				5CDFD9F6236633C2008DB386 /* ButtonStates.swift in Sources */,
 				5C61A65A234BBBF200F34E99 /* GridComponent.swift in Sources */,
 				5C61A627234BB91A00F34E99 /* SpriteComponent.swift in Sources */,
 				5C61A630234BB91A00F34E99 /* RenderComponent.swift in Sources */,
@@ -1476,6 +1501,7 @@
 				5C61A645234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63A234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
 				5C7B6753234D0C990044C0BB /* PathComponent.swift in Sources */,
+				5CEA00CD23621FFF00944C69 /* PathSprites.swift in Sources */,
 				1FA46822234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				5C61A612234BB90E00F34E99 /* Board.swift in Sources */,
 				1FA4682C234D214B00F93A8E /* BoardComponent.swift in Sources */,
@@ -1495,6 +1521,7 @@
 				5C7B6740234D080B0044C0BB /* RectangleComponent.swift in Sources */,
 				5C61A61F234BB91A00F34E99 /* ConnectionComponent.swift in Sources */,
 				5C7B674A234D09670044C0BB /* LightSwitchComponent.swift in Sources */,
+				5CDFD9F7236633C2008DB386 /* ButtonStates.swift in Sources */,
 				5C61A65B234BBBF200F34E99 /* GridComponent.swift in Sources */,
 				5C61A628234BB91A00F34E99 /* SpriteComponent.swift in Sources */,
 				5C61A631234BB91A00F34E99 /* RenderComponent.swift in Sources */,
@@ -1505,6 +1532,7 @@
 				5C61A646234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63B234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
 				5C7B6754234D0C990044C0BB /* PathComponent.swift in Sources */,
+				5CEA00CE23621FFF00944C69 /* PathSprites.swift in Sources */,
 				1FA46823234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				5C61A613234BB90E00F34E99 /* Board.swift in Sources */,
 				1FA4682D234D214B00F93A8E /* BoardComponent.swift in Sources */,
@@ -1534,6 +1562,7 @@
 				5C61A647234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63C234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
 				5C7B6755234D0C990044C0BB /* PathComponent.swift in Sources */,
+				5CDFD9F8236633C2008DB386 /* ButtonStates.swift in Sources */,
 				1FA46824234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				5C61A614234BB90E00F34E99 /* Board.swift in Sources */,
 				1FA4682E234D214B00F93A8E /* BoardComponent.swift in Sources */,
@@ -1562,6 +1591,7 @@
 				5C61A648234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63D234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
 				5C7B6756234D0C990044C0BB /* PathComponent.swift in Sources */,
+				5CDFD9F9236633C2008DB386 /* ButtonStates.swift in Sources */,
 				1FA46825234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				5C61A615234BB90E00F34E99 /* Board.swift in Sources */,
 				1FA4682F234D214B00F93A8E /* BoardComponent.swift in Sources */,
@@ -1590,6 +1620,7 @@
 				5C61A649234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63E234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
 				5C7B6757234D0C990044C0BB /* PathComponent.swift in Sources */,
+				5CDFD9FA236633C2008DB386 /* ButtonStates.swift in Sources */,
 				1FA46826234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				5C61A616234BB90E00F34E99 /* Board.swift in Sources */,
 				1FA46830234D214B00F93A8E /* BoardComponent.swift in Sources */,
@@ -1618,6 +1649,7 @@
 				5C61A64A234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63F234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
 				5C7B6758234D0C990044C0BB /* PathComponent.swift in Sources */,
+				5CDFD9FB236633C2008DB386 /* ButtonStates.swift in Sources */,
 				1FA46827234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				5C61A617234BB90E00F34E99 /* Board.swift in Sources */,
 				1FA46831234D214B00F93A8E /* BoardComponent.swift in Sources */,

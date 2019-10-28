@@ -8,6 +8,26 @@
 
 import GameplayKit
 
-class GameStateMachine : GKStateMachine {
-    
+class startScreenState : GKState {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass is choosePlayersState.Type
+    }
+}
+
+class choosePlayersState : GKState {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass is playState.Type
+    }
+}
+
+class playState : GKState {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return (stateClass is pauseState.Type) || (stateClass is startScreenState.Type)
+    }
+}
+
+class pauseState : GKState {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return (stateClass is playState.Type) || (stateClass is startScreenState.Type)
+    }
 }

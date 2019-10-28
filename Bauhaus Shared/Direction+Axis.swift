@@ -39,7 +39,3 @@ enum RenderingPosition : Int {
     case box = 3
     case line = 4
 }
-
-enum PathType {
-    case I, L, T, Z, U
-}
