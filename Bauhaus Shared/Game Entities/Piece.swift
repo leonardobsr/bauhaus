@@ -10,19 +10,25 @@ import GameplayKit
 
 class Piece : GKEntity {
     
-    init(pathType: PathType, edgeSize: Int) {
+    init(pathType: PathType, edgeSize: Int, pathSprite: PathSprite) {
         super.init()
         
         // Visual Components
-        let renderComponent = RenderComponent()
+        let renderComponent = RenderComponent(node: SKNode())
+        renderComponent.node.entity = self
+        renderComponent.node.zPosition = 2
         self.addComponent(renderComponent)
         
         let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode())
+        spriteComponent.spriteNode.entity = self
         renderComponent.node.addChild(spriteComponent.spriteNode)
         self.addComponent(spriteComponent)
                 
         // Game Logic Components
-        let pathComponent = PathComponent(pathType: pathType, edgeSize: edgeSize)
+        let pathComponent = PathComponent(pathType: pathType, edgeSize: edgeSize, pathSprite: pathSprite)
+        pathComponent.drawingNode.setScale(1.3)
+        pathComponent.drawingNode.entity = self
+        renderComponent.node.addChild(pathComponent.drawingNode)
         self.addComponent(pathComponent)
     }
     

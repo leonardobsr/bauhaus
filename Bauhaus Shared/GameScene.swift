@@ -15,6 +15,8 @@ class GameScene: SKScene {
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
+    var touchedPiece : Piece?
+    
     private var lastUpdateTime : TimeInterval = 0
 
     class func newGameScene() -> GameScene {
@@ -29,7 +31,7 @@ class GameScene: SKScene {
         
         return scene
     }
-    
+
     func setUpScene() {
         self.lastUpdateTime = 0
         
@@ -37,32 +39,25 @@ class GameScene: SKScene {
         
         entityManager = EntityManager(scene: self)
         
-        var dots = [[Dot]]()
         let newBoard = Board()
-        if let boardComponent = newBoard.component(ofType: GridComponent.self) {
-            boardComponent.setGrid(width: 10, height: 10)
-            dots = boardComponent.dotGrid
-        }
-        
+        var dots = [[Dot]]()
         if let renderComponent = newBoard.component(ofType: RenderComponent.self) {
-            renderComponent.node.position = CGPoint(x: CGFloat(0), y: CGFloat(0))
+            renderComponent.node.position = CGPoint(x: -150, y: 0)
         }
-        
+        if let gridComponent = newBoard.component(ofType: GridComponent.self) {
+            gridComponent.setGrid(width: 12, height: 12)
+            dots = gridComponent.dotGrid
+        }
         entityManager?.add(newBoard)
         
-        for i in 0 ..< 10 {
-            for j in 0 ..< 10 {
-                entityManager?.add(dots[i][j])
-            }
-        }
+        dots.forEach { row in row.forEach { dot in entityManager?.add(dot) } }
+                
+        let pauseButton = Button(position: CGPoint(x: -610, y: 450), sprite: "pauseButton")
+        pauseButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
+        entityManager?.add(pauseButton)
         
-        // Rovane
-        let piece = Piece(pathType: .Z, edgeSize: 2)
-        printMatrix(piece.component(ofType: PathComponent.self)!.pathMatrix)
-
+        loadRandomPieces()
     }
-    
-    func printMatrix(_ matrix: [[Any]]) { for i in 0 ..< matrix.count { print(matrix[i]) } }
     
     #if os(watchOS)
     override func sceneDidLoad() {
@@ -110,12 +105,41 @@ extension GameScene {
                     light.turnOn()
                 }
             }
+            
+            if let piece = node.entity as? Piece {
+                self.touchedPiece = piece
+                touchedPiece?
+                    .component(ofType: RenderComponent.self)?
+                    .node
+                    .run(SKAction.scale(by: 1.2, duration: 0.1))
+            }
         }
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {}
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        if  let currentPos = touch?.location(in: self),
+            let previousPos = touch?.previousLocation(in: self) {
+            
+            let translation = CGPoint(x: currentPos.x - previousPos.x,
+                                      y: currentPos.y - previousPos.y)
+
+            if let node = touchedPiece?.component(ofType: RenderComponent.self)?.node {
+                node.position = CGPoint(x: node.position.x + translation.x,
+                                        y: node.position.y + translation.y)
+            }
+            
+        }
+        
+    }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {}
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let piece = touchedPiece {
+            piece.component(ofType: RenderComponent.self)?.node.run(SKAction.scale(by: (1/1.2), duration: 0.1))
+            touchedPiece = nil
+        }
+        
+    }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {}
     
@@ -135,3 +159,21 @@ extension GameScene {
 }
 #endif
 
+extension GameScene {
+    
+    func loadRandomPieces() {
+        let piece = Piece(pathType: .Z, edgeSize: 2, pathSprite: .U1)
+                
+        piece.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 420, y: -320)
+        entityManager?.add(piece)
+                
+        let piece2 = Piece(pathType: .Z, edgeSize: 2, pathSprite: .L1)
+        piece2.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 420, y: 0)
+        entityManager?.add(piece2)
+                
+        let piece3 = Piece(pathType: .Z, edgeSize: 2, pathSprite: .T1)
+        piece3.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 420, y: 320)
+        entityManager?.add(piece3)
+    }
+    
+}

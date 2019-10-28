@@ -20,7 +20,7 @@ class Dot : GKEntity {
         self.addComponent(renderComponent)
         
         let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode(imageNamed: "dot"))
-        spriteComponent.spriteNode.entity = self
+        spriteComponent.spriteNode.setScale(0.5)
         renderComponent.node.addChild(spriteComponent.spriteNode)
         self.addComponent(spriteComponent)
         

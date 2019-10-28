@@ -1,21 +1,21 @@
 //
-//  LineStateMachine.swift
+//  PauseButtonStates.swift
 //  Bauhaus
 //
-//  Created by Rovane Moura on 07/10/19.
+//  Created by Rovane Moura on 25/10/19.
 //  Copyright © 2019 LeonardoBSR. All rights reserved.
 //
 
 import GameplayKit
 
-class OnState : GKState {
+class ActState : GKState {
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is OffState.Type
+        return stateClass is RestState.Type
     }
 }
 
-class OffState : GKState {
+class RestState : GKState {
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is OnState.Type
+        return stateClass is ActState.Type
     }
 }
