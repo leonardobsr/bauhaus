@@ -55,6 +55,8 @@ class GameScene: SKScene {
         let pauseButton = Button(position: CGPoint(x: -610, y: 450), sprite: "pauseButton")
         pauseButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         entityManager?.add(pauseButton)
+        
+        loadRandomPieces()
     }
     
     #if os(watchOS)
