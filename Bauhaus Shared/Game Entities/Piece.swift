@@ -16,7 +16,7 @@ class Piece : GKEntity {
         // Visual Components
         let renderComponent = RenderComponent(node: SKNode())
         renderComponent.node.entity = self
-        renderComponent.node.zPosition = 2
+        renderComponent.node.zPosition = CGFloat(RenderingPosition.piece.rawValue)
         self.addComponent(renderComponent)
         
         let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode())

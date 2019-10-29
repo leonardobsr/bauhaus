@@ -16,6 +16,8 @@ class RectangleComponent : GKComponent {
     init(color: UIColor, size: CGSize, position: CGPoint) {
         self.shapeNode = SKShapeNode(rectOf: size)
         self.shapeNode.position = position
+        self.shapeNode.fillColor = color
+        self.shapeNode.strokeColor = .clear
         self.color = color
         
         super.init()

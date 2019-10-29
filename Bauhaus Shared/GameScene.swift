@@ -19,6 +19,7 @@ class GameScene: SKScene {
     var availablePieces = [Piece]()
     
     var pauseButton : Button?
+    var timer : Timer?
     
     private var lastUpdateTime : TimeInterval = 0
 
@@ -62,6 +63,9 @@ class GameScene: SKScene {
         entityManager?.add(pauseButton!)
         
         loadRandomPieces()
+        
+        self.timer = Timer()
+        entityManager?.add(timer!)
     }
     
     #if os(watchOS)
@@ -97,6 +101,10 @@ class GameScene: SKScene {
                 loadRandomPieces()
                 pauseButtonStateMachine.enter(RestState.self)
             }
+        }
+        
+        if let timerShapeNode = timer?.component(ofType: RectangleComponent.self)?.shapeNode {
+            timerShapeNode.position.y -= 1
         }
         
     }

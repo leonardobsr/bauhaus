@@ -17,7 +17,6 @@ class MenuScene: SKScene {
     var playButton: Button?
     var infoButton: Button?
     
-    
     class func newGameScene() -> MenuScene {
         // Load 'GameScene.sks' as an SKScene.
         guard let scene = SKScene(fileNamed: "MenuScene") as? MenuScene else {
@@ -32,6 +31,10 @@ class MenuScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
+//        self.size = CGSize(width: 2732, height: 2048)
+//        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+//        self.scaleMode = .aspectFill
+        
         self.setUpScene()
     }
     
@@ -58,7 +61,6 @@ class MenuScene: SKScene {
         infoButton = Button(position:infoButtonSprite.position, sprite: "MenuInfoButton")
         infoButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         entityManager?.add(infoButton!)
-        
         
     }
     

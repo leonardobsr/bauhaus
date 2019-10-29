@@ -43,7 +43,6 @@ class GameManager {
     func startGame(){
         self.currentScene = MenuScene.newGameScene()
         
-        
         if let gameVC = self.gameViewController {
             let skView = gameVC.view as! SKView
             skView.presentScene(currentScene)
