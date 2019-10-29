@@ -203,7 +203,7 @@ extension GameScene {
         
         self.availablePieces.forEach { entityManager?.remove($0) }
         
-        var possiblePieces : [PathSprite] = [
+        let possiblePieces : [PathSprite] = [
             .I1, .I2, .L1, .L2, .U1, .U2, .T1, .T2, .Z1, .Z2
         ]
         

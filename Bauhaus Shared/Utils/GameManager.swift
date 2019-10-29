@@ -21,8 +21,6 @@ class GameManager {
                 skView.ignoresSiblingOrder = true
                 skView.showsFPS = true
                 skView.showsNodeCount = true
-                
-//                currentScene.scaleMode = .aspectFill
             }
         }
     }
@@ -78,9 +76,5 @@ class GameManager {
     func endGame() {
         stateMachine.enter(gameOverState.self)
     }
-    
-}
-
-protocol GameManagerDelegate : class {
     
 }
