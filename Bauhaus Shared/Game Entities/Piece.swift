@@ -26,7 +26,7 @@ class Piece : GKEntity {
                 
         // Game Logic Components
         let pathComponent = PathComponent(pathType: pathType, edgeSize: edgeSize, pathSprite: pathSprite)
-        pathComponent.drawingNode.setScale(1.3)
+        pathComponent.drawingNode.setScale(2)
         pathComponent.drawingNode.entity = self
         renderComponent.node.addChild(pathComponent.drawingNode)
         self.addComponent(pathComponent)

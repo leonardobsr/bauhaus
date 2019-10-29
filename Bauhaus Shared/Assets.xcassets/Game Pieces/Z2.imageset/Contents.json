@@ -2,17 +2,14 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Grupo 2197.pdf",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Grupo 2197-1.pdf",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Grupo 2197-2.pdf",
       "scale" : "3x"
     }
   ],
