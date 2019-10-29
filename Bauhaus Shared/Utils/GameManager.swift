@@ -10,9 +10,11 @@ import GameplayKit
 
 class GameManager {
     
+    static var shared = GameManager()
+    
     weak var gameViewController : GameViewController?
     
-    var currentScene : SKScene {
+    var currentScene : SKScene? {
         didSet {
             if let gameVC = self.gameViewController {
                 let skView = gameVC.view as! SKView
@@ -24,12 +26,9 @@ class GameManager {
             }
         }
     }
-    var stateMachine : GKStateMachine
+    var stateMachine : GKStateMachine?
     
-    init(gameViewController: GameViewController) {
-        
-        self.gameViewController = gameViewController
-        
+    private init() {
         let gameStates = [startScreenState(),
                           playerSelectionState(),
                           playState(),
@@ -37,9 +36,13 @@ class GameManager {
                           gameOverState()]
         
         self.stateMachine = GKStateMachine(states: gameStates)
-        self.stateMachine.enter(startScreenState.self)
+        self.stateMachine!.enter(startScreenState.self)
+    
+    }
+    
+    func startGame(){
+        self.currentScene = MenuScene.newGameScene()
         
-        self.currentScene = StartScene()
         
         if let gameVC = self.gameViewController {
             let skView = gameVC.view as! SKView
@@ -49,16 +52,15 @@ class GameManager {
             skView.showsFPS = true
             skView.showsNodeCount = true
             
-            currentScene.scaleMode = .aspectFill
+            currentScene?.scaleMode = .aspectFill
         }
-
     }
     
     func nextScreen() {
-        switch stateMachine.currentState {
+        switch stateMachine!.currentState {
         case is startScreenState :
             
-            stateMachine.enter(playState.self)
+            stateMachine!.enter(playState.self)
             self.currentScene = GameScene.newGameScene()
         
         case is playerSelectionState : return
@@ -70,11 +72,11 @@ class GameManager {
     }
     
     func pauseGame() {
-        stateMachine.enter(pauseState.self)
+        stateMachine!.enter(pauseState.self)
     }
     
     func endGame() {
-        stateMachine.enter(gameOverState.self)
+        stateMachine!.enter(gameOverState.self)
     }
     
 }
