@@ -27,8 +27,19 @@ class GameViewController: UIViewController {
 //        skView.showsFPS = true
 //        skView.showsNodeCount = true
         
-        let gameManager = GameManager(gameViewController: self)
-        gameManager.nextScreen()
+//                let scene = MenuScene.newGameScene()
+//                let skView = self.view as! SKView
+//                skView.presentScene(scene)
+//
+//                skView.ignoresSiblingOrder = true
+//                skView.showsFPS = true
+//                skView.showsNodeCount = true
+        
+        
+        let gameManager = GameManager.shared
+        gameManager.gameViewController = self
+        gameManager.startGame()
+        //gameManager.nextScreen()
     }
 
     override var shouldAutorotate: Bool {
