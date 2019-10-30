@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Retângulo 1507.png",
+      "filename" : "dot.pdf",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Retângulo 1507@2x.png",
+      "filename" : "dot-1.pdf",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Retângulo 1507@3x.png",
+      "filename" : "dot-2.pdf",
       "scale" : "3x"
     }
   ],

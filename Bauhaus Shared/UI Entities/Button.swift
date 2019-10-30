@@ -20,6 +20,7 @@ class Button : GKEntity {
         
         let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode(imageNamed: sprite))
         renderComponent.node.addChild(spriteComponent.spriteNode)
+        spriteComponent.spriteNode.entity = self
         self.addComponent(spriteComponent)
         
         let tapComponent = TapComponent()
