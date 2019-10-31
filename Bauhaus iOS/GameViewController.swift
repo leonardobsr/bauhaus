@@ -10,35 +10,40 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
+var SKViewSize: CGSize?
+var SKViewSizeRect: CGRect?
+
 class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let scene = GameScene.newGameScene()
-//        let scene = StartScene()
-//        let scene = ChooseCPScene.newChooseCPScene()
 
-//         Present the scene
         let skView = self.view as! SKView
-//        skView.presentScene(scene)
-//
-        skView.ignoresSiblingOrder = true
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        SKViewSize = skView.bounds.size
         
-//                let scene = MenuScene.newGameScene()
-//                let skView = self.view as! SKView
-//                skView.presentScene(scene)
-//
-//                skView.ignoresSiblingOrder = true
-//                skView.showsFPS = true
-//                skView.showsNodeCount = true
-
+        if let skViewSize = SKViewSize {
+            SKViewSizeRect = getViewSizeRect()
+//            let scene = ChooseCPScene.newChooseCPScene(size: skViewSize)
+//            skView.presentScene(scene)
+        }
+        
         let gameManager = GameManager.shared
         gameManager.gameViewController = self
         gameManager.startGame()
-        //gameManager.nextScreen()
+
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        SKViewSize = self.view.bounds.size
+        SKViewSizeRect = getViewSizeRect()
+
+        let skView = self.view as! SKView
+        if let scene = skView.scene {
+            if scene.size != self.view.bounds.size {
+                scene.size = self.view.bounds.size
+            }
+        }
     }
 
     override var shouldAutorotate: Bool {
@@ -55,5 +60,9 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func getViewSizeRect() -> CGRect {
+        return CGRect(x: ((SKViewSize!.width  * 0.5) * -1.0), y: ((SKViewSize!.height * 0.5) * -1.0), width: SKViewSize!.width, height: SKViewSize!.height)
     }
 }

@@ -14,12 +14,24 @@ class Group : GKEntity {
         super.init()
         
         let renderComponent = RenderComponent(node: SKNode())
-        renderComponent.node.position = position
+        renderComponent.node.posByScreen(x: position.x, y: position.y)
         self.addComponent(renderComponent)
+        
+        let groupComponent = GroupComponent(node: renderComponent.node)
+        groupComponent.node.posByScreen(x: position.x, y: position.y)
+        self.addComponent(groupComponent)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setChilds(childs: [GKEntity?]) {
+        guard let _ = self.component(ofType: GroupComponent.self)?.node else {
+            return;
+        }
+        
+        self.component(ofType: GroupComponent.self)?.setChilds(childs: childs);
     }
     
 }
