@@ -86,15 +86,14 @@ class MenuScene: SKScene {
         
         if let infoButtonStateMachine = infoButton?.component(ofType: TapComponent.self)?.stateMachine {
             if infoButtonStateMachine.currentState is ActState {
-                infoButtonStateMachine.enter(RestState.self)
+//                infoButtonStateMachine.enter(RestState.self)
+                let node = self.childNode(withName: "BlackMenuBar")
+                node?.zPosition = 10
+            } else {
+                let node = self.childNode(withName: "BlackMenuBar")
+                node?.zPosition = 0
             }
         }
     }
-    
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        <#code#>
-//    }
-    
-    
 
 }

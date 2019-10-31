@@ -20,9 +20,9 @@ class GameManager {
                 let skView = gameVC.view as! SKView
                 skView.presentScene(currentScene)
                 
-                skView.ignoresSiblingOrder = true
-                skView.showsFPS = true
-                skView.showsNodeCount = true
+                skView.ignoresSiblingOrder = false
+                skView.showsFPS = false
+                skView.showsNodeCount = false
             }
         }
     }
@@ -47,9 +47,9 @@ class GameManager {
             let skView = gameVC.view as! SKView
             skView.presentScene(currentScene)
             
-            skView.ignoresSiblingOrder = true
-            skView.showsFPS = true
-            skView.showsNodeCount = true
+            skView.ignoresSiblingOrder = false
+            skView.showsFPS = false
+            skView.showsNodeCount = false
             
             currentScene?.scaleMode = .aspectFill
         }
