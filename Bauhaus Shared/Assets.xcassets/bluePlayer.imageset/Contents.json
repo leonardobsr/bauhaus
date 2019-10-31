@@ -2,22 +2,26 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "bluePlayer.png",
-      "scale" : "1x"
+      "filename" : "bluePlayer.png"
     },
     {
       "idiom" : "universal",
       "filename" : "bluePlayer-1.png",
+      "unassigned" : true,
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
       "filename" : "bluePlayer-2.png",
+      "unassigned" : true,
       "scale" : "3x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
   }
 }

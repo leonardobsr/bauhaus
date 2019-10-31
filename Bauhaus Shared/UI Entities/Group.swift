@@ -18,7 +18,6 @@ class Group : GKEntity {
         self.addComponent(renderComponent)
         
         let groupComponent = GroupComponent(node: renderComponent.node)
-        groupComponent.node.posByScreen(x: position.x, y: position.y)
         self.addComponent(groupComponent)
     }
     
