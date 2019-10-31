@@ -17,7 +17,7 @@ class Timer : GKEntity {
         
         let renderComponent = RenderComponent(node: SKNode())
         renderComponent.node.zPosition = CGFloat(5)
-        renderComponent.node.position = CGPoint(x: 700, y: 1050)
+//        renderComponent.node.position = CGPoint(x: 700, y: 1050)
         self.addComponent(renderComponent)
         
         let rectangleComponent = RectangleComponent(color: .black,

@@ -18,26 +18,19 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // let gameManager = GameManager.shared
-        // gameManager.gameViewController = self
-        // gameManager.startGame()
-        //gameManager.nextScreen()
-        
         let skView = self.view as! SKView
-        skView.ignoresSiblingOrder = true
-        skView.showsFPS = true
-        skView.showsNodeCount = true
-        print(skView.bounds.size)
         SKViewSize = skView.bounds.size
-
-        // let scene = GameScene.newGameScene()
-//        let scene = StartScene()
         
         if let skViewSize = SKViewSize {
             SKViewSizeRect = getViewSizeRect()
-            let scene = ChooseCPScene.newChooseCPScene(size: skViewSize)
-            skView.presentScene(scene)
+//            let scene = ChooseCPScene.newChooseCPScene(size: skViewSize)
+//            skView.presentScene(scene)
         }
+        
+        let gameManager = GameManager.shared
+        gameManager.gameViewController = self
+        gameManager.startGame()
+
     }
     
     override func viewDidLayoutSubviews() {

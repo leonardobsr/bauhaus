@@ -47,7 +47,8 @@ class MenuScene: SKScene {
         
         playButtonSprite.removeFromParent()
         
-        playButton = Button(position: playButtonSprite.position, sprite: "MenuPlayButton")
+//        playButton = Button(position: playButtonSprite.position, sprite: "MenuPlayButton")
+        playButton = Button(position: CGPoint(x: 0.8, y: 0.1), sprite: "MenuPlayButton")
         playButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         entityManager?.add(playButton!)
         
@@ -57,7 +58,7 @@ class MenuScene: SKScene {
         
         infoButtonSprite.removeFromParent()
         
-        infoButton = Button(position:infoButtonSprite.position, sprite: "MenuInfoButton")
+        infoButton = Button(position: CGPoint(x: 0.2, y: 0.8), sprite: "MenuInfoButton")
         infoButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         entityManager?.add(infoButton!)
     }
@@ -91,15 +92,14 @@ class MenuScene: SKScene {
         
         if let infoButtonStateMachine = infoButton?.component(ofType: TapComponent.self)?.stateMachine {
             if infoButtonStateMachine.currentState is ActState {
-                infoButtonStateMachine.enter(RestState.self)
+//                infoButtonStateMachine.enter(RestState.self)
+                let node = self.childNode(withName: "BlackMenuBar")
+                node?.zPosition = 10
+            } else {
+                let node = self.childNode(withName: "BlackMenuBar")
+                node?.zPosition = 0
             }
         }
     }
-    
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        <#code#>
-//    }
-    
-    
 
 }

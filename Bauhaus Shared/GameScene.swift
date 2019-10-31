@@ -59,7 +59,8 @@ class GameScene: SKScene {
         let newBoard = Board(frame: self.frame)
         var dots = [[Dot]]()
         if let renderComponent = newBoard.component(ofType: RenderComponent.self) {
-            renderComponent.node.position = CGPoint(x: -0.2 * self.frame.maxX, y: 0)
+//            renderComponent.node.position = CGPoint(x: -0.2 * self.frame.maxX, y: 0)
+            renderComponent.node.posByScreen(x: 0.35, y: 0.5)
         }
         if let gridComponent = newBoard.component(ofType: GridComponent.self) {
             let gridSize = CGSize(width: 11 * 56, height: 11 * 56)
@@ -69,12 +70,16 @@ class GameScene: SKScene {
         entityManager?.add(newBoard)
         dots.forEach { row in row.forEach { dot in entityManager?.add(dot) } }
                 
-        let newPauseButton = Button(position: CGPoint(x: -610, y: 450), sprite: "pauseButton")
+//        let newPauseButton = Button(position: CGPoint(x: -610, y: 450), sprite: "pauseButton")
+        let newPauseButton = Button(position: CGPoint(x: 0.05, y: 0.93), sprite: "pauseButton")
+        newPauseButton.component(ofType: RenderComponent.self)?.node.setScale((self.size.height/self.size.width))
         newPauseButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         self.pauseButton = newPauseButton
         entityManager?.add(newPauseButton)
         
-        let newTurnPassButton = Button(position: CGPoint(x: 610, y: -450), sprite: "backButton")
+//        let newTurnPassButton = Button(position: CGPoint(x: 610, y: -450), sprite: "backButton")
+        let newTurnPassButton = Button(position: CGPoint(x: 0.89, y: 0.07), sprite: "backButton")
+        newTurnPassButton.component(ofType: RenderComponent.self)?.node.setScale(2.5 * (self.size.height/self.size.width))
         newTurnPassButton.component(ofType: RenderComponent.self)?.node.zRotation = 180 * .pi/180
         newTurnPassButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         self.turnPassButton = newTurnPassButton
@@ -83,6 +88,7 @@ class GameScene: SKScene {
         loadRandomPieces()
         
         let newTimer = Timer()
+        newTimer.component(ofType: RenderComponent.self)?.node.posByScreen(x: 1, y: 1.5)
         self.timer = newTimer
         entityManager?.add(newTimer)
     }
@@ -133,7 +139,7 @@ class GameScene: SKScene {
         if let timerRenderNode = timer?.component(ofType: RenderComponent.self)?.node,
             let timerShapeNode = timer?.component(ofType: RectangleComponent.self)?.shapeNode {
             if timerRenderNode.position.y - timerShapeNode.frame.height/2 == self.frame.minY {
-                timerRenderNode.position.y = 1050
+                timerRenderNode.posByScreen(x: 1, y: 1.5)
                 loadRandomPieces()
                 self.currentPlayer = nextPlayer()
             }
@@ -250,7 +256,7 @@ extension GameScene {
 extension GameScene {
     
     func turnPass() {
-        timer?.component(ofType: RenderComponent.self)?.node.position.y = 1050
+        timer?.component(ofType: RenderComponent.self)?.node.posByScreen(x: 1, y: 1.5)
         self.currentPlayer = nextPlayer()
     }
     
@@ -270,20 +276,18 @@ extension GameScene {
         self.touchedPiece = nil
         self.availablePieces.forEach { entityManager?.remove($0) }
         
-        let possiblePieces : [PathSprite] = [
-            .I1, .I2, .L1, .L2, .U1, .U2, .T1, .T2, .Z1, .Z2
-        ]
+        let possiblePieces : [PathSprite] = [.I1, .I2, .L1, .L2, .U1, .U2, .T1, .T2, .Z1, .Z2]
         
         let piece = Piece(pathType: .Z, edgeSize: 2, pathSprite: possiblePieces.randomElement()!)
-        piece.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 450, y: -320)
+        piece.component(ofType: RenderComponent.self)?.node.posByScreen(x: 0.8, y: 0.2)
         entityManager?.add(piece)
                 
         let piece2 = Piece(pathType: .Z, edgeSize: 2, pathSprite: possiblePieces.randomElement()!)
-        piece2.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 450, y: 0)
+        piece2.component(ofType: RenderComponent.self)?.node.posByScreen(x: 0.8, y: 0.5)
         entityManager?.add(piece2)
                 
         let piece3 = Piece(pathType: .Z, edgeSize: 2, pathSprite: possiblePieces.randomElement()!)
-        piece3.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 450, y: 320)
+        piece3.component(ofType: RenderComponent.self)?.node.posByScreen(x: 0.8, y: 0.8)
         entityManager?.add(piece3)
         
         self.availablePieces.append(contentsOf: [piece, piece2, piece3])

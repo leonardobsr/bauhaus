@@ -39,4 +39,5 @@ enum RenderingPosition : Int {
     case box = 3
     case line = 4
     case piece = 5
+    case button = 6
 }

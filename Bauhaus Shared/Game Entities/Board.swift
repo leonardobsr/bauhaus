@@ -20,7 +20,7 @@ class Board : GKEntity {
         self.addComponent(renderComponent)
         
         let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode())
-        spriteComponent.spriteNode.size = CGSize(width: 0.8 * frame.height, height: 0.8 * frame.height)
+        spriteComponent.spriteNode.size = CGSize(width: 0.7 * frame.height, height: 0.7 * frame.height)
         spriteComponent.spriteNode.color = .white
         renderComponent.node.addChild(spriteComponent.spriteNode)
         self.addComponent(spriteComponent)
