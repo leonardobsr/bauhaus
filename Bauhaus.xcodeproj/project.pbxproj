@@ -574,7 +574,6 @@
 		1F32F195234514D10083A483 = {
 			isa = PBXGroup;
 			children = (
-				1F4C3AE8236B5AFA00DB55D7 /* Fonts */,
 				1F32F19A234514D10083A483 /* Bauhaus Shared */,
 				1F32F1A5234514D60083A483 /* Bauhaus iOS */,
 				1F32F1B6234514D60083A483 /* Bauhaus tvOS */,
@@ -589,6 +588,7 @@
 		1F32F19A234514D10083A483 /* Bauhaus Shared */ = {
 			isa = PBXGroup;
 			children = (
+				1F4C3AE8236B5AFA00DB55D7 /* Fonts */,
 				1F586D38234BC05E00C23821 /* Utils */,
 				1F45A2132347CD1200D83DB2 /* Game Entities */,
 				1F45A2152347CD3100D83DB2 /* Components */,
@@ -1142,7 +1142,6 @@
 				1F6E88082360D73A00E7AEC2 /* ChooseCPScene.sks in Resources */,
 				1F32F1DB234514D60083A483 /* Assets.xcassets in Resources */,
 				1F4C3AF1236B5B1000DB55D7 /* Munro-2LYe.ttf in Resources */,
-				5C61A681234BC54900F34E99 /* MenuScene.sks in Resources */,
 				1F32F1D2234514D60083A483 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
