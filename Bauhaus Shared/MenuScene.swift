@@ -58,7 +58,7 @@ class MenuScene: SKScene {
         
         infoButtonSprite.removeFromParent()
         
-        infoButton = Button(position:infoButtonSprite.position, sprite: "MenuInfoButton")
+        infoButton = Button(position: CGPoint(x: 0.2, y: 0.8), sprite: "MenuInfoButton")
         infoButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         entityManager?.add(infoButton!)
     }
