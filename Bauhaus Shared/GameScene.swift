@@ -19,53 +19,72 @@ class GameScene: SKScene {
     var availablePieces = [Piece]()
     
     var pauseButton : Button?
+    var turnPassButton : Button?
     var timer : Timer?
+    
+    var currentPlayer : UIColor? {
+        didSet {
+            if let player = self.currentPlayer {
+                self.backgroundColor = player
+            }
+        }
+    }
+    
+    private var touchStartTime : TimeInterval = 0
     
     private var lastUpdateTime : TimeInterval = 0
 
-    class func newGameScene() -> GameScene {
-        // Load 'GameScene.sks' as an SKScene.
-        guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
-            print("Failed to load GameScene.sks")
-            abort()
-        }
-        
-        // Set the scale mode to scale to fit the window
-        scene.scaleMode = .aspectFill
-        
-        return scene
-    }
+//    class func newGameScene() -> GameScene {
+//        // Load 'GameScene.sks' as an SKScene.
+//        guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
+//            print("Failed to load GameScene.sks")
+//            abort()
+//        }
+//
+//        // Set the scale mode to scale to fit the window
+//        scene.scaleMode = .aspectFill
+//
+//        return scene
+//    }
 
     func setUpScene() {
-//        self.size = CGSize(width: 2732, height: 2048)
-//        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        
         self.lastUpdateTime = 0
         
-        self.backgroundColor = .red
+        self.currentPlayer = .red
         
         entityManager = EntityManager(scene: self)
         
-        let newBoard = Board()
+        let newBoard = Board(frame: self.frame)
         var dots = [[Dot]]()
         if let renderComponent = newBoard.component(ofType: RenderComponent.self) {
-            renderComponent.node.position = CGPoint(x: -150, y: 0)
+            renderComponent.node.position = CGPoint(x: -0.2 * self.frame.maxX, y: 0)
         }
         if let gridComponent = newBoard.component(ofType: GridComponent.self) {
-            gridComponent.setGrid(width: 12, height: 12)
+            let gridSize = CGSize(width: 11 * 56, height: 11 * 56)
+            gridComponent.setGrid(width: 12, height: 12, size: gridSize)
             dots = gridComponent.dotGrid
         }
         entityManager?.add(newBoard)
-        
         dots.forEach { row in row.forEach { dot in entityManager?.add(dot) } }
                 
-        self.pauseButton = Button(position: CGPoint(x: -610, y: 450), sprite: "pauseButton")
-        pauseButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
-        entityManager?.add(pauseButton!)
+        let newPauseButton = Button(position: CGPoint(x: -610, y: 450), sprite: "pauseButton")
+        newPauseButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
+        self.pauseButton = newPauseButton
+        entityManager?.add(newPauseButton)
+        
+        let newTurnPassButton = Button(position: CGPoint(x: 610, y: -450), sprite: "backButton")
+        newTurnPassButton.component(ofType: RenderComponent.self)?.node.zRotation = 180 * .pi/180
+        newTurnPassButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
+        self.turnPassButton = newTurnPassButton
+        entityManager?.add(newTurnPassButton)
         
         loadRandomPieces()
         
-        self.timer = Timer()
-        entityManager?.add(timer!)
+        let newTimer = Timer()
+        self.timer = newTimer
+        entityManager?.add(newTimer)
     }
     
     #if os(watchOS)
@@ -90,21 +109,34 @@ class GameScene: SKScene {
         let dt = currentTime - self.lastUpdateTime
         
         // Update entities
-        for entity in self.entities {
+        for entity in self.entityManager!.entities {
             entity.update(deltaTime: dt)
         }
         
         self.lastUpdateTime = currentTime
         
-        if let pauseButtonStateMachine = pauseButton?.component(ofType: TapComponent.self)?.stateMachine {
-            if pauseButtonStateMachine.currentState is ActState {
-                loadRandomPieces()
-                pauseButtonStateMachine.enter(RestState.self)
+        if let pauseButtonSM = self.pauseButton?.component(ofType: TapComponent.self)?.stateMachine {
+            if pauseButtonSM.currentState is ActState {
+                GameManager.shared.pauseGame()
+                pauseButtonSM.enter(RestState.self)
             }
         }
         
-        if let timerShapeNode = timer?.component(ofType: RectangleComponent.self)?.shapeNode {
-            timerShapeNode.position.y -= 1
+        if let turnPassButtonSM = self.turnPassButton?.component(ofType: TapComponent.self)?.stateMachine {
+            if turnPassButtonSM.currentState is ActState {
+                turnPass()
+                loadRandomPieces()
+                turnPassButtonSM.enter(RestState.self)
+            }
+        }
+        
+        if let timerRenderNode = timer?.component(ofType: RenderComponent.self)?.node,
+            let timerShapeNode = timer?.component(ofType: RectangleComponent.self)?.shapeNode {
+            if timerRenderNode.position.y - timerShapeNode.frame.height/2 == self.frame.minY {
+                timerRenderNode.position.y = 1050
+                loadRandomPieces()
+                self.currentPlayer = nextPlayer()
+            }
         }
         
     }
@@ -142,6 +174,7 @@ extension GameScene {
                 .component(ofType: RenderComponent.self)?
                 .node
                 .run(SKAction.scale(by: 1.2, duration: 0.1))
+            self.touchStartTime = CACurrentMediaTime()
         }
     }
 
@@ -184,6 +217,15 @@ extension GameScene {
                 .node
                 .run(SKAction.scale(by: (1/1.2), duration: 0.1))
             touchedPiece = nil
+            
+            let touchEndTime = CACurrentMediaTime()
+
+            if touchEndTime - touchStartTime < 0.1 {
+                piece
+                    .component(ofType: RenderComponent.self)?
+                    .node
+                    .run(SKAction.rotate(byAngle: 90 * .pi/180, duration: 0.1))
+            }
         }
     }
     
@@ -207,8 +249,25 @@ extension GameScene {
 
 extension GameScene {
     
+    func turnPass() {
+        timer?.component(ofType: RenderComponent.self)?.node.position.y = 1050
+        self.currentPlayer = nextPlayer()
+    }
+    
+    func nextPlayer() -> UIColor? {
+        if let player = self.currentPlayer {
+            switch player {
+            case .red : return .yellow
+            case .yellow : return .blue
+            case .blue : return .red
+            default : return .red
+            }
+        }
+        return nil
+    }
+    
     func loadRandomPieces() {
-        
+        self.touchedPiece = nil
         self.availablePieces.forEach { entityManager?.remove($0) }
         
         let possiblePieces : [PathSprite] = [
@@ -216,15 +275,15 @@ extension GameScene {
         ]
         
         let piece = Piece(pathType: .Z, edgeSize: 2, pathSprite: possiblePieces.randomElement()!)
-        piece.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 420, y: -320)
+        piece.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 450, y: -320)
         entityManager?.add(piece)
                 
         let piece2 = Piece(pathType: .Z, edgeSize: 2, pathSprite: possiblePieces.randomElement()!)
-        piece2.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 420, y: 0)
+        piece2.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 450, y: 0)
         entityManager?.add(piece2)
                 
         let piece3 = Piece(pathType: .Z, edgeSize: 2, pathSprite: possiblePieces.randomElement()!)
-        piece3.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 420, y: 320)
+        piece3.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 450, y: 320)
         entityManager?.add(piece3)
         
         self.availablePieces.append(contentsOf: [piece, piece2, piece3])

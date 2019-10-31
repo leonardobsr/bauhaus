@@ -27,7 +27,7 @@ class GridComponent : GKComponent {
         super.init()
     }
     
-    func setGrid(width: Int, height: Int) {
+    func setGrid(width: Int, height: Int, size: CGSize) {
         // Set Dots
         var dotRow : [Dot]
         let dotDistanceX : CGFloat = 56
@@ -39,7 +39,8 @@ class GridComponent : GKComponent {
                 let newDot = Dot()
                 if let renderNode = newDot.component(ofType: RenderComponent.self)?.node {
                     self.gridNode.addChild(renderNode)
-                    renderNode.position = CGPoint(x: CGFloat(j) * dotDistanceX , y: CGFloat(i) * dotDistanceY)
+                    renderNode.position = CGPoint(x: (CGFloat(j) * dotDistanceX) - size.width/2,
+                                                  y: (CGFloat(i) * dotDistanceY) - size.height/2)
                 }
                 dotRow.append(newDot)
             }
@@ -54,7 +55,7 @@ class GridComponent : GKComponent {
                 let newHLine = Line(.horizontal)
                 if let renderNode = newHLine.component(ofType: RenderComponent.self)?.node {
                     self.gridNode.addChild(renderNode)
-                    renderNode.position = CGPoint(x: (CGFloat(j) * dotDistanceX) + dotDistanceX/2 , y: CGFloat(i) * dotDistanceY)
+                    renderNode.position = CGPoint(x: ((CGFloat(j) * dotDistanceX) + dotDistanceX/2) - size.width/2 , y: (CGFloat(i) * dotDistanceY) - size.height/2)
                 }
                 hLineRow.append(newHLine)
             }
@@ -69,7 +70,7 @@ class GridComponent : GKComponent {
                 let newVLine = Line(.vertical)
                 if let renderNode = newVLine.component(ofType: RenderComponent.self)?.node {
                     self.gridNode.addChild(renderNode)
-                    renderNode.position = CGPoint(x: CGFloat(j) * dotDistanceX , y: (CGFloat(i) * dotDistanceY) + dotDistanceY/2)
+                    renderNode.position = CGPoint(x: (CGFloat(j) * dotDistanceX) - size.width/2 , y: ((CGFloat(i) * dotDistanceY) + dotDistanceY/2) - size.height/2)
                 }
                 vLineRow.append(newVLine)
             }

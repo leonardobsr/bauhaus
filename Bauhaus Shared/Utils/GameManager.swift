@@ -16,16 +16,14 @@ class GameManager {
     
     var currentScene : SKScene? {
         didSet {
-            if let gameVC = self.gameViewController {
-                let skView = gameVC.view as! SKView
-                skView.presentScene(currentScene)
-                
-                skView.ignoresSiblingOrder = true
-                skView.showsFPS = true
-                skView.showsNodeCount = true
-            }
+            guard let skView = self.gameViewController?.view as? SKView else { return }
+
+            self.currentScene?.size = CGSize(width: skView.bounds.width, height: skView.bounds.height)
+            
+            skView.presentScene(self.currentScene)
         }
     }
+    
     var stateMachine : GKStateMachine?
     
     private init() {
@@ -36,31 +34,25 @@ class GameManager {
                           gameOverState()]
         
         self.stateMachine = GKStateMachine(states: gameStates)
-        self.stateMachine!.enter(startScreenState.self)
-    
+        self.stateMachine?.enter(startScreenState.self)
     }
     
-    func startGame(){
+    func startGame() {
         self.currentScene = MenuScene.newGameScene()
         
-        if let gameVC = self.gameViewController {
-            let skView = gameVC.view as! SKView
-            skView.presentScene(currentScene)
-            
-            skView.ignoresSiblingOrder = true
-            skView.showsFPS = true
-            skView.showsNodeCount = true
-            
-            currentScene?.scaleMode = .aspectFill
-        }
+        guard let skView = self.gameViewController?.view as? SKView else { return }
+                
+        self.currentScene?.size = skView.bounds.size
+        
+        skView.presentScene(self.currentScene)
     }
     
     func nextScreen() {
-        switch stateMachine!.currentState {
+        switch stateMachine?.currentState {
         case is startScreenState :
             
-            stateMachine!.enter(playState.self)
-            self.currentScene = GameScene.newGameScene()
+            stateMachine?.enter(playState.self)
+            self.currentScene = GameScene()
         
         case is playerSelectionState : return
         case is playState : return
@@ -71,11 +63,13 @@ class GameManager {
     }
     
     func pauseGame() {
-        stateMachine!.enter(pauseState.self)
+//        stateMachine?.enter(pauseState.self)
+        stateMachine?.enter(startScreenState.self)
+        self.currentScene = MenuScene.newGameScene()
     }
     
     func endGame() {
-        stateMachine!.enter(gameOverState.self)
+        stateMachine?.enter(gameOverState.self)
     }
     
 }

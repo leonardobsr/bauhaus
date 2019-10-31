@@ -16,6 +16,8 @@ class MenuScene: SKScene {
     
     var playButton: Button?
     var infoButton: Button?
+
+    var touchedButton: Button?
     
     class func newGameScene() -> MenuScene {
         // Load 'GameScene.sks' as an SKScene.
@@ -31,15 +33,12 @@ class MenuScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
-//        self.size = CGSize(width: 2732, height: 2048)
-//        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-//        self.scaleMode = .aspectFill
+        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         self.setUpScene()
     }
     
     func setUpScene() {
-        
         entityManager = EntityManager(scene: self)
         
         guard let playButtonSprite = self.childNode(withName: "PlayButton") else {
@@ -61,7 +60,6 @@ class MenuScene: SKScene {
         infoButton = Button(position:infoButtonSprite.position, sprite: "MenuInfoButton")
         infoButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         entityManager?.add(infoButton!)
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -69,10 +67,17 @@ class MenuScene: SKScene {
             let node = atPoint(t.location(in: self))
             
             if let button = node.entity as? Button {
-                button.component(ofType: TapComponent.self)?.changeState()
+                self.touchedButton = button
                 button.component(ofType: RenderComponent.self)?.node.alpha = 0.5
             }
             
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let button = self.touchedButton {
+            button.component(ofType: TapComponent.self)?.changeState()
+            button.component(ofType: RenderComponent.self)?.node.alpha = 1
         }
     }
     
