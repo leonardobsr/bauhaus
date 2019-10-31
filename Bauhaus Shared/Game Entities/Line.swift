@@ -25,7 +25,6 @@ class Line : GKEntity {
         
         let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode(imageNamed: "lineOff"))
         spriteComponent.spriteNode.entity = self
-//        spriteComponent.spriteNode.setScale(0.5)
         renderComponent.node.addChild(spriteComponent.spriteNode)
         self.addComponent(spriteComponent)
         

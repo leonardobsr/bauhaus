@@ -16,47 +16,75 @@ class GameScene: SKScene {
     var graphs = [String : GKGraph]()
     
     var touchedPiece : Piece?
+    var availablePieces = [Piece]()
+    
+    var pauseButton : Button?
+    var turnPassButton : Button?
+    var timer : Timer?
+    
+    var currentPlayer : UIColor? {
+        didSet {
+            if let player = self.currentPlayer {
+                self.backgroundColor = player
+            }
+        }
+    }
+    
+    private var touchStartTime : TimeInterval = 0
     
     private var lastUpdateTime : TimeInterval = 0
 
-    class func newGameScene() -> GameScene {
-        // Load 'GameScene.sks' as an SKScene.
-        guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
-            print("Failed to load GameScene.sks")
-            abort()
-        }
-        
-        // Set the scale mode to scale to fit the window
-        scene.scaleMode = .aspectFill
-        
-        return scene
-    }
+//    class func newGameScene() -> GameScene {
+//        // Load 'GameScene.sks' as an SKScene.
+//        guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
+//            print("Failed to load GameScene.sks")
+//            abort()
+//        }
+//
+//        // Set the scale mode to scale to fit the window
+//        scene.scaleMode = .aspectFill
+//
+//        return scene
+//    }
 
     func setUpScene() {
+        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        
         self.lastUpdateTime = 0
         
-        self.backgroundColor = .red
+        self.currentPlayer = .red
         
         entityManager = EntityManager(scene: self)
         
-        let newBoard = Board()
+        let newBoard = Board(frame: self.frame)
         var dots = [[Dot]]()
         if let renderComponent = newBoard.component(ofType: RenderComponent.self) {
-            renderComponent.node.position = CGPoint(x: -150, y: 0)
+            renderComponent.node.position = CGPoint(x: -0.2 * self.frame.maxX, y: 0)
         }
         if let gridComponent = newBoard.component(ofType: GridComponent.self) {
-            gridComponent.setGrid(width: 12, height: 12)
+            let gridSize = CGSize(width: 11 * 56, height: 11 * 56)
+            gridComponent.setGrid(width: 12, height: 12, size: gridSize)
             dots = gridComponent.dotGrid
         }
         entityManager?.add(newBoard)
-        
         dots.forEach { row in row.forEach { dot in entityManager?.add(dot) } }
                 
-        let pauseButton = Button(position: CGPoint(x: -610, y: 450), sprite: "pauseButton")
-        pauseButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
-        entityManager?.add(pauseButton)
+        let newPauseButton = Button(position: CGPoint(x: -610, y: 450), sprite: "pauseButton")
+        newPauseButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
+        self.pauseButton = newPauseButton
+        entityManager?.add(newPauseButton)
+        
+        let newTurnPassButton = Button(position: CGPoint(x: 610, y: -450), sprite: "backButton")
+        newTurnPassButton.component(ofType: RenderComponent.self)?.node.zRotation = 180 * .pi/180
+        newTurnPassButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
+        self.turnPassButton = newTurnPassButton
+        entityManager?.add(newTurnPassButton)
         
         loadRandomPieces()
+        
+        let newTimer = Timer()
+        self.timer = newTimer
+        entityManager?.add(newTimer)
     }
     
     #if os(watchOS)
@@ -81,11 +109,36 @@ class GameScene: SKScene {
         let dt = currentTime - self.lastUpdateTime
         
         // Update entities
-        for entity in self.entities {
+        for entity in self.entityManager!.entities {
             entity.update(deltaTime: dt)
         }
         
         self.lastUpdateTime = currentTime
+        
+        if let pauseButtonSM = self.pauseButton?.component(ofType: TapComponent.self)?.stateMachine {
+            if pauseButtonSM.currentState is ActState {
+                GameManager.shared.pauseGame()
+                pauseButtonSM.enter(RestState.self)
+            }
+        }
+        
+        if let turnPassButtonSM = self.turnPassButton?.component(ofType: TapComponent.self)?.stateMachine {
+            if turnPassButtonSM.currentState is ActState {
+                turnPass()
+                loadRandomPieces()
+                turnPassButtonSM.enter(RestState.self)
+            }
+        }
+        
+        if let timerRenderNode = timer?.component(ofType: RenderComponent.self)?.node,
+            let timerShapeNode = timer?.component(ofType: RectangleComponent.self)?.shapeNode {
+            if timerRenderNode.position.y - timerShapeNode.frame.height/2 == self.frame.minY {
+                timerRenderNode.position.y = 1050
+                loadRandomPieces()
+                self.currentPlayer = nextPlayer()
+            }
+        }
+        
     }
     
 }
@@ -93,52 +146,87 @@ class GameScene: SKScene {
 #if os(iOS) || os(tvOS)
 // Touch-based event handling
 extension GameScene {
+    
+    func tapOn(button entity: GKEntity) {
+        if let button = entity as? Button {
+            button
+                .component(ofType: TapComponent.self)?
+                .changeState()
+        }
+    }
+    
+    func tapOn(line entity: GKEntity) {
+        if let line = entity as? Line {
+            if let lightSwitch = line.component(ofType: LightSwitchComponent.self) {
+                if lightSwitch.stateMachine.currentState is OnState {
+                    lightSwitch.turnOff()
+                } else {
+                    lightSwitch.turnOn()
+                }
+            }
+        }
+    }
+    
+    func tapOn(piece entity: GKEntity) {
+        if let piece = entity as? Piece {
+            self.touchedPiece = piece
+            touchedPiece?
+                .component(ofType: RenderComponent.self)?
+                .node
+                .run(SKAction.scale(by: 1.2, duration: 0.1))
+            self.touchStartTime = CACurrentMediaTime()
+        }
+    }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let t = touches.first {
             let node = atPoint(t.location(in: self))
             
-            if let light = node.entity?.component(ofType: LightSwitchComponent.self) {
-                if light.stateMachine.currentState is OnState {
-                    light.turnOff()
-                } else {
-                    light.turnOn()
+            if let entity = node.entity {
+                switch entity {
+                case is Button : tapOn(button: entity)
+                case is Line : tapOn(line: entity)
+                case is Piece : tapOn(piece: entity)
+                default : return
                 }
-            }
-            
-            if let piece = node.entity as? Piece {
-                self.touchedPiece = piece
-                touchedPiece?
-                    .component(ofType: RenderComponent.self)?
-                    .node
-                    .run(SKAction.scale(by: 1.2, duration: 0.1))
             }
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first
-        if  let currentPos = touch?.location(in: self),
-            let previousPos = touch?.previousLocation(in: self) {
-            
-            let translation = CGPoint(x: currentPos.x - previousPos.x,
-                                      y: currentPos.y - previousPos.y)
+        if let piece = touchedPiece {
+            let touch = touches.first
+            if  let currentPos = touch?.location(in: self),
+                let previousPos = touch?.previousLocation(in: self) {
+                
+                let translation = CGPoint(x: currentPos.x - previousPos.x,
+                                          y: currentPos.y - previousPos.y)
 
-            if let node = touchedPiece?.component(ofType: RenderComponent.self)?.node {
-                node.position = CGPoint(x: node.position.x + translation.x,
-                                        y: node.position.y + translation.y)
+                if let node = piece.component(ofType: RenderComponent.self)?.node {
+                    node.position = CGPoint(x: node.position.x + translation.x,
+                                            y: node.position.y + translation.y)
+                }
             }
-            
         }
-        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let piece = touchedPiece {
-            piece.component(ofType: RenderComponent.self)?.node.run(SKAction.scale(by: (1/1.2), duration: 0.1))
+            piece
+                .component(ofType: RenderComponent.self)?
+                .node
+                .run(SKAction.scale(by: (1/1.2), duration: 0.1))
             touchedPiece = nil
+            
+            let touchEndTime = CACurrentMediaTime()
+
+            if touchEndTime - touchStartTime < 0.1 {
+                piece
+                    .component(ofType: RenderComponent.self)?
+                    .node
+                    .run(SKAction.rotate(byAngle: 90 * .pi/180, duration: 0.1))
+            }
         }
-        
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {}
@@ -161,19 +249,44 @@ extension GameScene {
 
 extension GameScene {
     
+    func turnPass() {
+        timer?.component(ofType: RenderComponent.self)?.node.position.y = 1050
+        self.currentPlayer = nextPlayer()
+    }
+    
+    func nextPlayer() -> UIColor? {
+        if let player = self.currentPlayer {
+            switch player {
+            case .red : return .yellow
+            case .yellow : return .blue
+            case .blue : return .red
+            default : return .red
+            }
+        }
+        return nil
+    }
+    
     func loadRandomPieces() {
-        let piece = Piece(pathType: .Z, edgeSize: 2, pathSprite: .U1)
-                
-        piece.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 420, y: -320)
+        self.touchedPiece = nil
+        self.availablePieces.forEach { entityManager?.remove($0) }
+        
+        let possiblePieces : [PathSprite] = [
+            .I1, .I2, .L1, .L2, .U1, .U2, .T1, .T2, .Z1, .Z2
+        ]
+        
+        let piece = Piece(pathType: .Z, edgeSize: 2, pathSprite: possiblePieces.randomElement()!)
+        piece.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 450, y: -320)
         entityManager?.add(piece)
                 
-        let piece2 = Piece(pathType: .Z, edgeSize: 2, pathSprite: .L1)
-        piece2.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 420, y: 0)
+        let piece2 = Piece(pathType: .Z, edgeSize: 2, pathSprite: possiblePieces.randomElement()!)
+        piece2.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 450, y: 0)
         entityManager?.add(piece2)
                 
-        let piece3 = Piece(pathType: .Z, edgeSize: 2, pathSprite: .T1)
-        piece3.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 420, y: 320)
+        let piece3 = Piece(pathType: .Z, edgeSize: 2, pathSprite: possiblePieces.randomElement()!)
+        piece3.component(ofType: RenderComponent.self)?.node.position = CGPoint(x: 450, y: 320)
         entityManager?.add(piece3)
+        
+        self.availablePieces.append(contentsOf: [piece, piece2, piece3])
     }
     
 }

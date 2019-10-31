@@ -10,7 +10,7 @@ import GameplayKit
 
 class Board : GKEntity {
     
-    override init() {
+    init(frame: CGRect) {
         super.init()
         
         // Visual Components
@@ -19,8 +19,8 @@ class Board : GKEntity {
         renderComponent.node.zPosition = CGFloat(RenderingPosition.board.rawValue)
         self.addComponent(renderComponent)
         
-        let spriteComponent = SpriteComponent(spriteNode:SKSpriteNode())
-        spriteComponent.spriteNode.size = CGSize(width: 800, height: 800)
+        let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode())
+        spriteComponent.spriteNode.size = CGSize(width: 0.8 * frame.height, height: 0.8 * frame.height)
         spriteComponent.spriteNode.color = .white
         renderComponent.node.addChild(spriteComponent.spriteNode)
         self.addComponent(spriteComponent)
@@ -28,12 +28,7 @@ class Board : GKEntity {
         // Game Logic Components
         
         let gridComponent = GridComponent(gridNode: SKNode())
-        let gridNode = gridComponent.gridNode
         spriteComponent.spriteNode.addChild(gridComponent.gridNode)
-        if let board = gridNode.parent as? SKSpriteNode {
-            gridNode.position = CGPoint(x: (board.position.x - board.size.width/2) + 100,
-                                        y: (board.position.y - board.size.height/2) + 100)
-        }
         self.addComponent(gridComponent)
         
         let boardComponent = BoardComponent()

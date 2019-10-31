@@ -17,6 +17,11 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // let gameManager = GameManager.shared
+        // gameManager.gameViewController = self
+        // gameManager.startGame()
+        //gameManager.nextScreen()
         
         let skView = self.view as! SKView
         skView.ignoresSiblingOrder = true

@@ -10,11 +10,11 @@ import GameplayKit
 
 class startScreenState : GKState {
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is choosePlayersState.Type
+        return stateClass is playerSelectionState.Type
     }
 }
 
-class choosePlayersState : GKState {
+class playerSelectionState : GKState {
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is playState.Type
     }
@@ -22,12 +22,22 @@ class choosePlayersState : GKState {
 
 class playState : GKState {
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return (stateClass is pauseState.Type) || (stateClass is startScreenState.Type)
+        return (stateClass is pauseState.Type)
+            || (stateClass is startScreenState.Type)
+            || (stateClass is gameOverState.Type)
     }
 }
 
 class pauseState : GKState {
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return (stateClass is playState.Type) || (stateClass is startScreenState.Type)
+        return (stateClass is playState.Type)
+            || (stateClass is startScreenState.Type)
+    }
+}
+
+class gameOverState : GKState {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return (stateClass is playState.Type)
+            || (stateClass is startScreenState.Type)
     }
 }

@@ -16,7 +16,7 @@ class Piece : GKEntity {
         // Visual Components
         let renderComponent = RenderComponent(node: SKNode())
         renderComponent.node.entity = self
-        renderComponent.node.zPosition = 2
+        renderComponent.node.zPosition = CGFloat(RenderingPosition.piece.rawValue)
         self.addComponent(renderComponent)
         
         let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode())
@@ -26,7 +26,7 @@ class Piece : GKEntity {
                 
         // Game Logic Components
         let pathComponent = PathComponent(pathType: pathType, edgeSize: edgeSize, pathSprite: pathSprite)
-        pathComponent.drawingNode.setScale(1.3)
+        pathComponent.drawingNode.setScale(2)
         pathComponent.drawingNode.entity = self
         renderComponent.node.addChild(pathComponent.drawingNode)
         self.addComponent(pathComponent)
