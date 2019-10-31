@@ -54,36 +54,43 @@ class ChooseCPScene : SKScene {
         
         self.entityManager = EntityManager(scene: self)
         
-        self.backButton = Button(position: CGPoint(x: 0.05, y: 0.95), sprite: "backButton")
+        // largura 1366 = 100%
+        // altura 1024 = 100%
+        // 0 -- 1 == 0% -- 100%
+        self.backButton = Button(position: CGPoint(x: 0.10, y: 0.85), sprite: "backButton")
         
-        self.chooseCPGroup = Group(position: CGPoint(x: -112.0, y: -112.0))
-        self.redPlayerGroup = Group(position: CGPoint(x: -112.0, y: -112.0))
-        self.yellowPlayerGroup = Group(position: CGPoint(x: -112.0, y: -112.0))
-        self.bluePlayerGroup = Group(position: CGPoint(x: -112.0, y: -112.0))
+        self.descriptionLabel = Label(position: CGPoint(x: 0.49, y: 0.68), label: "Choose color and players")
         
-        self.descriptionLabel = Label(position: CGPoint(x: -112.0, y: -112.0), label: "Choose color and players")
+        self.redPlayerButton = Button(position: CGPoint(x: 0.38, y: 0.54), sprite: "redPlayer")
+        self.redPlayerLabel = Label(position: CGPoint(x: 0.42, y: 0.48), label: "P1")
         
-        self.redPlayerButton = Button(position: CGPoint(x: -112.0, y: -112.0), sprite: "redPlayer")
-        self.redPlayerLabel = Label(position: CGPoint(x: -112.0, y: -112.0), label: "P1")
+        self.yellowPlayerButton = Button(position: CGPoint(x: 0.50, y: 0.54), sprite: "yellowPlayer")
+        self.yellowPlayerLabel = Label(position: CGPoint(x: 0.51, y: 0.48), label: "P2")
         
-        self.redPlayerButton = Button(position: CGPoint(x: -112.0, y: -112.0), sprite: "yellowPlayer")
-        self.redPlayerLabel = Label(position: CGPoint(x: -112.0, y: -112.0), label: "P2")
+        self.bluePlayerButton = Button(position: CGPoint(x: 0.58, y: 0.54), sprite: "bluePlayer")
+        self.bluePlayerLabel = Label(position: CGPoint(x: 0.60, y: 0.48), label: "P3")
         
-        self.redPlayerButton = Button(position: CGPoint(x: -112.0, y: -112.0), sprite: "bluePlayer")
-        self.redPlayerLabel = Label(position: CGPoint(x: -112.0, y: -112.0), label: "P3")
-        
-        self.playButton = Button(position: CGPoint(x: -112.0, y: -112.0), sprite: "playButton")
-        
-        self.redPlayerGroup?.setChilds(childs: [self.redPlayerButton, self.redPlayerLabel])
-        self.yellowPlayerGroup?.setChilds(childs: [self.yellowPlayerButton, self.yellowPlayerLabel])
-        self.bluePlayerGroup?.setChilds(childs: [self.bluePlayerButton, self.bluePlayerLabel])
-        self.chooseCPGroup?.setChilds(childs: [self.descriptionLabel, self.redPlayerGroup, self.yellowPlayerGroup, self.bluePlayerGroup, self.playButton])
+        self.playButton = Button(position: CGPoint(x: 0.50, y: 0.35), sprite: "playButton")
 
         if  let entityManager = self.entityManager,
             let backButton = self.backButton,
-            let chooseCPGroup = self.chooseCPGroup {
+            let descriptionLabel = self.descriptionLabel,
+            let redPlayerButton = self.redPlayerButton,
+            let redPlayerLabel = self.redPlayerLabel,
+            let yellowPlayerButton = self.yellowPlayerButton,
+            let yellowPlayerLabel = self.yellowPlayerLabel,
+            let bluePlayerButton = self.bluePlayerButton,
+            let bluePlayerLabel = self.bluePlayerLabel,
+            let playButton = self.playButton {
             entityManager.add(backButton)
-            entityManager.add(chooseCPGroup)
+            entityManager.add(descriptionLabel)
+            entityManager.add(redPlayerButton)
+            entityManager.add(redPlayerLabel)
+            entityManager.add(yellowPlayerButton)
+            entityManager.add(yellowPlayerLabel)
+            entityManager.add(bluePlayerButton)
+            entityManager.add(bluePlayerLabel)
+            entityManager.add(playButton)
         }
     }
     
