@@ -10,14 +10,15 @@ import GameplayKit
 
 class Label : GKEntity {
     
-    init(position: CGPoint) {
+    init(position: CGPoint, label: String) {
         super.init()
         
         let renderComponent = RenderComponent(node: SKNode())
-        renderComponent.node.position = position
+        renderComponent.node.posByScreen(x: position.x, y: position.y)
         self.addComponent(renderComponent)
         
         let labelComponent = LabelComponent(labelNode: SKLabelNode())
+        labelComponent.labelNode.text = label.uppercased()
         renderComponent.node.addChild(labelComponent.labelNode)
         self.addComponent(labelComponent)
     }

@@ -33,7 +33,7 @@ class ChooseCPScene : SKScene {
     
     private var lastUpdateTime : TimeInterval = 0
 
-    class func newChooseCPScene() -> ChooseCPScene {
+    class func newChooseCPScene(size: CGSize) -> ChooseCPScene {
         // Load 'ChooseCPScene.sks' as an SKScene.
         guard let scene = SKScene(fileNamed: "ChooseCPScene") as? ChooseCPScene else {
             print("Failed to load ChooseCPScene.sks")
@@ -41,103 +41,50 @@ class ChooseCPScene : SKScene {
         }
         
         // Set the scale mode to scale to fit the window
+        scene.size = size
         scene.scaleMode = .aspectFill
         
         return scene
     }
     
     func setUpScene() {
-//        self.lastUpdateTime = 0
-//        
-//        self.scene?.backgroundColor = UIColor.CustomGameColor.SpecialBlack
-//        
-//        self.entityManager = EntityManager(scene: self)
-//        
-//        self.backButton = Button(position: .zero)
-//        
-//        self.chooseCPGroup = Group(position: .zero)
-//        
-//        guard let groupNode = self.chooseCPGroup?.component(ofType: RenderComponent.self)?.node else {
-//            return;
-//        }
-//        
-//        self.redPlayerGroup = Group(position: .zero)
-//        
-//        guard let redPlayerGroupNode = self.redPlayerGroup?.component(ofType: RenderComponent.self)?.node else {
-//            return;
-//        }
-//
-//        self.yellowPlayerGroup = Group(position: .zero)
-//        
-//        guard let yellowPlayerGroupNode = self.yellowPlayerGroup?.component(ofType: RenderComponent.self)?.node else {
-//            return;
-//        }
-//
-//        self.bluePlayerGroup = Group(position: .zero)
-//        
-//        guard let bluePlayerGroupNode = self.bluePlayerGroup?.component(ofType: RenderComponent.self)?.node else {
-//            return;
-//        }
-//        
-//        self.descriptionLabel = Label(position: .zero)
-//
-//        if let descriptionLabelNode = self.descriptionLabel?.component(ofType: LabelComponent.self)?.labelNode, let node = self.descriptionLabel?.component(ofType: RenderComponent.self)?.node {
-//            descriptionLabelNode.text = ("Choose color and players").uppercased()
-//            groupNode.addChild(node)
-//        }
-//        
-//        self.redPlayerButton = Button(position: .zero)
-//
-//        if let redPlayerNode = self.redPlayerButton?.component(ofType: RenderComponent.self)?.node {
-//            self.redPlayerButton?.component(ofType: SpriteComponent.self)?.setTexture(imageNamed: "redPlayer")
-//            redPlayerGroupNode.addChild(redPlayerNode)
-//        }
-//        
-//        self.redPlayerLabel = Label(position: .zero)
-//
-//        if let redPlayerLabelNode = self.redPlayerLabel?.component(ofType: LabelComponent.self)?.labelNode, let node = self.redPlayerLabel?.component(ofType: RenderComponent.self)?.node {
-//            redPlayerLabelNode.text = ("P1").uppercased()
-//            redPlayerGroupNode.addChild(node)
-//        }
-//
-//        self.yellowPlayerButton = Button(position: .zero)
-//
-//        if let yellowPlayerNode = self.yellowPlayerButton?.component(ofType: RenderComponent.self)?.node {
-//            self.yellowPlayerButton?.component(ofType: SpriteComponent.self)?.setTexture(imageNamed: "yellowPlayer")
-//            yellowPlayerGroupNode.addChild(yellowPlayerNode)
-//        }
-//        
-//        self.yellowPlayerLabel = Label(position: .zero)
-//
-//        if let yellowPlayerLabelNode = self.yellowPlayerLabel?.component(ofType: LabelComponent.self)?.labelNode, let node = self.yellowPlayerLabel?.component(ofType: RenderComponent.self)?.node {
-//            yellowPlayerLabelNode.text = ("P2").uppercased()
-//            yellowPlayerGroupNode.addChild(node)
-//        }
-//
-//        self.bluePlayerButton = Button(position: .zero)
-//
-//        if let bluePlayerNode = self.bluePlayerButton?.component(ofType: RenderComponent.self)?.node {
-//            self.bluePlayerButton?.component(ofType: SpriteComponent.self)?.setTexture(imageNamed: "bluePlayer")
-//            bluePlayerGroupNode.addChild(bluePlayerNode)
-//        }
-//        
-//        self.bluePlayerLabel = Label(position: .zero)
-//
-//        if let bluePlayerLabelNode = self.bluePlayerLabel?.component(ofType: LabelComponent.self)?.labelNode, let node = self.bluePlayerLabel?.component(ofType: RenderComponent.self)?.node {
-//            bluePlayerLabelNode.text = ("P3").uppercased()
-//            bluePlayerGroupNode.addChild(node)
-//        }
-//        
-//        groupNode.addChild(redPlayerGroupNode)
-//        groupNode.addChild(yellowPlayerGroupNode)
-//        groupNode.addChild(bluePlayerGroupNode)
-//
-//        if  let entityManager = self.entityManager,
-//            let backButton = self.backButton,
-//            let chooseCPGroup = self.chooseCPGroup {
-//            entityManager.add(backButton)
-//            entityManager.add(chooseCPGroup)
-//        }
+        self.lastUpdateTime = 0
+
+        self.scene?.backgroundColor = UIColor.black
+        
+        self.entityManager = EntityManager(scene: self)
+        
+        self.backButton = Button(position: CGPoint(x: 0.05, y: 0.95), sprite: "backButton")
+        
+        self.chooseCPGroup = Group(position: CGPoint(x: -112.0, y: -112.0))
+        self.redPlayerGroup = Group(position: CGPoint(x: -112.0, y: -112.0))
+        self.yellowPlayerGroup = Group(position: CGPoint(x: -112.0, y: -112.0))
+        self.bluePlayerGroup = Group(position: CGPoint(x: -112.0, y: -112.0))
+        
+        self.descriptionLabel = Label(position: CGPoint(x: -112.0, y: -112.0), label: "Choose color and players")
+        
+        self.redPlayerButton = Button(position: CGPoint(x: -112.0, y: -112.0), sprite: "redPlayer")
+        self.redPlayerLabel = Label(position: CGPoint(x: -112.0, y: -112.0), label: "P1")
+        
+        self.redPlayerButton = Button(position: CGPoint(x: -112.0, y: -112.0), sprite: "yellowPlayer")
+        self.redPlayerLabel = Label(position: CGPoint(x: -112.0, y: -112.0), label: "P2")
+        
+        self.redPlayerButton = Button(position: CGPoint(x: -112.0, y: -112.0), sprite: "bluePlayer")
+        self.redPlayerLabel = Label(position: CGPoint(x: -112.0, y: -112.0), label: "P3")
+        
+        self.playButton = Button(position: CGPoint(x: -112.0, y: -112.0), sprite: "playButton")
+        
+        self.redPlayerGroup?.setChilds(childs: [self.redPlayerButton, self.redPlayerLabel])
+        self.yellowPlayerGroup?.setChilds(childs: [self.yellowPlayerButton, self.yellowPlayerLabel])
+        self.bluePlayerGroup?.setChilds(childs: [self.bluePlayerButton, self.bluePlayerLabel])
+        self.chooseCPGroup?.setChilds(childs: [self.descriptionLabel, self.redPlayerGroup, self.yellowPlayerGroup, self.bluePlayerGroup, self.playButton])
+
+        if  let entityManager = self.entityManager,
+            let backButton = self.backButton,
+            let chooseCPGroup = self.chooseCPGroup {
+            entityManager.add(backButton)
+            entityManager.add(chooseCPGroup)
+        }
     }
     
     #if os(watchOS)

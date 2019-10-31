@@ -45,6 +45,19 @@
 		1F32F1D9234514D60083A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19E234514D50083A483 /* Assets.xcassets */; };
 		1F32F1DA234514D60083A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19E234514D50083A483 /* Assets.xcassets */; };
 		1F32F1DB234514D60083A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F19E234514D50083A483 /* Assets.xcassets */; };
+		1F37F97B2367721D0070E76A /* GroupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F37F97A2367721D0070E76A /* GroupComponent.swift */; };
+		1F37F97C2367721D0070E76A /* GroupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F37F97A2367721D0070E76A /* GroupComponent.swift */; };
+		1F37F97D2367721D0070E76A /* GroupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F37F97A2367721D0070E76A /* GroupComponent.swift */; };
+		1F37F97E2367721D0070E76A /* GroupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F37F97A2367721D0070E76A /* GroupComponent.swift */; };
+		1F37F97F2367721D0070E76A /* GroupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F37F97A2367721D0070E76A /* GroupComponent.swift */; };
+		1F37F9802367721D0070E76A /* GroupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F37F97A2367721D0070E76A /* GroupComponent.swift */; };
+		1F37F9812367721D0070E76A /* GroupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F37F97A2367721D0070E76A /* GroupComponent.swift */; };
+		1F37F9822367721D0070E76A /* GroupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F37F97A2367721D0070E76A /* GroupComponent.swift */; };
+		1F37F9832367721D0070E76A /* GroupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F37F97A2367721D0070E76A /* GroupComponent.swift */; };
+		1F4C3AE7236B4B1B00DB55D7 /* SKNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C3AE6236B4B1B00DB55D7 /* SKNodeExtension.swift */; };
+		1F4C3AEF236B5B1000DB55D7 /* Munro-2LYe.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F4C3AEA236B5B1000DB55D7 /* Munro-2LYe.ttf */; };
+		1F4C3AF0236B5B1000DB55D7 /* Munro-2LYe.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F4C3AEA236B5B1000DB55D7 /* Munro-2LYe.ttf */; };
+		1F4C3AF1236B5B1000DB55D7 /* Munro-2LYe.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F4C3AEA236B5B1000DB55D7 /* Munro-2LYe.ttf */; };
 		1F586D3A234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
 		1F586D3B234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
 		1F586D3C234BC09600C23821 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F586D39234BC09600C23821 /* EntityManager.swift */; };
@@ -371,6 +384,9 @@
 		1F32F1CA234514D60083A483 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		1F32F1CD234514D60083A483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F32F1CF234514D60083A483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F37F97A2367721D0070E76A /* GroupComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupComponent.swift; sourceTree = "<group>"; };
+		1F4C3AE6236B4B1B00DB55D7 /* SKNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKNodeExtension.swift; sourceTree = "<group>"; };
+		1F4C3AEA236B5B1000DB55D7 /* Munro-2LYe.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Munro-2LYe.ttf"; sourceTree = "<group>"; };
 		1F586D39234BC09600C23821 /* EntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 		1F6E87F12360C5D200E7AEC2 /* LabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelComponent.swift; sourceTree = "<group>"; };
 		1F6E87FB2360CD8A00E7AEC2 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -528,6 +544,7 @@
 		1F32F195234514D10083A483 = {
 			isa = PBXGroup;
 			children = (
+				1F4C3AE8236B5AFA00DB55D7 /* Fonts */,
 				1F32F19A234514D10083A483 /* Bauhaus Shared */,
 				1F32F1A5234514D60083A483 /* Bauhaus iOS */,
 				1F32F1B6234514D60083A483 /* Bauhaus tvOS */,
@@ -647,8 +664,17 @@
 				1FA4681E234D1E8900F93A8E /* DotComponent.swift */,
 				1FA46828234D214B00F93A8E /* BoardComponent.swift */,
 				1F6E87F12360C5D200E7AEC2 /* LabelComponent.swift */,
+				1F37F97A2367721D0070E76A /* GroupComponent.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		1F4C3AE8236B5AFA00DB55D7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1F4C3AEA236B5B1000DB55D7 /* Munro-2LYe.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		1F586D38234BC05E00C23821 /* Utils */ = {
@@ -656,6 +682,7 @@
 			children = (
 				1F586D39234BC09600C23821 /* EntityManager.swift */,
 				1F0CE9BC235F8D88003960D8 /* Color.swift */,
+				1F4C3AE6236B4B1B00DB55D7 /* SKNodeExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1053,6 +1080,7 @@
 				1F32F1AF234514D60083A483 /* LaunchScreen.storyboard in Resources */,
 				1F32F1D9234514D60083A483 /* Assets.xcassets in Resources */,
 				1F6E88062360D73A00E7AEC2 /* ChooseCPScene.sks in Resources */,
+				1F4C3AEF236B5B1000DB55D7 /* Munro-2LYe.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1067,6 +1095,7 @@
 				1F32F1C0234514D60083A483 /* LaunchScreen.storyboard in Resources */,
 				1F32F1DA234514D60083A483 /* Assets.xcassets in Resources */,
 				1F6E88072360D73A00E7AEC2 /* ChooseCPScene.sks in Resources */,
+				1F4C3AF0236B5B1000DB55D7 /* Munro-2LYe.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1078,6 +1107,7 @@
 				1F32F1D5234514D60083A483 /* GameScene.sks in Resources */,
 				1F6E88082360D73A00E7AEC2 /* ChooseCPScene.sks in Resources */,
 				1F32F1DB234514D60083A483 /* Assets.xcassets in Resources */,
+				1F4C3AF1236B5B1000DB55D7 /* Munro-2LYe.ttf in Resources */,
 				5C61A681234BC54900F34E99 /* MenuScene.sks in Resources */,
 				1F32F1D2234514D60083A483 /* Actions.sks in Resources */,
 			);
@@ -1450,6 +1480,7 @@
 				1F32F1D6234514D60083A483 /* GameScene.swift in Sources */,
 				5C7B6750234D0C990044C0BB /* PathComponent.swift in Sources */,
 				5C61A66B234BC38200F34E99 /* GameStateMachine.swift in Sources */,
+				1F4C3AE7236B4B1B00DB55D7 /* SKNodeExtension.swift in Sources */,
 				5C61A657234BBBF200F34E99 /* GridComponent.swift in Sources */,
 				5C61A62D234BB91A00F34E99 /* RenderComponent.swift in Sources */,
 				5C61A5F4234BB90E00F34E99 /* Line.swift in Sources */,
@@ -1476,6 +1507,7 @@
 				5CC45D7E235E456000853BAD /* StartScene.swift in Sources */,
 				5C61A675234BC3C500F34E99 /* LineStates.swift in Sources */,
 				1F6E87F22360C5D200E7AEC2 /* LabelComponent.swift in Sources */,
+				1F37F97B2367721D0070E76A /* GroupComponent.swift in Sources */,
 				5C61A64C234BBABC00F34E99 /* Background.swift in Sources */,
 				1F6E87FC2360CD8A00E7AEC2 /* Group.swift in Sources */,
 				5CC45D7A235E431600853BAD /* TapComponent.swift in Sources */,
@@ -1502,6 +1534,7 @@
 				5C7B673D234D080B0044C0BB /* RectangleComponent.swift in Sources */,
 				5C61A610234BB90E00F34E99 /* Board.swift in Sources */,
 				5C61A5FE234BB90E00F34E99 /* Dot.swift in Sources */,
+				1F37F97C2367721D0070E76A /* GroupComponent.swift in Sources */,
 				5C61A643234BBA8B00F34E99 /* Button.swift in Sources */,
 				5CEA00CB23621FFF00944C69 /* PathSprites.swift in Sources */,
 				5C61A662234BC21000F34E99 /* Box.swift in Sources */,
@@ -1540,6 +1573,7 @@
 				5C7B673E234D080B0044C0BB /* RectangleComponent.swift in Sources */,
 				5C61A611234BB90E00F34E99 /* Board.swift in Sources */,
 				5C61A5FF234BB90E00F34E99 /* Dot.swift in Sources */,
+				1F37F97D2367721D0070E76A /* GroupComponent.swift in Sources */,
 				5C61A644234BBA8B00F34E99 /* Button.swift in Sources */,
 				5CEA00CC23621FFF00944C69 /* PathSprites.swift in Sources */,
 				5C61A663234BC21000F34E99 /* Box.swift in Sources */,
@@ -1582,6 +1616,7 @@
 				5C61A645234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63A234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
 				5C7B6753234D0C990044C0BB /* PathComponent.swift in Sources */,
+				1F37F97E2367721D0070E76A /* GroupComponent.swift in Sources */,
 				5CEA00CD23621FFF00944C69 /* PathSprites.swift in Sources */,
 				1FA46822234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				5C61A612234BB90E00F34E99 /* Board.swift in Sources */,
@@ -1616,6 +1651,7 @@
 				5C61A646234BBA8B00F34E99 /* Button.swift in Sources */,
 				5C61A63B234BB93C00F34E99 /* Direction+Axis.swift in Sources */,
 				5C7B6754234D0C990044C0BB /* PathComponent.swift in Sources */,
+				1F37F97F2367721D0070E76A /* GroupComponent.swift in Sources */,
 				5CEA00CE23621FFF00944C69 /* PathSprites.swift in Sources */,
 				1FA46823234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				5C61A613234BB90E00F34E99 /* Board.swift in Sources */,
@@ -1632,6 +1668,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F0CE9B8235F85F0003960D8 /* ChooseCPScene.swift in Sources */,
+				1F37F9802367721D0070E76A /* GroupComponent.swift in Sources */,
 				5C61A651234BBABC00F34E99 /* Background.swift in Sources */,
 				5C61A60B234BB90E00F34E99 /* Piece.swift in Sources */,
 				1F6E88012360CD8A00E7AEC2 /* Group.swift in Sources */,
@@ -1664,6 +1701,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F0CE9B9235F85F0003960D8 /* ChooseCPScene.swift in Sources */,
+				1F37F9812367721D0070E76A /* GroupComponent.swift in Sources */,
 				5C61A652234BBABC00F34E99 /* Background.swift in Sources */,
 				5C61A60C234BB90E00F34E99 /* Piece.swift in Sources */,
 				1F6E88022360CD8A00E7AEC2 /* Group.swift in Sources */,
@@ -1696,6 +1734,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F0CE9BA235F85F0003960D8 /* ChooseCPScene.swift in Sources */,
+				1F37F9822367721D0070E76A /* GroupComponent.swift in Sources */,
 				5C61A653234BBABC00F34E99 /* Background.swift in Sources */,
 				5C61A60D234BB90E00F34E99 /* Piece.swift in Sources */,
 				1F6E88032360CD8A00E7AEC2 /* Group.swift in Sources */,
@@ -1728,6 +1767,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F0CE9BB235F85F0003960D8 /* ChooseCPScene.swift in Sources */,
+				1F37F9832367721D0070E76A /* GroupComponent.swift in Sources */,
 				5C61A654234BBABC00F34E99 /* Background.swift in Sources */,
 				5C61A60E234BB90E00F34E99 /* Piece.swift in Sources */,
 				1F6E88042360CD8A00E7AEC2 /* Group.swift in Sources */,

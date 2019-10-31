@@ -15,7 +15,7 @@ class Button : GKEntity {
         
         let renderComponent = RenderComponent(node: SKNode())
         renderComponent.node.zPosition = 4
-        renderComponent.node.position = position
+        renderComponent.node.posByScreen(x: position.x, y: position.y)
         self.addComponent(renderComponent)
         
         let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode(imageNamed: sprite))
