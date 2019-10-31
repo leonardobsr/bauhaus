@@ -77,13 +77,13 @@ class GridComponent : GKComponent {
             self.verticalLineGrid.append(vLineRow)
         }
         
-        for _ in 0 ... 50 {
-            self.verticalLineGrid.randomElement()!.randomElement()!.component(ofType: LightSwitchComponent.self)?.turnOn()
-        }
-
-        for _ in 0 ... 50 {
-            self.horizontalLineGrid.randomElement()!.randomElement()!.component(ofType: LightSwitchComponent.self)?.turnOn()
-        }
+//        for _ in 0 ... 50 {
+//            self.verticalLineGrid.randomElement()!.randomElement()!.component(ofType: LightSwitchComponent.self)?.turnOn()
+//        }
+//
+//        for _ in 0 ... 50 {
+//            self.horizontalLineGrid.randomElement()!.randomElement()!.component(ofType: LightSwitchComponent.self)?.turnOn()
+//        }
     }
     
     required init?(coder: NSCoder) {

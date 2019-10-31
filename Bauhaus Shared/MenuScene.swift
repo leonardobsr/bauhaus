@@ -47,7 +47,8 @@ class MenuScene: SKScene {
         
         playButtonSprite.removeFromParent()
         
-        playButton = Button(position: playButtonSprite.position, sprite: "MenuPlayButton")
+//        playButton = Button(position: playButtonSprite.position, sprite: "MenuPlayButton")
+        playButton = Button(position: CGPoint(x: 0.8, y: 0.1), sprite: "MenuPlayButton")
         playButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         entityManager?.add(playButton!)
         
