@@ -63,8 +63,8 @@ class GameScene: SKScene {
             renderComponent.node.posByScreen(x: 0.35, y: 0.5)
         }
         if let gridComponent = newBoard.component(ofType: GridComponent.self) {
-            let gridSize = CGSize(width: 11 * 56, height: 11 * 56)
-            gridComponent.setGrid(width: 12, height: 12, size: gridSize)
+            let gridSize = CGSize(width: 10 * 56, height: 10 * 56)
+            gridComponent.setGrid(width: 11, height: 11, size: gridSize)
             dots = gridComponent.dotGrid
         }
         entityManager?.add(newBoard)
@@ -79,7 +79,7 @@ class GameScene: SKScene {
         
 //        let newTurnPassButton = Button(position: CGPoint(x: 610, y: -450), sprite: "backButton")
         let newTurnPassButton = Button(position: CGPoint(x: 0.89, y: 0.07), sprite: "backButton")
-        newTurnPassButton.component(ofType: RenderComponent.self)?.node.setScale(2.5 * (self.size.height/self.size.width))
+        newTurnPassButton.component(ofType: RenderComponent.self)?.node.setScale((self.size.height/self.size.width))
         newTurnPassButton.component(ofType: RenderComponent.self)?.node.zRotation = 180 * .pi/180
         newTurnPassButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         self.turnPassButton = newTurnPassButton

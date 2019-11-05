@@ -16,7 +16,8 @@ class startScreenState : GKState {
 
 class playerSelectionState : GKState {
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is playState.Type
+        return (stateClass is playState.Type)
+            || (stateClass is startScreenState.Type)
     }
 }
 

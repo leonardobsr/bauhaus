@@ -19,6 +19,7 @@ class Label : GKEntity {
         
         let labelComponent = LabelComponent(labelNode: SKLabelNode())
         labelComponent.labelNode.text = label.uppercased()
+        labelComponent.labelNode.fontName = "Munro"
         renderComponent.node.addChild(labelComponent.labelNode)
         self.addComponent(labelComponent)
     }

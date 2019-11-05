@@ -31,6 +31,8 @@ class ChooseCPScene : SKScene {
     var yellowPlayerLabel : Label?
     var bluePlayerLabel : Label?
     
+    var touchedButton : Button?
+    
     private var lastUpdateTime : TimeInterval = 0
 
     class func newChooseCPScene(size: CGSize) -> ChooseCPScene {
@@ -54,36 +56,45 @@ class ChooseCPScene : SKScene {
         
         self.entityManager = EntityManager(scene: self)
         
-        self.backButton = Button(position: CGPoint(x: 0.05, y: 0.95), sprite: "backButton")
+        // largura 1366 = 100%
+        // altura 1024 = 100%
+        // 0 -- 1 == 0% -- 100%
+        self.backButton = Button(position: CGPoint(x: 0.10, y: 0.85), sprite: "backButton")
+        self.backButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         
-        self.chooseCPGroup = Group(position: CGPoint(x: -112.0, y: -112.0))
-        self.redPlayerGroup = Group(position: CGPoint(x: -112.0, y: -112.0))
-        self.yellowPlayerGroup = Group(position: CGPoint(x: -112.0, y: -112.0))
-        self.bluePlayerGroup = Group(position: CGPoint(x: -112.0, y: -112.0))
+        self.descriptionLabel = Label(position: CGPoint(x: 0.5, y: 0.68), label: "Choose color and players")
         
-        self.descriptionLabel = Label(position: CGPoint(x: -112.0, y: -112.0), label: "Choose color and players")
+        self.redPlayerButton = Button(position: CGPoint(x: 0.4, y: 0.55), sprite: "redPlayer")
+        self.redPlayerLabel = Label(position: CGPoint(x: 0.4, y: 0.45), label: "P1")
         
-        self.redPlayerButton = Button(position: CGPoint(x: -112.0, y: -112.0), sprite: "redPlayer")
-        self.redPlayerLabel = Label(position: CGPoint(x: -112.0, y: -112.0), label: "P1")
+        self.yellowPlayerButton = Button(position: CGPoint(x: 0.5, y: 0.55), sprite: "yellowPlayer")
+        self.yellowPlayerLabel = Label(position: CGPoint(x: 0.5, y: 0.45), label: "P2")
         
-        self.redPlayerButton = Button(position: CGPoint(x: -112.0, y: -112.0), sprite: "yellowPlayer")
-        self.redPlayerLabel = Label(position: CGPoint(x: -112.0, y: -112.0), label: "P2")
+        self.bluePlayerButton = Button(position: CGPoint(x: 0.6, y: 0.55), sprite: "bluePlayer")
+        self.bluePlayerLabel = Label(position: CGPoint(x: 0.6, y: 0.45), label: "P3")
         
-        self.redPlayerButton = Button(position: CGPoint(x: -112.0, y: -112.0), sprite: "bluePlayer")
-        self.redPlayerLabel = Label(position: CGPoint(x: -112.0, y: -112.0), label: "P3")
-        
-        self.playButton = Button(position: CGPoint(x: -112.0, y: -112.0), sprite: "playButton")
-        
-        self.redPlayerGroup?.setChilds(childs: [self.redPlayerButton, self.redPlayerLabel])
-        self.yellowPlayerGroup?.setChilds(childs: [self.yellowPlayerButton, self.yellowPlayerLabel])
-        self.bluePlayerGroup?.setChilds(childs: [self.bluePlayerButton, self.bluePlayerLabel])
-        self.chooseCPGroup?.setChilds(childs: [self.descriptionLabel, self.redPlayerGroup, self.yellowPlayerGroup, self.bluePlayerGroup, self.playButton])
+        self.playButton = Button(position: CGPoint(x: 0.50, y: 0.35), sprite: "playButton")
+        self.playButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
 
         if  let entityManager = self.entityManager,
             let backButton = self.backButton,
-            let chooseCPGroup = self.chooseCPGroup {
+            let descriptionLabel = self.descriptionLabel,
+            let redPlayerButton = self.redPlayerButton,
+            let redPlayerLabel = self.redPlayerLabel,
+            let yellowPlayerButton = self.yellowPlayerButton,
+            let yellowPlayerLabel = self.yellowPlayerLabel,
+            let bluePlayerButton = self.bluePlayerButton,
+            let bluePlayerLabel = self.bluePlayerLabel,
+            let playButton = self.playButton {
             entityManager.add(backButton)
-            entityManager.add(chooseCPGroup)
+            entityManager.add(descriptionLabel)
+            entityManager.add(redPlayerButton)
+            entityManager.add(redPlayerLabel)
+            entityManager.add(yellowPlayerButton)
+            entityManager.add(yellowPlayerLabel)
+            entityManager.add(bluePlayerButton)
+            entityManager.add(bluePlayerLabel)
+            entityManager.add(playButton)
         }
     }
     
@@ -114,5 +125,43 @@ class ChooseCPScene : SKScene {
         }
         
         self.lastUpdateTime = currentTime
+        
+        if let backButtonSM = self.backButton?.component(ofType: TapComponent.self)?.stateMachine {
+            if backButtonSM.currentState is ActState {
+                GameManager.shared.startGame()
+                backButtonSM.enter(RestState.self)
+            }
+        }
+        
+        if let playButtonSM = self.playButton?.component(ofType: TapComponent.self)?.stateMachine {
+            if playButtonSM.currentState is ActState {
+                GameManager.shared.nextScreen()
+                playButtonSM.enter(RestState.self)
+            }
+        }
     }
+}
+
+extension ChooseCPScene {
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let t = touches.first {
+            let node = atPoint(t.location(in: self))
+            
+            if let button = node.entity as? Button {
+                self.touchedButton = button
+                button.component(ofType: RenderComponent.self)?.node.alpha = 0.5
+            }
+            
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let button = self.touchedButton {
+            button.component(ofType: TapComponent.self)?.changeState()
+            button.component(ofType: RenderComponent.self)?.node.alpha = 1
+        }
+    }
+    
 }
