@@ -316,6 +316,15 @@
 		5CCC77EA2368CC4D0073E097 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC77E32368CC4C0073E097 /* MenuScene.swift */; };
 		5CCC77EB2368CC4D0073E097 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC77E32368CC4C0073E097 /* MenuScene.swift */; };
 		5CCC77EC2368CC4D0073E097 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC77E32368CC4C0073E097 /* MenuScene.swift */; };
+		5CD8F9BA2371EF9F00964497 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD8F9B92371EF9F00964497 /* PhysicsComponent.swift */; };
+		5CD8F9BB2371EF9F00964497 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD8F9B92371EF9F00964497 /* PhysicsComponent.swift */; };
+		5CD8F9BC2371EF9F00964497 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD8F9B92371EF9F00964497 /* PhysicsComponent.swift */; };
+		5CD8F9BD2371EF9F00964497 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD8F9B92371EF9F00964497 /* PhysicsComponent.swift */; };
+		5CD8F9BE2371EF9F00964497 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD8F9B92371EF9F00964497 /* PhysicsComponent.swift */; };
+		5CD8F9BF2371EF9F00964497 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD8F9B92371EF9F00964497 /* PhysicsComponent.swift */; };
+		5CD8F9C02371EF9F00964497 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD8F9B92371EF9F00964497 /* PhysicsComponent.swift */; };
+		5CD8F9C12371EF9F00964497 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD8F9B92371EF9F00964497 /* PhysicsComponent.swift */; };
+		5CD8F9C22371EF9F00964497 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD8F9B92371EF9F00964497 /* PhysicsComponent.swift */; };
 		5CDFD9F3236633C2008DB386 /* ButtonStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFD9F2236633C2008DB386 /* ButtonStates.swift */; };
 		5CDFD9F4236633C2008DB386 /* ButtonStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFD9F2236633C2008DB386 /* ButtonStates.swift */; };
 		5CDFD9F5236633C2008DB386 /* ButtonStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFD9F2236633C2008DB386 /* ButtonStates.swift */; };
@@ -473,6 +482,7 @@
 		5CC45D7B235E436C00853BAD /* VisualResponseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualResponseComponent.swift; sourceTree = "<group>"; };
 		5CC45D7D235E456000853BAD /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		5CCC77E32368CC4C0073E097 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		5CD8F9B92371EF9F00964497 /* PhysicsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponent.swift; sourceTree = "<group>"; };
 		5CDFD9F2236633C2008DB386 /* ButtonStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStates.swift; sourceTree = "<group>"; };
 		5CEA00C923621FFF00944C69 /* PathSprites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathSprites.swift; sourceTree = "<group>"; };
 		6AA6EAD3D86F8D5571B2C82D /* Pods_BauhaustvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BauhaustvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -695,6 +705,7 @@
 				1FA46828234D214B00F93A8E /* BoardComponent.swift */,
 				1F6E87F12360C5D200E7AEC2 /* LabelComponent.swift */,
 				1F37F97A2367721D0070E76A /* GroupComponent.swift */,
+				5CD8F9B92371EF9F00964497 /* PhysicsComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1520,6 +1531,7 @@
 				5C61A606234BB90E00F34E99 /* Piece.swift in Sources */,
 				5CEA00CA23621FFF00944C69 /* PathSprites.swift in Sources */,
 				5C7B6746234D09670044C0BB /* LightSwitchComponent.swift in Sources */,
+				5CD8F9BA2371EF9F00964497 /* PhysicsComponent.swift in Sources */,
 				1F32F1A9234514D60083A483 /* GameViewController.swift in Sources */,
 				1F0CE9BD235F8D88003960D8 /* Color.swift in Sources */,
 				5C7B673C234D080B0044C0BB /* RectangleComponent.swift in Sources */,
@@ -1580,6 +1592,7 @@
 				1F586D3B234BC09600C23821 /* EntityManager.swift in Sources */,
 				1FA46820234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				1F32F1B8234514D60083A483 /* AppDelegate.swift in Sources */,
+				5CD8F9BB2371EF9F00964497 /* PhysicsComponent.swift in Sources */,
 				5CCC77E52368CC4D0073E097 /* MenuScene.swift in Sources */,
 				5C61A625234BB91A00F34E99 /* SpriteComponent.swift in Sources */,
 				1F6E87FD2360CD8A00E7AEC2 /* Group.swift in Sources */,
@@ -1622,6 +1635,7 @@
 				1F586D3C234BC09600C23821 /* EntityManager.swift in Sources */,
 				1FA46821234D1E8900F93A8E /* DotComponent.swift in Sources */,
 				1F32F1C9234514D60083A483 /* AppDelegate.swift in Sources */,
+				5CD8F9BC2371EF9F00964497 /* PhysicsComponent.swift in Sources */,
 				5CCC77E62368CC4D0073E097 /* MenuScene.swift in Sources */,
 				5C61A626234BB91A00F34E99 /* SpriteComponent.swift in Sources */,
 				1F6E87FE2360CD8A00E7AEC2 /* Group.swift in Sources */,
@@ -1644,6 +1658,7 @@
 				5C61A609234BB90E00F34E99 /* Piece.swift in Sources */,
 				5C0EFF062368D2600010524D /* Timer.swift in Sources */,
 				1F6E87F52360C5DB00E7AEC2 /* LabelComponent.swift in Sources */,
+				5CD8F9BD2371EF9F00964497 /* PhysicsComponent.swift in Sources */,
 				1F6E87FF2360CD8A00E7AEC2 /* Group.swift in Sources */,
 				5C7B673F234D080B0044C0BB /* RectangleComponent.swift in Sources */,
 				5C61A61E234BB91A00F34E99 /* ConnectionComponent.swift in Sources */,
@@ -1682,6 +1697,7 @@
 				5C61A60A234BB90E00F34E99 /* Piece.swift in Sources */,
 				5C0EFF072368D2600010524D /* Timer.swift in Sources */,
 				1F6E87F62360C5DB00E7AEC2 /* LabelComponent.swift in Sources */,
+				5CD8F9BE2371EF9F00964497 /* PhysicsComponent.swift in Sources */,
 				1F6E88002360CD8A00E7AEC2 /* Group.swift in Sources */,
 				5C7B6740234D080B0044C0BB /* RectangleComponent.swift in Sources */,
 				5C61A61F234BB91A00F34E99 /* ConnectionComponent.swift in Sources */,
@@ -1740,6 +1756,7 @@
 				5C61A614234BB90E00F34E99 /* Board.swift in Sources */,
 				1FA4682E234D214B00F93A8E /* BoardComponent.swift in Sources */,
 				5C0EFF082368D2600010524D /* Timer.swift in Sources */,
+				5CD8F9BF2371EF9F00964497 /* PhysicsComponent.swift in Sources */,
 				5C61A5F9234BB90E00F34E99 /* Line.swift in Sources */,
 				5C61A67A234BC3C500F34E99 /* LineStates.swift in Sources */,
 				5C61A602234BB90E00F34E99 /* Dot.swift in Sources */,
@@ -1776,6 +1793,7 @@
 				5C61A615234BB90E00F34E99 /* Board.swift in Sources */,
 				1FA4682F234D214B00F93A8E /* BoardComponent.swift in Sources */,
 				5C0EFF092368D2600010524D /* Timer.swift in Sources */,
+				5CD8F9C02371EF9F00964497 /* PhysicsComponent.swift in Sources */,
 				5C61A5FA234BB90E00F34E99 /* Line.swift in Sources */,
 				5C61A67B234BC3C500F34E99 /* LineStates.swift in Sources */,
 				5C61A603234BB90E00F34E99 /* Dot.swift in Sources */,
@@ -1812,6 +1830,7 @@
 				5C61A616234BB90E00F34E99 /* Board.swift in Sources */,
 				1FA46830234D214B00F93A8E /* BoardComponent.swift in Sources */,
 				5C0EFF0A2368D2600010524D /* Timer.swift in Sources */,
+				5CD8F9C12371EF9F00964497 /* PhysicsComponent.swift in Sources */,
 				5C61A5FB234BB90E00F34E99 /* Line.swift in Sources */,
 				5C61A67C234BC3C500F34E99 /* LineStates.swift in Sources */,
 				5C61A604234BB90E00F34E99 /* Dot.swift in Sources */,
@@ -1848,6 +1867,7 @@
 				5C61A617234BB90E00F34E99 /* Board.swift in Sources */,
 				1FA46831234D214B00F93A8E /* BoardComponent.swift in Sources */,
 				5C0EFF0B2368D2600010524D /* Timer.swift in Sources */,
+				5CD8F9C22371EF9F00964497 /* PhysicsComponent.swift in Sources */,
 				5C61A5FC234BB90E00F34E99 /* Line.swift in Sources */,
 				5C61A67D234BC3C500F34E99 /* LineStates.swift in Sources */,
 				5C61A605234BB90E00F34E99 /* Dot.swift in Sources */,

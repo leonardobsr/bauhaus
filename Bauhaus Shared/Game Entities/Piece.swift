@@ -21,15 +21,20 @@ class Piece : GKEntity {
         
         let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode())
         spriteComponent.spriteNode.entity = self
+        spriteComponent.spriteNode.name = "Piece"
         renderComponent.node.addChild(spriteComponent.spriteNode)
         self.addComponent(spriteComponent)
                 
         // Game Logic Components
         let pathComponent = PathComponent(pathType: pathType, edgeSize: edgeSize, pathSprite: pathSprite)
-        pathComponent.drawingNode.setScale(2)
         pathComponent.drawingNode.entity = self
+        pathComponent.drawingNode.name = "Piece"
         renderComponent.node.addChild(pathComponent.drawingNode)
         self.addComponent(pathComponent)
+        
+        let physicsComponent = PhysicsComponent(node: pathComponent.drawingNode as! SKSpriteNode, categoryBitMask: .gamePiece)
+        self.addComponent(physicsComponent)
+        pathComponent.drawingNode.setScale(2)
     }
     
     required init?(coder: NSCoder) {
