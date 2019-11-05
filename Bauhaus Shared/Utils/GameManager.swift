@@ -39,6 +39,7 @@ class GameManager {
     
     func startGame() {
         self.currentScene = MenuScene.newGameScene()
+        stateMachine?.enter(startScreenState.self)
         
         guard let skView = self.gameViewController?.view as? SKView else { return }
                 
@@ -51,10 +52,14 @@ class GameManager {
         switch stateMachine?.currentState {
         case is startScreenState :
             
+            stateMachine?.enter(playerSelectionState.self)
+            self.currentScene = ChooseCPScene.newChooseCPScene(size: SKViewSize!)
+        
+        case is playerSelectionState :
+            
             stateMachine?.enter(playState.self)
             self.currentScene = GameScene()
-        
-        case is playerSelectionState : return
+            
         case is playState : return
         case is pauseState : return
         case is gameOverState : return

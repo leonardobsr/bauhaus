@@ -31,6 +31,8 @@ class ChooseCPScene : SKScene {
     var yellowPlayerLabel : Label?
     var bluePlayerLabel : Label?
     
+    var touchedButton : Button?
+    
     private var lastUpdateTime : TimeInterval = 0
 
     class func newChooseCPScene(size: CGSize) -> ChooseCPScene {
@@ -58,19 +60,21 @@ class ChooseCPScene : SKScene {
         // altura 1024 = 100%
         // 0 -- 1 == 0% -- 100%
         self.backButton = Button(position: CGPoint(x: 0.10, y: 0.85), sprite: "backButton")
+        self.backButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         
-        self.descriptionLabel = Label(position: CGPoint(x: 0.49, y: 0.68), label: "Choose color and players")
+        self.descriptionLabel = Label(position: CGPoint(x: 0.5, y: 0.68), label: "Choose color and players")
         
-        self.redPlayerButton = Button(position: CGPoint(x: 0.38, y: 0.54), sprite: "redPlayer")
-        self.redPlayerLabel = Label(position: CGPoint(x: 0.42, y: 0.48), label: "P1")
+        self.redPlayerButton = Button(position: CGPoint(x: 0.4, y: 0.55), sprite: "redPlayer")
+        self.redPlayerLabel = Label(position: CGPoint(x: 0.4, y: 0.45), label: "P1")
         
-        self.yellowPlayerButton = Button(position: CGPoint(x: 0.50, y: 0.54), sprite: "yellowPlayer")
-        self.yellowPlayerLabel = Label(position: CGPoint(x: 0.51, y: 0.48), label: "P2")
+        self.yellowPlayerButton = Button(position: CGPoint(x: 0.5, y: 0.55), sprite: "yellowPlayer")
+        self.yellowPlayerLabel = Label(position: CGPoint(x: 0.5, y: 0.45), label: "P2")
         
-        self.bluePlayerButton = Button(position: CGPoint(x: 0.58, y: 0.54), sprite: "bluePlayer")
-        self.bluePlayerLabel = Label(position: CGPoint(x: 0.60, y: 0.48), label: "P3")
+        self.bluePlayerButton = Button(position: CGPoint(x: 0.6, y: 0.55), sprite: "bluePlayer")
+        self.bluePlayerLabel = Label(position: CGPoint(x: 0.6, y: 0.45), label: "P3")
         
         self.playButton = Button(position: CGPoint(x: 0.50, y: 0.35), sprite: "playButton")
+        self.playButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
 
         if  let entityManager = self.entityManager,
             let backButton = self.backButton,
@@ -121,5 +125,43 @@ class ChooseCPScene : SKScene {
         }
         
         self.lastUpdateTime = currentTime
+        
+        if let backButtonSM = self.backButton?.component(ofType: TapComponent.self)?.stateMachine {
+            if backButtonSM.currentState is ActState {
+                GameManager.shared.startGame()
+                backButtonSM.enter(RestState.self)
+            }
+        }
+        
+        if let playButtonSM = self.playButton?.component(ofType: TapComponent.self)?.stateMachine {
+            if playButtonSM.currentState is ActState {
+                GameManager.shared.nextScreen()
+                playButtonSM.enter(RestState.self)
+            }
+        }
     }
+}
+
+extension ChooseCPScene {
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let t = touches.first {
+            let node = atPoint(t.location(in: self))
+            
+            if let button = node.entity as? Button {
+                self.touchedButton = button
+                button.component(ofType: RenderComponent.self)?.node.alpha = 0.5
+            }
+            
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let button = self.touchedButton {
+            button.component(ofType: TapComponent.self)?.changeState()
+            button.component(ofType: RenderComponent.self)?.node.alpha = 1
+        }
+    }
+    
 }

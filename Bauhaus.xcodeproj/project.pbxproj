@@ -394,7 +394,7 @@
 		1F32F19C234514D10083A483 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		1F32F19D234514D10083A483 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		1F32F19E234514D50083A483 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1F32F1A3234514D60083A483 /* Bauhaus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bauhaus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F32F1A3234514D60083A483 /* Piet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Piet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F32F1A6234514D60083A483 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F32F1A8234514D60083A483 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		1F32F1AB234514D60083A483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -610,7 +610,7 @@
 		1F32F1A4234514D60083A483 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1F32F1A3234514D60083A483 /* Bauhaus.app */,
+				1F32F1A3234514D60083A483 /* Piet.app */,
 				1F32F1B5234514D60083A483 /* Bauhaus.app */,
 				1F32F1C6234514D60083A483 /* Bauhaus.app */,
 				1F754E54234BA8B100EED3B7 /* BauhausiOSUITests.xctest */,
@@ -871,7 +871,7 @@
 			);
 			name = "Bauhaus iOS";
 			productName = "Bauhaus iOS";
-			productReference = 1F32F1A3234514D60083A483 /* Bauhaus.app */;
+			productReference = 1F32F1A3234514D60083A483 /* Piet.app */;
 			productType = "com.apple.product-type.application";
 		};
 		1F32F1B4234514D60083A483 /* Bauhaus tvOS */ = {
@@ -2060,8 +2060,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = RovaneMoura.Bauhaus;
-				PRODUCT_NAME = Bauhaus;
+				PRODUCT_BUNDLE_IDENTIFIER = RovaneMoura.Piet;
+				PRODUCT_NAME = Piet;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -2081,8 +2081,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = RovaneMoura.Bauhaus;
-				PRODUCT_NAME = Bauhaus;
+				PRODUCT_BUNDLE_IDENTIFIER = RovaneMoura.Piet;
+				PRODUCT_NAME = Piet;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
