@@ -27,6 +27,7 @@ class LightSwitchComponent : GKComponent {
     func turnOn() {
         if self.stateMachine.enter(OnState.self) {
             self.node.texture = SKTexture(imageNamed: "lineOn")
+            self.entity
         }
     }
     

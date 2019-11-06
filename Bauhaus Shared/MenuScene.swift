@@ -53,7 +53,7 @@ class MenuScene: SKScene {
         playButtonSprite.removeFromParent()
         
 //        playButton = Button(position: playButtonSprite.position, sprite: "MenuPlayButton")
-        playButton = Button(position: CGPoint(x: 0.615, y: 0.1897), sprite: "MenuPlayButton")
+        playButton = Button(type: ButtonType.changeSprite, position: CGPoint(x: 0.615, y: 0.1897), sprite: "MenuPlayButton")
         playButton?.component(ofType: RenderComponent.self)?.node.setScale(0.75)
         playButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         entityManager?.add(playButton!)
@@ -64,7 +64,7 @@ class MenuScene: SKScene {
         
         infoButtonSprite.removeFromParent()
         
-        infoButton = Button(position: CGPoint(x: 0.14298, y: 0.79), sprite: "MenuInfoButton")
+        infoButton = Button(type: ButtonType.changeSprite, position: CGPoint(x: 0.14298, y: 0.79), sprite: "MenuInfoButton")
         infoButton?.component(ofType: RenderComponent.self)?.node.setScale(0.75)
         infoButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         entityManager?.add(infoButton!)

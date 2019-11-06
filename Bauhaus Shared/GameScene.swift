@@ -48,49 +48,49 @@ class GameScene: SKScene {
 //    }
 
     func setUpScene() {
-        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        
-        self.lastUpdateTime = 0
-        
-        self.currentPlayer = .red
-        
-        entityManager = EntityManager(scene: self)
-        
-        let newBoard = Board(frame: self.frame)
-        var dots = [[Dot]]()
-        if let renderComponent = newBoard.component(ofType: RenderComponent.self) {
-//            renderComponent.node.position = CGPoint(x: -0.2 * self.frame.maxX, y: 0)
-            renderComponent.node.posByScreen(x: 0.35, y: 0.5)
-        }
-        if let gridComponent = newBoard.component(ofType: GridComponent.self) {
-            let gridSize = CGSize(width: 10 * 56, height: 10 * 56)
-            gridComponent.setGrid(width: 11, height: 11, size: gridSize)
-            dots = gridComponent.dotGrid
-        }
-        entityManager?.add(newBoard)
-        dots.forEach { row in row.forEach { dot in entityManager?.add(dot) } }
-                
-//        let newPauseButton = Button(position: CGPoint(x: -610, y: 450), sprite: "pauseButton")
-        let newPauseButton = Button(position: CGPoint(x: 0.05, y: 0.93), sprite: "pauseButton")
-        newPauseButton.component(ofType: RenderComponent.self)?.node.setScale((self.size.height/self.size.width))
-        newPauseButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
-        self.pauseButton = newPauseButton
-        entityManager?.add(newPauseButton)
-        
-//        let newTurnPassButton = Button(position: CGPoint(x: 610, y: -450), sprite: "backButton")
-        let newTurnPassButton = Button(position: CGPoint(x: 0.89, y: 0.07), sprite: "backButton")
-        newTurnPassButton.component(ofType: RenderComponent.self)?.node.setScale((self.size.height/self.size.width))
-        newTurnPassButton.component(ofType: RenderComponent.self)?.node.zRotation = 180 * .pi/180
-        newTurnPassButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
-        self.turnPassButton = newTurnPassButton
-        entityManager?.add(newTurnPassButton)
-        
-        loadRandomPieces()
-        
-        let newTimer = Timer()
-        newTimer.component(ofType: RenderComponent.self)?.node.posByScreen(x: 1, y: 1.5)
-        self.timer = newTimer
-        entityManager?.add(newTimer)
+//        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+//        
+//        self.lastUpdateTime = 0
+//        
+//        self.currentPlayer = .red
+//        
+//        entityManager = EntityManager(scene: self)
+//        
+//        let newBoard = Board(frame: self.frame)
+//        var dots = [[Dot]]()
+//        if let renderComponent = newBoard.component(ofType: RenderComponent.self) {
+////            renderComponent.node.position = CGPoint(x: -0.2 * self.frame.maxX, y: 0)
+//            renderComponent.node.posByScreen(x: 0.35, y: 0.5)
+//        }
+//        if let gridComponent = newBoard.component(ofType: GridComponent.self) {
+//            let gridSize = CGSize(width: 10 * 56, height: 10 * 56)
+//            gridComponent.setGrid(width: 11, height: 11, size: gridSize)
+//            dots = gridComponent.dotGrid
+//        }
+//        entityManager?.add(newBoard)
+//        dots.forEach { row in row.forEach { dot in entityManager?.add(dot) } }
+//                
+////        let newPauseButton = Button(position: CGPoint(x: -610, y: 450), sprite: "pauseButton")
+//        let newPauseButton = Button(position: CGPoint(x: 0.05, y: 0.93), sprite: "pauseButton")
+//        newPauseButton.component(ofType: RenderComponent.self)?.node.setScale((self.size.height/self.size.width))
+//        newPauseButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
+//        self.pauseButton = newPauseButton
+//        entityManager?.add(newPauseButton)
+//        
+////        let newTurnPassButton = Button(position: CGPoint(x: 610, y: -450), sprite: "backButton")
+//        let newTurnPassButton = Button(position: CGPoint(x: 0.89, y: 0.07), sprite: "backButton")
+//        newTurnPassButton.component(ofType: RenderComponent.self)?.node.setScale((self.size.height/self.size.width))
+//        newTurnPassButton.component(ofType: RenderComponent.self)?.node.zRotation = 180 * .pi/180
+//        newTurnPassButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
+//        self.turnPassButton = newTurnPassButton
+//        entityManager?.add(newTurnPassButton)
+//        
+//        loadRandomPieces()
+//        
+//        let newTimer = Timer()
+//        newTimer.component(ofType: RenderComponent.self)?.node.posByScreen(x: 1, y: 1.5)
+//        self.timer = newTimer
+//        entityManager?.add(newTimer)
     }
     
     #if os(watchOS)

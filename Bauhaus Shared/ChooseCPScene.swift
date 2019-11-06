@@ -50,52 +50,52 @@ class ChooseCPScene : SKScene {
     }
     
     func setUpScene() {
-        self.lastUpdateTime = 0
-
-        self.scene?.backgroundColor = UIColor.black
-        
-        self.entityManager = EntityManager(scene: self)
-        
-        // largura 1366 = 100%
-        // altura 1024 = 100%
-        // 0 -- 1 == 0% -- 100%
-        self.backButton = Button(position: CGPoint(x: 0.10, y: 0.85), sprite: "backButton")
-        self.backButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
-        
-        self.descriptionLabel = Label(position: CGPoint(x: 0.5, y: 0.68), label: "Choose color and players")
-        
-        self.redPlayerButton = Button(position: CGPoint(x: 0.4, y: 0.55), sprite: "redPlayer")
-        self.redPlayerLabel = Label(position: CGPoint(x: 0.4, y: 0.45), label: "P1")
-        
-        self.yellowPlayerButton = Button(position: CGPoint(x: 0.5, y: 0.55), sprite: "yellowPlayer")
-        self.yellowPlayerLabel = Label(position: CGPoint(x: 0.5, y: 0.45), label: "P2")
-        
-        self.bluePlayerButton = Button(position: CGPoint(x: 0.6, y: 0.55), sprite: "bluePlayer")
-        self.bluePlayerLabel = Label(position: CGPoint(x: 0.6, y: 0.45), label: "P3")
-        
-        self.playButton = Button(position: CGPoint(x: 0.50, y: 0.35), sprite: "playButton")
-        self.playButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
-
-        if  let entityManager = self.entityManager,
-            let backButton = self.backButton,
-            let descriptionLabel = self.descriptionLabel,
-            let redPlayerButton = self.redPlayerButton,
-            let redPlayerLabel = self.redPlayerLabel,
-            let yellowPlayerButton = self.yellowPlayerButton,
-            let yellowPlayerLabel = self.yellowPlayerLabel,
-            let bluePlayerButton = self.bluePlayerButton,
-            let bluePlayerLabel = self.bluePlayerLabel,
-            let playButton = self.playButton {
-            entityManager.add(backButton)
-            entityManager.add(descriptionLabel)
-            entityManager.add(redPlayerButton)
-            entityManager.add(redPlayerLabel)
-            entityManager.add(yellowPlayerButton)
-            entityManager.add(yellowPlayerLabel)
-            entityManager.add(bluePlayerButton)
-            entityManager.add(bluePlayerLabel)
-            entityManager.add(playButton)
-        }
+//        self.lastUpdateTime = 0
+//
+//        self.scene?.backgroundColor = UIColor.black
+//        
+//        self.entityManager = EntityManager(scene: self)
+//        
+//        // largura 1366 = 100%
+//        // altura 1024 = 100%
+//        // 0 -- 1 == 0% -- 100%
+//        self.backButton = Button(position: CGPoint(x: 0.10, y: 0.85), sprite: "backButton")
+//        self.backButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
+//        
+//        self.descriptionLabel = Label(position: CGPoint(x: 0.5, y: 0.68), label: "Choose color and players")
+//        
+//        self.redPlayerButton = Button(position: CGPoint(x: 0.4, y: 0.55), sprite: "redPlayer")
+//        self.redPlayerLabel = Label(position: CGPoint(x: 0.4, y: 0.45), label: "P1")
+//        
+//        self.yellowPlayerButton = Button(position: CGPoint(x: 0.5, y: 0.55), sprite: "yellowPlayer")
+//        self.yellowPlayerLabel = Label(position: CGPoint(x: 0.5, y: 0.45), label: "P2")
+//        
+//        self.bluePlayerButton = Button(position: CGPoint(x: 0.6, y: 0.55), sprite: "bluePlayer")
+//        self.bluePlayerLabel = Label(position: CGPoint(x: 0.6, y: 0.45), label: "P3")
+//        
+//        self.playButton = Button(position: CGPoint(x: 0.50, y: 0.35), sprite: "playButton")
+//        self.playButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
+//
+//        if  let entityManager = self.entityManager,
+//            let backButton = self.backButton,
+//            let descriptionLabel = self.descriptionLabel,
+//            let redPlayerButton = self.redPlayerButton,
+//            let redPlayerLabel = self.redPlayerLabel,
+//            let yellowPlayerButton = self.yellowPlayerButton,
+//            let yellowPlayerLabel = self.yellowPlayerLabel,
+//            let bluePlayerButton = self.bluePlayerButton,
+//            let bluePlayerLabel = self.bluePlayerLabel,
+//            let playButton = self.playButton {
+//            entityManager.add(backButton)
+//            entityManager.add(descriptionLabel)
+//            entityManager.add(redPlayerButton)
+//            entityManager.add(redPlayerLabel)
+//            entityManager.add(yellowPlayerButton)
+//            entityManager.add(yellowPlayerLabel)
+//            entityManager.add(bluePlayerButton)
+//            entityManager.add(bluePlayerLabel)
+//            entityManager.add(playButton)
+//        }
     }
     
     #if os(watchOS)
