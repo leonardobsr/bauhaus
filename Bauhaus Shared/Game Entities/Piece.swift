@@ -19,17 +19,22 @@ class Piece : GKEntity {
         renderComponent.node.zPosition = CGFloat(RenderingPosition.piece.rawValue)
         self.addComponent(renderComponent)
         
-        let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode())
+        let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode(imageNamed: pathSprite.rawValue))
         spriteComponent.spriteNode.entity = self
+        spriteComponent.spriteNode.name = "Piece"
         renderComponent.node.addChild(spriteComponent.spriteNode)
         self.addComponent(spriteComponent)
                 
         // Game Logic Components
-        let pathComponent = PathComponent(pathType: pathType, edgeSize: edgeSize, pathSprite: pathSprite)
-        pathComponent.drawingNode.setScale(2)
-        pathComponent.drawingNode.entity = self
-        renderComponent.node.addChild(pathComponent.drawingNode)
-        self.addComponent(pathComponent)
+//        let pathComponent = PathComponent(pathType: pathType, edgeSize: edgeSize, pathSprite: pathSprite)
+//        pathComponent.drawingNode.entity = self
+//        pathComponent.drawingNode.name = "Piece"
+//        renderComponent.node.addChild(pathComponent.drawingNode)
+//        self.addComponent(pathComponent)
+        
+        let physicsComponent = PhysicsComponent(node: spriteComponent.spriteNode, categoryBitMask: .gamePiece)
+        self.addComponent(physicsComponent)
+        spriteComponent.spriteNode.setScale(2)
     }
     
     required init?(coder: NSCoder) {

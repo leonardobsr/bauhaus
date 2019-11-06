@@ -25,6 +25,7 @@ class Line : GKEntity {
         
         let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode(imageNamed: "lineOff"))
         spriteComponent.spriteNode.entity = self
+        spriteComponent.spriteNode.name = "Line"
         renderComponent.node.addChild(spriteComponent.spriteNode)
         self.addComponent(spriteComponent)
         
@@ -38,6 +39,9 @@ class Line : GKEntity {
         let lightSwitchComponent = LightSwitchComponent(node: spriteComponent.spriteNode)
         lightSwitchComponent.stateMachine.enter(OffState.self)
         self.addComponent(lightSwitchComponent)
+        
+        let physicsComponent = PhysicsComponent(node: spriteComponent.spriteNode, categoryBitMask: .boardLine)
+        self.addComponent(physicsComponent)
 
     }
     

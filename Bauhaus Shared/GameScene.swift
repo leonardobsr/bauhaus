@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var entityManager: EntityManager?
     var entities = [GKEntity]()
@@ -52,7 +52,7 @@ class GameScene: SKScene {
         
         self.lastUpdateTime = 0
         
-        self.currentPlayer = .red
+        self.currentPlayer = UIColor(red: 245, green: 49, blue: 60)
         
         entityManager = EntityManager(scene: self)
         
@@ -96,10 +96,12 @@ class GameScene: SKScene {
     #if os(watchOS)
     override func sceneDidLoad() {
         self.setUpScene()
+        self.physicsWorld.contactDelegate = self
     }
     #else
     override func didMove(to view: SKView) {
         self.setUpScene()
+        self.physicsWorld.contactDelegate = self
     }
     #endif
     
@@ -179,8 +181,15 @@ extension GameScene {
             touchedPiece?
                 .component(ofType: RenderComponent.self)?
                 .node
-                .run(SKAction.scale(by: 1.2, duration: 0.1))
+                .run(SKAction.scale(by: 1, duration: 0.1))
+//                .run(SKAction.scale(by: 1.2, duration: 0.1))
             self.touchStartTime = CACurrentMediaTime()
+            
+//            piece
+//                .component(ofType: PhysicsComponent.self)?
+//                .node
+//                .physicsBody?
+//                .isDynamic = false
         }
     }
 
@@ -218,20 +227,29 @@ extension GameScene {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let piece = touchedPiece {
-            piece
-                .component(ofType: RenderComponent.self)?
-                .node
-                .run(SKAction.scale(by: (1/1.2), duration: 0.1))
-            touchedPiece = nil
-            
             let touchEndTime = CACurrentMediaTime()
-
+            
             if touchEndTime - touchStartTime < 0.1 {
                 piece
                     .component(ofType: RenderComponent.self)?
                     .node
                     .run(SKAction.rotate(byAngle: 90 * .pi/180, duration: 0.1))
+            } else {
+                piece
+                    .component(ofType: RenderComponent.self)?
+                    .node
+//                    .run(SKAction.scale(by: (1/1.2), duration: 0.1))
+                    .run(SKAction.scale(by: (1), duration: 0.1))
+                    {
+                        piece
+                            .component(ofType: PhysicsComponent.self)?
+                            .node
+                            .physicsBody?
+                            .isDynamic = true
+                    }
             }
+            
+            touchedPiece = nil
         }
     }
     
@@ -263,9 +281,9 @@ extension GameScene {
     func nextPlayer() -> UIColor? {
         if let player = self.currentPlayer {
             switch player {
-            case .red : return .yellow
-            case .yellow : return .blue
-            case .blue : return .red
+            case UIColor(red: 245, green: 49, blue: 60) : return UIColor(red: 247, green: 242, blue: 74)
+            case UIColor(red: 247, green: 242, blue: 74) : return UIColor(red: 25, green: 117, blue: 168)
+            case UIColor(red: 25, green: 117, blue: 168) : return UIColor(red: 245, green: 49, blue: 60)
             default : return .red
             }
         }
@@ -291,6 +309,28 @@ extension GameScene {
         entityManager?.add(piece3)
         
         self.availablePieces.append(contentsOf: [piece, piece2, piece3])
+    }
+    
+}
+
+// Contact Detection
+extension GameScene {
+
+    func didBegin(_ contact: SKPhysicsContact) {
+        
+//        var firstBody = SKPhysicsBody()
+//        var secondBody = SKPhysicsBody()
+        
+        contact.bodyA.node?.entity?.component(ofType: LightSwitchComponent.self)?.turnOn()
+        contact.bodyB.node?.entity?.component(ofType: LightSwitchComponent.self)?.turnOn()
+        
+        if contact.bodyA.node?.entity is Piece {
+            entityManager?.remove(contact.bodyA.node!.entity!)
+        } else {
+            entityManager?.remove(contact.bodyB.node!.entity!)
+        }
+        
+        
     }
     
 }
