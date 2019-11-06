@@ -31,6 +31,8 @@ class ChooseCPScene : SKScene {
     var yellowPlayerLabel : Label?
     var bluePlayerLabel : Label?
     
+    var players: [UIColor] = []
+    
     var touchedButton : Button?
     
     private var lastUpdateTime : TimeInterval = 0
@@ -65,13 +67,16 @@ class ChooseCPScene : SKScene {
         self.descriptionLabel = Label(position: CGPoint(x: 0.5, y: 0.68), label: "Choose color and players")
         
         self.redPlayerButton = Button(position: CGPoint(x: 0.4, y: 0.55), sprite: "redPlayer")
-        self.redPlayerLabel = Label(position: CGPoint(x: 0.4, y: 0.45), label: "P1")
+        self.redPlayerButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
+        self.redPlayerLabel = Label(position: CGPoint(x: 0.4, y: 0.45), label: "")
         
         self.yellowPlayerButton = Button(position: CGPoint(x: 0.5, y: 0.55), sprite: "yellowPlayer")
-        self.yellowPlayerLabel = Label(position: CGPoint(x: 0.5, y: 0.45), label: "P2")
+        self.yellowPlayerButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
+        self.yellowPlayerLabel = Label(position: CGPoint(x: 0.5, y: 0.45), label: "")
         
         self.bluePlayerButton = Button(position: CGPoint(x: 0.6, y: 0.55), sprite: "bluePlayer")
-        self.bluePlayerLabel = Label(position: CGPoint(x: 0.6, y: 0.45), label: "P3")
+        self.bluePlayerButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
+        self.bluePlayerLabel = Label(position: CGPoint(x: 0.6, y: 0.45), label: "")
         
         self.playButton = Button(position: CGPoint(x: 0.50, y: 0.35), sprite: "playButton")
         self.playButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
@@ -135,9 +140,52 @@ class ChooseCPScene : SKScene {
         
         if let playButtonSM = self.playButton?.component(ofType: TapComponent.self)?.stateMachine {
             if playButtonSM.currentState is ActState {
-                GameManager.shared.nextScreen()
+                if !players.isEmpty {
+                    GameManager.shared.playersColors = players
+                    GameManager.shared.nextScreen()
+                }
                 playButtonSM.enter(RestState.self)
             }
+        }
+        
+        if let redPlayerButtonSM = self.redPlayerButton?.component(ofType: TapComponent.self)?.stateMachine {
+            if redPlayerButtonSM.currentState is RestState {
+                self.redPlayerButton?.component(ofType: RenderComponent.self)?.node.alpha = 0.5
+                self.redPlayerLabel?.changeText(newText: "COM")
+            }
+        }
+        
+        if let yellowPlayerButtonSM = self.yellowPlayerButton?.component(ofType: TapComponent.self)?.stateMachine {
+            if yellowPlayerButtonSM.currentState is RestState {
+                self.yellowPlayerButton?.component(ofType: RenderComponent.self)?.node.alpha = 0.5
+                self.yellowPlayerLabel?.changeText(newText: "COM")
+            }
+        }
+        
+        if let bluePlayerButtonSM = self.bluePlayerButton?.component(ofType: TapComponent.self)?.stateMachine {
+            if bluePlayerButtonSM.currentState is RestState {
+                self.bluePlayerButton?.component(ofType: RenderComponent.self)?.node.alpha = 0.5
+                self.bluePlayerLabel?.changeText(newText: "COM")
+            }
+        }
+        
+        for (i, player) in players.enumerated() {
+            switch player {
+            case UIColor(red: 245, green: 49, blue: 60):
+                self.redPlayerLabel?.changeText(newText: "P" + (i+1).description)
+            case UIColor(red: 25, green: 117, blue: 168):
+                self.bluePlayerLabel?.changeText(newText: "P" + (i+1).description)
+            case UIColor(red: 247, green: 242, blue: 74):
+                self.yellowPlayerLabel?.changeText(newText: "P" + (i+1).description)
+            default:
+                break
+            }
+        }
+        
+        if players.isEmpty {
+            self.redPlayerLabel?.changeText(newText: "")
+            self.bluePlayerLabel?.changeText(newText: "")
+            self.yellowPlayerLabel?.changeText(newText: "")
         }
     }
 }
@@ -162,6 +210,31 @@ extension ChooseCPScene {
             button.component(ofType: TapComponent.self)?.changeState()
             button.component(ofType: RenderComponent.self)?.node.alpha = 1
         }
+        
+        if self.touchedButton == self.redPlayerButton {
+            if players.contains(where: { $0 == UIColor(red: 245, green: 49, blue: 60) }) {
+                players.removeAll(where: { $0 == UIColor(red: 245, green: 49, blue: 60) })
+            } else {
+                players.append(UIColor(red: 245, green: 49, blue: 60))
+            }
+        }
+        
+        if self.touchedButton == self.bluePlayerButton {
+            if players.contains(where: { $0 == UIColor(red: 25, green: 117, blue: 168) }) {
+                players.removeAll(where: { $0 == UIColor(red: 25, green: 117, blue: 168) })
+            } else {
+                players.append(UIColor(red: 25, green: 117, blue: 168))
+            }
+        }
+        
+        if self.touchedButton == self.yellowPlayerButton {
+            if players.contains(where: { $0 == UIColor(red: 247, green: 242, blue: 74) }) {
+                players.removeAll(where: { $0 == UIColor(red: 247, green: 242, blue: 74) })
+            } else {
+                players.append(UIColor(red: 247, green: 242, blue: 74))
+            }
+        }
+        
     }
     
 }
