@@ -59,20 +59,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         entityManager = EntityManager(scene: self)
         
-        self.newBoard = Board(frame: self.frame)
+        self.board = Board(frame: self.frame)
         
         var dots = [[Dot]]()
-        if let renderComponent = self.newBoard?.component(ofType: RenderComponent.self) {
+        if let renderComponent = self.board?.component(ofType: RenderComponent.self) {
 //            renderComponent.node.position = CGPoint(x: -0.2 * self.frame.maxX, y: 0)
             renderComponent.node.posByScreen(x: 0.35, y: 0.5)
         }
-        if let gridComponent = self.newBoard?.component(ofType: GridComponent.self) {
+        if let gridComponent = self.board?.component(ofType: GridComponent.self) {
             let gridSize = CGSize(width: 10 * 56, height: 10 * 56)
             gridComponent.setGrid(width: 11, height: 11, size: gridSize)
             dots = gridComponent.dotGrid
         }
 
-        if let board = self.newBoard {
+        if let board = self.board {
             entityManager?.add(board)
         }
 
@@ -186,6 +186,7 @@ extension GameScene {
     func tapOn(piece entity: GKEntity) {
         if let piece = entity as? Piece {
             self.touchedPiece = piece
+            self.originPosition = piece.component(ofType: RenderComponent.self)?.node.position
             self.touchStartTime = CACurrentMediaTime()
         }
     }
@@ -193,7 +194,6 @@ extension GameScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let t = touches.first {
             let node = atPoint(t.location(in: self))
-            
             if let entity = node.entity {
                 switch entity {
                 case is Button : tapOn(button: entity)
@@ -227,39 +227,28 @@ extension GameScene {
         if let piece = touchedPiece {
             let touchEndTime = CACurrentMediaTime()
             
-            guard let pieceNode = piece.component(ofType: RenderComponent.self)?.node else {
-                return
-            }
+            guard let pieceNode = piece.component(ofType: RenderComponent.self)?.node else { return }
 
             if touchEndTime - touchStartTime < 0.1 {
-                pieceNode
-                  .run(SKAction.rotate(byAngle: 90 * .pi/180, duration: 0.1))
+                pieceNode.run(SKAction.rotate(byAngle: 90 * .pi/180, duration: 0.1))
             } else {
-                  
-                
                 if (checkPiecePositionInBoard(piece: pieceNode)) {
-                    piece
-                        .component(ofType: PhysicsComponent.self)?
-                        .node
-                        .physicsBody?
-                        .isDynamic = true
-                } else {
-                    if let originX = self.originPosition?.x,
-                        let originY = self.originPosition?.y {
-                        pieceNode.position = CGPoint(x: originX, y: originY)
+                    if findLinesHovered(by: piece) {
+                        guard let grid = self.board?.component(ofType: GridComponent.self) else { return }
+                        
+                        entityManager?.remove(piece)
+                        
+                        connectDots(lastHoveredLines: grid.lastHoveredLines)
+                        grid.lastHoveredLines = []
+                        
+                        findRectangles(lastConnectedDots: grid.lastConnectedDots)
+                        grid.lastConnectedDots = []
                     }
-                if findLinesHovered(by: piece) {
-                    guard let grid = self.board?.component(ofType: GridComponent.self) else { return }
-                    
-                    entityManager?.remove(piece)
-                    
-                    connectDots(lastHoveredLines: grid.lastHoveredLines)
-                    grid.lastHoveredLines = []
-                    
-                    findRectangles(lastConnectedDots: grid.lastConnectedDots)
-                    grid.lastConnectedDots = []
+                } else {
+                    if let originPosition = self.originPosition {
+                        pieceNode.position = originPosition
+                    }
                 }
-}
             }
             
             touchedPiece = nil
@@ -276,7 +265,7 @@ extension GameScene {
 extension GameScene {
 
     override func mouseDown(with event: NSEvent) {}
-    
+
     override func mouseDragged(with event: NSEvent) {}
     
     override func mouseUp(with event: NSEvent) {}
@@ -325,7 +314,7 @@ extension GameScene {
     }
     
     func checkPiecePositionInBoard(piece: SKNode) -> Bool {
-        if let nodeBoard = self.newBoard?.component(ofType: RenderComponent.self)?.node {
+        if let nodeBoard = self.board?.component(ofType: RenderComponent.self)?.node {
             let topLeft = CGPoint(x: piece.position.x - piece.calculateAccumulatedFrame().width / 2, y: piece.position.y + piece.calculateAccumulatedFrame().height / 2)
             let topRight = CGPoint(x: piece.position.x + piece.calculateAccumulatedFrame().width / 2, y: piece.position.y + piece.calculateAccumulatedFrame().height / 2)
             let bottomLeft = CGPoint(x: piece.position.x - piece.calculateAccumulatedFrame().width / 2, y: piece.position.y - piece.calculateAccumulatedFrame().height / 2)
