@@ -28,12 +28,15 @@ class PhysicsComponent : GKComponent {
         self.node = node
         if let texture = self.node.texture {
             if categoryBitMask == .boardLine {
-                self.node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 2, height: 2))
+                self.node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 7))
+//                self.node.physicsBody = SKPhysicsBody(circleOfRadius: 7)
+                self.node.physicsBody?.isDynamic = false
             } else {
                 self.node.physicsBody = SKPhysicsBody(texture: texture, size: texture.size())
+                self.node.physicsBody?.isDynamic = true
             }
+            self.node.physicsBody?.usesPreciseCollisionDetection = true
             self.node.physicsBody?.affectedByGravity = false
-            self.node.physicsBody?.isDynamic = false
             self.node.physicsBody?.categoryBitMask = categoryBitMask.rawValue
             self.node.physicsBody?.contactTestBitMask = categoryBitMask.contactTestBitMask().rawValue
             self.node.physicsBody?.collisionBitMask = 0

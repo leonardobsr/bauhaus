@@ -10,7 +10,7 @@ import GameplayKit
 
 class ConnectionComponent : GKComponent {
     
-    private var connections : [Direction : Dot]
+    var connections : [Direction : Dot]
     
     override init() {
         self.connections = [:]
