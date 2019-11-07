@@ -14,6 +14,8 @@ class GameManager {
     
     weak var gameViewController : GameViewController?
     
+    var playersColors: [UIColor] = []
+    
     var currentScene : SKScene? {
         didSet {
             guard let skView = self.gameViewController?.view as? SKView else { return }

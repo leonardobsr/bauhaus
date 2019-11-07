@@ -23,6 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var timer : Timer?
     
     var board : Board?
+    var originPosition: CGPoint?
     
     var currentPlayer : UIColor? {
         didSet {
@@ -58,19 +59,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         entityManager = EntityManager(scene: self)
         
-        let newBoard = Board(frame: self.frame)
+        self.newBoard = Board(frame: self.frame)
+        
         var dots = [[Dot]]()
-        if let renderComponent = newBoard.component(ofType: RenderComponent.self) {
+        if let renderComponent = self.newBoard?.component(ofType: RenderComponent.self) {
 //            renderComponent.node.position = CGPoint(x: -0.2 * self.frame.maxX, y: 0)
             renderComponent.node.posByScreen(x: 0.35, y: 0.5)
         }
-        if let gridComponent = newBoard.component(ofType: GridComponent.self) {
+        if let gridComponent = self.newBoard?.component(ofType: GridComponent.self) {
             let gridSize = CGSize(width: 10 * 56, height: 10 * 56)
             gridComponent.setGrid(width: 11, height: 11, size: gridSize)
             dots = gridComponent.dotGrid
         }
-        self.board = newBoard
-        entityManager?.add(newBoard)
+
+        if let board = self.newBoard {
+            entityManager?.add(board)
+        }
+
         dots.forEach { row in row.forEach { dot in entityManager?.add(dot) } }
                 
 //        let newPauseButton = Button(position: CGPoint(x: -610, y: 450), sprite: "pauseButton")
@@ -222,12 +227,27 @@ extension GameScene {
         if let piece = touchedPiece {
             let touchEndTime = CACurrentMediaTime()
             
+            guard let pieceNode = piece.component(ofType: RenderComponent.self)?.node else {
+                return
+            }
+
             if touchEndTime - touchStartTime < 0.1 {
-                piece
-                    .component(ofType: RenderComponent.self)?
-                    .node
-                    .run(SKAction.rotate(byAngle: 90 * .pi/180, duration: 0.1))
+                pieceNode
+                  .run(SKAction.rotate(byAngle: 90 * .pi/180, duration: 0.1))
             } else {
+                  
+                
+                if (checkPiecePositionInBoard(piece: pieceNode)) {
+                    piece
+                        .component(ofType: PhysicsComponent.self)?
+                        .node
+                        .physicsBody?
+                        .isDynamic = true
+                } else {
+                    if let originX = self.originPosition?.x,
+                        let originY = self.originPosition?.y {
+                        pieceNode.position = CGPoint(x: originX, y: originY)
+                    }
                 if findLinesHovered(by: piece) {
                     guard let grid = self.board?.component(ofType: GridComponent.self) else { return }
                     
@@ -239,6 +259,7 @@ extension GameScene {
                     findRectangles(lastConnectedDots: grid.lastConnectedDots)
                     grid.lastConnectedDots = []
                 }
+}
             }
             
             touchedPiece = nil
@@ -303,6 +324,18 @@ extension GameScene {
         self.availablePieces.append(contentsOf: [piece, piece2, piece3])
     }
     
+    func checkPiecePositionInBoard(piece: SKNode) -> Bool {
+        if let nodeBoard = self.newBoard?.component(ofType: RenderComponent.self)?.node {
+            let topLeft = CGPoint(x: piece.position.x - piece.calculateAccumulatedFrame().width / 2, y: piece.position.y + piece.calculateAccumulatedFrame().height / 2)
+            let topRight = CGPoint(x: piece.position.x + piece.calculateAccumulatedFrame().width / 2, y: piece.position.y + piece.calculateAccumulatedFrame().height / 2)
+            let bottomLeft = CGPoint(x: piece.position.x - piece.calculateAccumulatedFrame().width / 2, y: piece.position.y - piece.calculateAccumulatedFrame().height / 2)
+            let bottomRight = CGPoint(x: piece.position.x + piece.calculateAccumulatedFrame().width / 2, y: piece.position.y - piece.calculateAccumulatedFrame().height / 2)
+
+            return (nodeBoard.contains(topLeft) && nodeBoard.contains(topRight) && nodeBoard.contains(bottomLeft) && nodeBoard.contains(bottomRight))
+        } else {
+            return false
+        }
+    }
 }
 
 // Find Rectangles

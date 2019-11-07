@@ -28,4 +28,8 @@ class Label : GKEntity {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func changeText(newText: String) {
+        self.component(ofType: LabelComponent.self)?.changeText(newText: newText)
+    }
+    
 }
