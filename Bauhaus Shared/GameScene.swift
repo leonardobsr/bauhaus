@@ -181,18 +181,7 @@ extension GameScene {
     func tapOn(piece entity: GKEntity) {
         if let piece = entity as? Piece {
             self.touchedPiece = piece
-            touchedPiece?
-                .component(ofType: RenderComponent.self)?
-                .node
-                .run(SKAction.scale(by: 1, duration: 0.1))
-//                .run(SKAction.scale(by: 1.2, duration: 0.1))
             self.touchStartTime = CACurrentMediaTime()
-            
-//            piece
-//                .component(ofType: PhysicsComponent.self)?
-//                .node
-//                .physicsBody?
-//                .isDynamic = false
         }
     }
 
@@ -223,6 +212,7 @@ extension GameScene {
                 if let node = piece.component(ofType: RenderComponent.self)?.node {
                     node.position = CGPoint(x: node.position.x + translation.x,
                                             y: node.position.y + translation.y)
+                    
                 }
             }
         }
@@ -238,18 +228,17 @@ extension GameScene {
                     .node
                     .run(SKAction.rotate(byAngle: 90 * .pi/180, duration: 0.1))
             } else {
-                piece
-                    .component(ofType: RenderComponent.self)?
-                    .node
-//                    .run(SKAction.scale(by: (1/1.2), duration: 0.1))
-                    .run(SKAction.scale(by: (1), duration: 0.1))
-                    {
-//                        piece
-//                            .component(ofType: PhysicsComponent.self)?
-//                            .node
-//                            .physicsBody?
-//                            .isDynamic = true
-                    }
+                if findLinesHovered(by: piece) {
+                    guard let grid = self.board?.component(ofType: GridComponent.self) else { return }
+                    
+                    entityManager?.remove(piece)
+                    
+                    connectDots(lastHoveredLines: grid.lastHoveredLines)
+                    grid.lastHoveredLines = []
+                    
+                    findRectangles(lastConnectedDots: grid.lastConnectedDots)
+                    grid.lastConnectedDots = []
+                }
             }
             
             touchedPiece = nil
@@ -316,68 +305,41 @@ extension GameScene {
     
 }
 
-// Contact Detection
-extension GameScene {
-
-    func didBegin(_ contact: SKPhysicsContact) {
-        
-        var piece : Piece?
-        var line : Line?
-        
-        contact.bodyA.node?.entity?.component(ofType: LightSwitchComponent.self)?.turnOn()
-        contact.bodyB.node?.entity?.component(ofType: LightSwitchComponent.self)?.turnOn()
-        
-        if contact.bodyA.node?.entity is Piece {
-            piece = contact.bodyA.node?.entity as? Piece
-            line = contact.bodyB.node?.entity as? Line
-        } else {
-            piece = contact.bodyB.node?.entity as? Piece
-            line = contact.bodyA.node?.entity as? Line
-        }
-        
-        if let piece = piece {
-//            piece.component(ofType: PhysicsComponent.self)?.node.physicsBody?.isDynamic = false
-//            entityManager?.remove(piece)
-        }
-        
-        if let line = line {
-            self.board?.component(ofType: GridComponent.self)?.lastHoveredLines.append(line)
-//            if let dots = line.component(ofType: IndexComponent.self)?.getConnectedDotsIndex() {
-//                self.board?.component(ofType: GridComponent.self)?.connect(firstDot: dots.firstDot, to: dots.secondDot)
-//            }
-        }
-        
-    }
-    
-    func didEnd(_ contact: SKPhysicsContact) {
-        
-        var line : Line?
-        
-        contact.bodyA.node?.entity?.component(ofType: LightSwitchComponent.self)?.turnOff()
-        contact.bodyB.node?.entity?.component(ofType: LightSwitchComponent.self)?.turnOff()
-        
-        if contact.bodyA.node?.entity is Piece {
-            line = contact.bodyB.node?.entity as? Line
-        } else {
-            line = contact.bodyA.node?.entity as? Line
-        }
-        
-        self.board?.component(ofType: GridComponent.self)?.lastHoveredLines.removeAll { $0 == line }
-//        if let dots = self.board?.component(ofType: GridComponent.self)?.lastConnectedDots {
-//            findRectangles(board: self.board!, lastConnectedDots: dots)
-//            self.board?.component(ofType: GridComponent.self)?.lastConnectedDots = []
-//        }
-    }
-    
-}
-
 // Find Rectangles
 extension GameScene {
     
-    func findRectangles(board: Board, lastConnectedDots: [Dot]) {
-        lastConnectedDots.forEach { dot in
-            print(findSquare(startingDot: dot, dot, .none, [:]))
+    func findLinesHovered(by piece: Piece) -> Bool {
+        guard
+            let pieceNode = piece.component(ofType: SpriteComponent.self)?.spriteNode,
+            let structurePoints = piece.component(ofType: PathComponent.self)?.structurePoints,
+            let grid = self.board?.component(ofType: GridComponent.self)
+        else { return false }
+        
+        var wasPlaced = false
+        structurePoints.forEach { point in
+            nodes(at: convert(point, from: pieceNode)).forEach { node in
+                if let line = node.entity as? Line {
+                    line.component(ofType: LightSwitchComponent.self)?.turnOn()
+                    grid.lastHoveredLines.append(line)
+                    wasPlaced = true
+                }
+            }
         }
+        
+        return wasPlaced
+    }
+    
+    func connectDots(lastHoveredLines: [Line]) {
+        lastHoveredLines.forEach { line in
+            if let dots = line.component(ofType: IndexComponent.self)?.getConnectedDotsIndex() {
+                self.board?.component(ofType: GridComponent.self)?.connect(firstDot: dots.firstDot, to: dots.secondDot)
+            }
+        }
+    }
+    
+    func findRectangles(lastConnectedDots: Set<Dot>) {
+        print("===================")
+        lastConnectedDots.forEach { dot in print(findSquare(startingDot: dot, dot, .none, [:])) }
     }
 
     func findSquare(startingDot: Dot, _ currentDot: Dot, _ originDirection : Direction, _ moveTrack : [Axis : Direction]) -> Bool {

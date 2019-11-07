@@ -38,8 +38,8 @@ class Line : GKEntity {
         lightSwitchComponent.stateMachine.enter(OffState.self)
         self.addComponent(lightSwitchComponent)
         
-        let physicsComponent = PhysicsComponent(node: spriteComponent.spriteNode, categoryBitMask: .boardLine)
-        self.addComponent(physicsComponent)
+//        let physicsComponent = PhysicsComponent(node: spriteComponent.spriteNode, categoryBitMask: .boardLine)
+//        self.addComponent(physicsComponent)
         
         let indexComponent = IndexComponent(x: index.x, y: index.y, orientation: lineOrientation)
         self.addComponent(indexComponent)

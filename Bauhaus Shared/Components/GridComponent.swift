@@ -13,7 +13,7 @@ class GridComponent : GKComponent {
     var gridNode : SKNode
     
     var dotGrid : [[Dot]]
-    var lastConnectedDots : [Dot]
+    var lastConnectedDots : Set<Dot>
     
     var lastHoveredLines : [Line]
     
@@ -104,22 +104,22 @@ class GridComponent : GKComponent {
         
         if firstDot.x < secondDot.x {
             first.component(ofType: ConnectionComponent.self)?.connect(direction: .right, to: second)
-            print("Connected (\(firstDot.x),\(firstDot.y)) > (\(secondDot.x),\(secondDot.y))")
+//            print("Connected (\(firstDot.x),\(firstDot.y)) > (\(secondDot.x),\(secondDot.y))")
             
             second.component(ofType: ConnectionComponent.self)?.connect(direction: .left, to: first)
-            print("Connected (\(secondDot.x),\(secondDot.y)) > (\(firstDot.x),\(firstDot.y))")
+//            print("Connected (\(secondDot.x),\(secondDot.y)) > (\(firstDot.x),\(firstDot.y))")
             
-            lastConnectedDots.append(first)
-            lastConnectedDots.append(second)
+            lastConnectedDots.insert(first)
+            lastConnectedDots.insert(second)
         } else if firstDot.y < secondDot.y {
             first.component(ofType: ConnectionComponent.self)?.connect(direction: .up, to: second)
-            print("Connected (\(firstDot.x),\(firstDot.y)) ^ (\(secondDot.x),\(secondDot.y))")
+//            print("Connected (\(firstDot.x),\(firstDot.y)) ^ (\(secondDot.x),\(secondDot.y))")
             
             second.component(ofType: ConnectionComponent.self)?.connect(direction: .down, to: first)
-            print("Connected (\(secondDot.x),\(secondDot.y)) v (\(firstDot.x),\(firstDot.y))")
+//            print("Connected (\(secondDot.x),\(secondDot.y)) v (\(firstDot.x),\(firstDot.y))")
             
-            lastConnectedDots.append(first)
-            lastConnectedDots.append(second)
+            lastConnectedDots.insert(first)
+            lastConnectedDots.insert(second)
         }
         
     }
