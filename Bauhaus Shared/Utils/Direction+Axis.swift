@@ -7,10 +7,11 @@
 //
 
 enum Direction {
-    case up, down, left, right
+    case none, up, down, left, right
     
     func opposite() -> Direction {
         switch self {
+        case .none : return .none
         case .up : return .down
         case .down : return .up
         case .left : return .right
@@ -20,6 +21,7 @@ enum Direction {
     
     func axis() -> Axis {
         switch self {
+        case .none : return .none
         case .up : return .Y
         case .down : return .Y
         case .left : return .X
@@ -29,7 +31,7 @@ enum Direction {
 }
 
 enum Axis {
-    case X, Y
+    case none, X, Y
 }
 
 enum RenderingPosition : Int {

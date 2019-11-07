@@ -22,6 +22,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var turnPassButton : Button?
     var timer : Timer?
     
+    var board : Board?
+    
     var currentPlayer : UIColor? {
         didSet {
             if let player = self.currentPlayer {
@@ -67,6 +69,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gridComponent.setGrid(width: 11, height: 11, size: gridSize)
             dots = gridComponent.dotGrid
         }
+        self.board = newBoard
         entityManager?.add(newBoard)
         dots.forEach { row in row.forEach { dot in entityManager?.add(dot) } }
                 
@@ -241,11 +244,11 @@ extension GameScene {
 //                    .run(SKAction.scale(by: (1/1.2), duration: 0.1))
                     .run(SKAction.scale(by: (1), duration: 0.1))
                     {
-                        piece
-                            .component(ofType: PhysicsComponent.self)?
-                            .node
-                            .physicsBody?
-                            .isDynamic = true
+//                        piece
+//                            .component(ofType: PhysicsComponent.self)?
+//                            .node
+//                            .physicsBody?
+//                            .isDynamic = true
                     }
             }
             
@@ -318,18 +321,100 @@ extension GameScene {
 
     func didBegin(_ contact: SKPhysicsContact) {
         
-//        var firstBody = SKPhysicsBody()
-//        var secondBody = SKPhysicsBody()
+        var piece : Piece?
+        var line : Line?
         
         contact.bodyA.node?.entity?.component(ofType: LightSwitchComponent.self)?.turnOn()
         contact.bodyB.node?.entity?.component(ofType: LightSwitchComponent.self)?.turnOn()
         
         if contact.bodyA.node?.entity is Piece {
-            entityManager?.remove(contact.bodyA.node!.entity!)
+            piece = contact.bodyA.node?.entity as? Piece
+            line = contact.bodyB.node?.entity as? Line
         } else {
-            entityManager?.remove(contact.bodyB.node!.entity!)
+            piece = contact.bodyB.node?.entity as? Piece
+            line = contact.bodyA.node?.entity as? Line
         }
         
+        if let piece = piece {
+//            piece.component(ofType: PhysicsComponent.self)?.node.physicsBody?.isDynamic = false
+//            entityManager?.remove(piece)
+        }
+        
+        if let line = line {
+            self.board?.component(ofType: GridComponent.self)?.lastHoveredLines.append(line)
+//            if let dots = line.component(ofType: IndexComponent.self)?.getConnectedDotsIndex() {
+//                self.board?.component(ofType: GridComponent.self)?.connect(firstDot: dots.firstDot, to: dots.secondDot)
+//            }
+        }
+        
+    }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+        
+        var line : Line?
+        
+        contact.bodyA.node?.entity?.component(ofType: LightSwitchComponent.self)?.turnOff()
+        contact.bodyB.node?.entity?.component(ofType: LightSwitchComponent.self)?.turnOff()
+        
+        if contact.bodyA.node?.entity is Piece {
+            line = contact.bodyB.node?.entity as? Line
+        } else {
+            line = contact.bodyA.node?.entity as? Line
+        }
+        
+        self.board?.component(ofType: GridComponent.self)?.lastHoveredLines.removeAll { $0 == line }
+//        if let dots = self.board?.component(ofType: GridComponent.self)?.lastConnectedDots {
+//            findRectangles(board: self.board!, lastConnectedDots: dots)
+//            self.board?.component(ofType: GridComponent.self)?.lastConnectedDots = []
+//        }
+    }
+    
+}
+
+// Find Rectangles
+extension GameScene {
+    
+    func findRectangles(board: Board, lastConnectedDots: [Dot]) {
+        lastConnectedDots.forEach { dot in
+            print(findSquare(startingDot: dot, dot, .none, [:]))
+        }
+    }
+
+    func findSquare(startingDot: Dot, _ currentDot: Dot, _ originDirection : Direction, _ moveTrack : [Axis : Direction]) -> Bool {
+        
+        if originDirection != .none && (currentDot == startingDot) { return true }
+        
+        var possibleMovements : [Direction] = [.up,.down,.left,.right]
+        
+        possibleMovements.removeAll { return ($0 == originDirection) || ($0 == moveTrack[.X]) || ($0 == moveTrack[.Y]) }
+        
+//        print(currentDot.id, originDirection, possibleMovements)
+        
+        if possibleMovements.isEmpty { return false }
+        
+        for i in 0 ..< possibleMovements.count {
+            let move = possibleMovements[i]
+            guard let dotConnections = currentDot.component(ofType: ConnectionComponent.self)?.connections
+            else { return false }
+            
+//            if let nextDot = currentDot.connections[move] {
+            if let nextDot = dotConnections[move] {
+                var newMoveTrack = moveTrack
+                let currentAxis = originDirection.axis()
+                let nextAxis = move.axis()
+                if nextAxis != currentAxis { newMoveTrack[currentAxis] = originDirection.opposite() }
+                if findSquare(startingDot: startingDot, nextDot, move.opposite(), newMoveTrack) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }
+        
+        return false
+    }
+    
+    func drawRectangle(topRightCorner: CGPoint, downLeftCorner: CGPoint) {
         
     }
     

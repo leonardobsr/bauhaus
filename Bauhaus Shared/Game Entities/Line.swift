@@ -14,11 +14,10 @@ enum LineOrientation {
 
 class Line : GKEntity {
     
-    init(_ lineOrientation: LineOrientation) {
+    init(_ lineOrientation: LineOrientation, index: (x: Int, y: Int)) {
         super.init()
         
         // Visual Components
-        
         let renderComponent = RenderComponent(node: SKNode())
         renderComponent.node.zPosition = CGFloat(RenderingPosition.line.rawValue)
         self.addComponent(renderComponent)
@@ -35,13 +34,15 @@ class Line : GKEntity {
         }
         
         // Game Logic Components
-        
         let lightSwitchComponent = LightSwitchComponent(node: spriteComponent.spriteNode)
         lightSwitchComponent.stateMachine.enter(OffState.self)
         self.addComponent(lightSwitchComponent)
         
         let physicsComponent = PhysicsComponent(node: spriteComponent.spriteNode, categoryBitMask: .boardLine)
         self.addComponent(physicsComponent)
+        
+        let indexComponent = IndexComponent(x: index.x, y: index.y, orientation: lineOrientation)
+        self.addComponent(indexComponent)
 
     }
     
