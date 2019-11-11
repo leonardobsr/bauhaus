@@ -31,6 +31,10 @@ class PhysicsComponent : GKComponent {
                 self.node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 7))
 //                self.node.physicsBody = SKPhysicsBody(circleOfRadius: 7)
                 self.node.physicsBody?.isDynamic = false
+            } else if categoryBitMask == .gamePiece {
+                for shape in self.node.children {
+                    shape.physicsBody = SKPhysicsBody(circleOfRadius: 5)
+                }
             } else {
                 self.node.physicsBody = SKPhysicsBody(texture: texture, size: texture.size())
                 self.node.physicsBody?.isDynamic = true

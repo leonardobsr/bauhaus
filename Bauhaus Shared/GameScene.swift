@@ -232,6 +232,7 @@ extension GameScene {
             if touchEndTime - touchStartTime < 0.1 {
                 pieceNode.run(SKAction.rotate(byAngle: 90 * .pi/180, duration: 0.1))
             } else {
+                pieceNode.position = snapToGrid(piece: pieceNode)
                 if (checkPiecePositionInBoard(piece: pieceNode)) {
                     if findLinesHovered(by: piece) {
                         guard let grid = self.board?.component(ofType: GridComponent.self) else { return }
@@ -324,6 +325,24 @@ extension GameScene {
         } else {
             return false
         }
+    }
+    
+    func snapToGrid(piece: SKNode) -> CGPoint {
+        if let shapes = piece.entity?.component(ofType: PathComponent.self)?.structurePoints {
+            print(shapes)
+        }
+        print(piece.position)
+        let gridWidth = CGFloat(11.0)
+        let gridHeight = CGFloat(11.0)
+        
+        let x = ((piece.position.x / gridWidth) * gridWidth).rounded(.down)
+        let y = ((piece.position.y / gridHeight) * gridHeight).rounded(.down)
+        
+//        let x = ((piece.position.x.truncatingRemainder(dividingBy: gridWidth)) * gridWidth).rounded(.down)
+//        let y = ((piece.position.y.truncatingRemainder(dividingBy: gridHeight)) * gridHeight).rounded(.down)
+
+        print(x, y)
+        return CGPoint(x: x, y: y)
     }
 }
 

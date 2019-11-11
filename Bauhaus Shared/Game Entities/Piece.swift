@@ -32,8 +32,8 @@ class Piece : GKEntity {
 //        renderComponent.node.addChild(pathComponent.drawingNode)
 //        self.addComponent(pathComponent)
         
-//        let physicsComponent = PhysicsComponent(node: spriteComponent.spriteNode, categoryBitMask: .gamePiece)
-//        self.addComponent(physicsComponent)
+        let physicsComponent = PhysicsComponent(node: spriteComponent.spriteNode, categoryBitMask: .gamePiece)
+        self.addComponent(physicsComponent)
         spriteComponent.spriteNode.setScale(2)
         
         let pathComponent = PathComponent(pathSprite: pathSprite, sprite: spriteComponent.spriteNode)
