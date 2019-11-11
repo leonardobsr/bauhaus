@@ -47,6 +47,12 @@ class GridComponent : GKComponent {
                     self.gridNode.addChild(renderNode)
                     renderNode.position = CGPoint(x: (CGFloat(j) * dotDistanceX) - size.width/2,
                                                   y: (CGFloat(i) * dotDistanceY) - size.height/2)
+//                    let label = SKLabelNode(text: "(\(j),\(i))")
+//                    label.fontColor = .purple
+//                    label.fontSize = 10
+//                    label.zPosition = 100
+//                    label.position = CGPoint(x: 0, y: 10)
+//                    renderNode.addChild(label)
                 }
                 dotRow.append(newDot)
             }
@@ -61,7 +67,15 @@ class GridComponent : GKComponent {
                 let newHLine = Line(.horizontal, index: (j,i))
                 if let renderNode = newHLine.component(ofType: RenderComponent.self)?.node {
                     self.gridNode.addChild(renderNode)
-                    renderNode.position = CGPoint(x: ((CGFloat(j) * dotDistanceX) + dotDistanceX/2) - size.width/2 , y: (CGFloat(i) * dotDistanceY) - size.height/2)
+                    renderNode.position = CGPoint(x: ((CGFloat(j) * dotDistanceX) + dotDistanceX/2) - size.width/2 ,
+                                                  y: (CGFloat(i) * dotDistanceY) - size.height/2)
+//                    let label = SKLabelNode(text: "(\(j),\(i))")
+//                    label.fontColor = .systemPink
+//                    label.fontSize = 10
+//                    label.zPosition = 100
+//                    label.verticalAlignmentMode = .center
+//                    label.horizontalAlignmentMode = .center
+//                    renderNode.addChild(label)
                 }
                 hLineRow.append(newHLine)
             }
@@ -76,7 +90,15 @@ class GridComponent : GKComponent {
                 let newVLine = Line(.vertical, index: (j,i))
                 if let renderNode = newVLine.component(ofType: RenderComponent.self)?.node {
                     self.gridNode.addChild(renderNode)
-                    renderNode.position = CGPoint(x: (CGFloat(j) * dotDistanceX) - size.width/2 , y: ((CGFloat(i) * dotDistanceY) + dotDistanceY/2) - size.height/2)
+                    renderNode.position = CGPoint(x: (CGFloat(j) * dotDistanceX) - size.width/2 ,
+                                                  y: ((CGFloat(i) * dotDistanceY) + dotDistanceY/2) - size.height/2)
+//                    let label = SKLabelNode(text: "(\(j),\(i))")
+//                    label.fontColor = .systemPink
+//                    label.fontSize = 10
+//                    label.zPosition = 100
+//                    label.verticalAlignmentMode = .center
+//                    label.horizontalAlignmentMode = .center
+//                    renderNode.addChild(label)
                 }
                 vLineRow.append(newVLine)
             }
@@ -104,19 +126,23 @@ class GridComponent : GKComponent {
         
         if firstDot.x < secondDot.x {
             first.component(ofType: ConnectionComponent.self)?.connect(direction: .right, to: second)
-//            print("Connected (\(firstDot.x),\(firstDot.y)) > (\(secondDot.x),\(secondDot.y))")
+            first.component(ofType: RenderComponent.self)?.node.alpha = 0.2
+            print("Connected (\(firstDot.x),\(firstDot.y)) > (\(secondDot.x),\(secondDot.y))")
             
             second.component(ofType: ConnectionComponent.self)?.connect(direction: .left, to: first)
-//            print("Connected (\(secondDot.x),\(secondDot.y)) > (\(firstDot.x),\(firstDot.y))")
+            second.component(ofType: RenderComponent.self)?.node.alpha = 0.2
+            print("Connected (\(secondDot.x),\(secondDot.y)) > (\(firstDot.x),\(firstDot.y))")
             
             lastConnectedDots.insert(first)
             lastConnectedDots.insert(second)
         } else if firstDot.y < secondDot.y {
             first.component(ofType: ConnectionComponent.self)?.connect(direction: .up, to: second)
-//            print("Connected (\(firstDot.x),\(firstDot.y)) ^ (\(secondDot.x),\(secondDot.y))")
+            first.component(ofType: RenderComponent.self)?.node.alpha = 0.2
+            print("Connected (\(firstDot.x),\(firstDot.y)) ^ (\(secondDot.x),\(secondDot.y))")
             
             second.component(ofType: ConnectionComponent.self)?.connect(direction: .down, to: first)
-//            print("Connected (\(secondDot.x),\(secondDot.y)) v (\(firstDot.x),\(firstDot.y))")
+            second.component(ofType: RenderComponent.self)?.node.alpha = 0.2
+            print("Connected (\(secondDot.x),\(secondDot.y)) v (\(firstDot.x),\(firstDot.y))")
             
             lastConnectedDots.insert(first)
             lastConnectedDots.insert(second)

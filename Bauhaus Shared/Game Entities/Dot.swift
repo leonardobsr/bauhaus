@@ -21,6 +21,7 @@ class Dot : GKEntity {
         
         let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode(imageNamed: "dot"))
         renderComponent.node.addChild(spriteComponent.spriteNode)
+        
         self.addComponent(spriteComponent)
         
         // Game Logic Components
