@@ -16,6 +16,8 @@ class Box : GKEntity {
         // Visual Components
         let rectangleComponent = RectangleComponent(color: color, size: size, position: position)
         rectangleComponent.shapeNode.zPosition = CGFloat(RenderingPosition.box.rawValue)
+        rectangleComponent.shapeNode.entity = self
+        rectangleComponent.shapeNode.name = "Box"
         self.addComponent(rectangleComponent)
     }
     

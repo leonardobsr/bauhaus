@@ -35,19 +35,6 @@ class GameScene: SKScene {
     
     private var lastUpdateTime : TimeInterval = 0
 
-//    class func newGameScene() -> GameScene {
-//        // Load 'GameScene.sks' as an SKScene.
-//        guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
-//            print("Failed to load GameScene.sks")
-//            abort()
-//        }
-//
-//        // Set the scale mode to scale to fit the window
-//        scene.scaleMode = .aspectFill
-//
-//        return scene
-//    }
-
     func setUpScene() {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
@@ -62,7 +49,7 @@ class GameScene: SKScene {
         var dots = [[Dot]]()
         if let renderComponent = self.board?.component(ofType: RenderComponent.self) {
 //            renderComponent.node.position = CGPoint(x: -0.2 * self.frame.maxX, y: 0)
-            renderComponent.node.posByScreen(x: 0.35, y: 0.5)
+            renderComponent.spriteNode.posByScreen(x: 0.35, y: 0.5)
         }
         if let gridComponent = self.board?.component(ofType: GridComponent.self) {
             let gridSize = CGSize(width: 10 * 56, height: 10 * 56)
@@ -78,15 +65,15 @@ class GameScene: SKScene {
                 
 //        let newPauseButton = Button(position: CGPoint(x: -610, y: 450), sprite: "pauseButton")
         let newPauseButton = Button(position: CGPoint(x: 0.05, y: 0.93), sprite: "pauseButton")
-        newPauseButton.component(ofType: RenderComponent.self)?.node.setScale((self.size.height/self.size.width))
+        newPauseButton.component(ofType: RenderComponent.self)?.spriteNode.setScale((self.size.height/self.size.width))
         newPauseButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         self.pauseButton = newPauseButton
         entityManager?.add(newPauseButton)
         
 //        let newTurnPassButton = Button(position: CGPoint(x: 610, y: -450), sprite: "backButton")
         let newTurnPassButton = Button(position: CGPoint(x: 0.89, y: 0.07), sprite: "backButton")
-        newTurnPassButton.component(ofType: RenderComponent.self)?.node.setScale((self.size.height/self.size.width))
-        newTurnPassButton.component(ofType: RenderComponent.self)?.node.zRotation = 180 * .pi/180
+        newTurnPassButton.component(ofType: RenderComponent.self)?.spriteNode.setScale((self.size.height/self.size.width))
+        newTurnPassButton.component(ofType: RenderComponent.self)?.spriteNode.zRotation = 180 * .pi/180
         newTurnPassButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         self.turnPassButton = newTurnPassButton
         entityManager?.add(newTurnPassButton)
@@ -94,7 +81,7 @@ class GameScene: SKScene {
         loadRandomPieces()
         
         let newTimer = Timer()
-        newTimer.component(ofType: RenderComponent.self)?.node.posByScreen(x: 0.95, y: 1)
+        newTimer.component(ofType: RenderComponent.self)?.spriteNode.posByScreen(x: 0.95, y: 1)
         self.timer = newTimer
         entityManager?.add(newTimer)
     }
@@ -142,7 +129,7 @@ class GameScene: SKScene {
             }
         }
         
-        if let timerRenderNode = timer?.component(ofType: RenderComponent.self)?.node {
+        if let timerRenderNode = timer?.component(ofType: RenderComponent.self)?.spriteNode {
             if Int(timerRenderNode.position.y) == Int(self.frame.minY) {
                 timerRenderNode.posByScreen(x: 0.95, y: 1)
                 loadRandomPieces()
@@ -181,7 +168,7 @@ extension GameScene {
     func tapOn(piece entity: GKEntity) {
         if let piece = entity as? Piece {
             self.touchedPiece = piece
-            self.originPosition = piece.component(ofType: RenderComponent.self)?.node.position
+            self.originPosition = piece.component(ofType: RenderComponent.self)?.spriteNode.position
             self.touchStartTime = CACurrentMediaTime()
         }
     }
@@ -209,7 +196,7 @@ extension GameScene {
                 let translation = CGPoint(x: currentPos.x - previousPos.x,
                                           y: currentPos.y - previousPos.y)
 
-                if let node = piece.component(ofType: RenderComponent.self)?.node {
+                if let node = piece.component(ofType: RenderComponent.self)?.spriteNode {
                     node.position = CGPoint(x: node.position.x + translation.x,
                                             y: node.position.y + translation.y)
                     
@@ -222,7 +209,7 @@ extension GameScene {
         if let piece = touchedPiece {
             let touchEndTime = CACurrentMediaTime()
             
-            guard let pieceNode = piece.component(ofType: RenderComponent.self)?.node else { return }
+            guard let pieceNode = piece.component(ofType: RenderComponent.self)?.spriteNode else { return }
 
             if touchEndTime - touchStartTime < 0.1 {
                 pieceNode.run(SKAction.rotate(byAngle: 90 * .pi/180, duration: 0.1))
@@ -272,7 +259,7 @@ extension GameScene {
 extension GameScene {
     
     func turnPass() {
-        timer?.component(ofType: RenderComponent.self)?.node.posByScreen(x: 0.95, y: 1)
+        timer?.component(ofType: RenderComponent.self)?.spriteNode.posByScreen(x: 0.95, y: 1)
         self.currentPlayer = nextPlayer()
     }
     
@@ -295,22 +282,22 @@ extension GameScene {
         let possiblePieces : [PathSprite] = [.I1, .I2, .L1, .L2, .U1, .U2, .T1, .T2, .Z1, .Z2]
         
         let piece = Piece(pathType: .Z, edgeSize: 2, pathSprite: possiblePieces.randomElement()!)
-        piece.component(ofType: RenderComponent.self)?.node.posByScreen(x: 0.8, y: 0.2)
+        piece.component(ofType: RenderComponent.self)?.spriteNode.posByScreen(x: 0.8, y: 0.2)
         entityManager?.add(piece)
                 
         let piece2 = Piece(pathType: .Z, edgeSize: 2, pathSprite: possiblePieces.randomElement()!)
-        piece2.component(ofType: RenderComponent.self)?.node.posByScreen(x: 0.8, y: 0.5)
+        piece2.component(ofType: RenderComponent.self)?.spriteNode.posByScreen(x: 0.8, y: 0.5)
         entityManager?.add(piece2)
                 
         let piece3 = Piece(pathType: .Z, edgeSize: 2, pathSprite: possiblePieces.randomElement()!)
-        piece3.component(ofType: RenderComponent.self)?.node.posByScreen(x: 0.8, y: 0.8)
+        piece3.component(ofType: RenderComponent.self)?.spriteNode.posByScreen(x: 0.8, y: 0.8)
         entityManager?.add(piece3)
         
         self.availablePieces.append(contentsOf: [piece, piece2, piece3])
     }
     
     func checkPiecePositionInBoard(piece: SKNode) -> Bool {
-        if let nodeBoard = self.board?.component(ofType: RenderComponent.self)?.node {
+        if let nodeBoard = self.board?.component(ofType: RenderComponent.self)?.spriteNode {
             let topLeft = CGPoint(x: piece.position.x - piece.calculateAccumulatedFrame().width / 2, y: piece.position.y + piece.calculateAccumulatedFrame().height / 2)
             let topRight = CGPoint(x: piece.position.x + piece.calculateAccumulatedFrame().width / 2, y: piece.position.y + piece.calculateAccumulatedFrame().height / 2)
             let bottomLeft = CGPoint(x: piece.position.x - piece.calculateAccumulatedFrame().width / 2, y: piece.position.y - piece.calculateAccumulatedFrame().height / 2)
@@ -328,7 +315,7 @@ extension GameScene {
     
     func findLinesHovered(by piece: Piece) -> Bool {
         guard
-            let pieceNode = piece.component(ofType: SpriteComponent.self)?.spriteNode,
+            let pieceNode = piece.component(ofType: RenderComponent.self)?.spriteNode,
             let structurePoints = piece.component(ofType: PathComponent.self)?.structurePoints,
             let grid = self.board?.component(ofType: GridComponent.self)
         else { return false }
@@ -375,7 +362,7 @@ extension GameScene {
                           originDirection: .none,
                           moveTrack: [:],
                           visitedDots: [],
-                          rectangleVertices: [dot.component(ofType: RenderComponent.self)!.node.position])
+                          rectangleVertices: [dot.component(ofType: RenderComponent.self)!.spriteNode.position])
         }
     }
 
@@ -392,7 +379,7 @@ extension GameScene {
         possibleMovements.forEach { move in
             guard
                 let dotConnections = currentDot.component(ofType: ConnectionComponent.self)?.connections,
-                let dotRenderNode = currentDot.component(ofType: RenderComponent.self)?.node
+                let dotRenderNode = currentDot.component(ofType: RenderComponent.self)?.spriteNode
             else { return }
                         
             var newMoveTrack = moveTrack
@@ -482,7 +469,7 @@ extension GameScene {
     }
     
     func signal(_ dot: Dot) {
-        guard let node = dot.component(ofType: RenderComponent.self)?.node else { return }
+        guard let node = dot.component(ofType: RenderComponent.self)?.spriteNode else { return }
         
         let shape = SKShapeNode(rectOf: CGSize(width: 10, height: 10))
         shape.name = "shape"
@@ -500,7 +487,7 @@ extension GameScene {
     }
     
     func unsignal(_ dot: Dot) {
-        dot.component(ofType: RenderComponent.self)?.node.childNode(withName: "shape")?.removeFromParent()
+        dot.component(ofType: RenderComponent.self)?.spriteNode.childNode(withName: "shape")?.removeFromParent()
     }
     
 }

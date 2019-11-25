@@ -14,16 +14,12 @@ class Timer : GKEntity {
         super.init()
         
         // Visual Components
-        
-        let renderComponent = RenderComponent(node: SKNode())
-        renderComponent.node.zPosition = CGFloat(5)
-//        renderComponent.node.position = CGPoint(x: 700, y: 1050)
-        self.addComponent(renderComponent)
-        
         let rectangleComponent = RectangleComponent(color: .black,
                                                     size: CGSize(width: 100, height: 1100),
                                                     position: .zero)
-        renderComponent.node.addChild(rectangleComponent.shapeNode)
+        rectangleComponent.shapeNode.zPosition = CGFloat(RenderingPosition.timer.rawValue)
+        rectangleComponent.shapeNode.entity = self
+        rectangleComponent.shapeNode.name = "Timer"
         self.addComponent(rectangleComponent)
     }
     
@@ -32,7 +28,7 @@ class Timer : GKEntity {
     }
     
     override func update(deltaTime seconds: TimeInterval) {
-        self.component(ofType: RenderComponent.self)?.node.position.y -= 0.2
+        self.component(ofType: RectangleComponent.self)?.shapeNode.position.y -= 0.2
     }
     
 }

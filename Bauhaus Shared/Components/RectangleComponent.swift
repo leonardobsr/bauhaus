@@ -19,7 +19,6 @@ class RectangleComponent : GKComponent {
         self.shapeNode.fillColor = color
         self.shapeNode.strokeColor = .clear
         self.color = color
-        
         super.init()
     }
     

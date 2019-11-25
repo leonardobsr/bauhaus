@@ -14,23 +14,15 @@ class Dot : GKEntity {
         super.init()
 
         // Visual Components
-        
-        let renderComponent = RenderComponent(node: SKNode())
-        renderComponent.node.zPosition = CGFloat(RenderingPosition.dot.rawValue)
+        let renderComponent = RenderComponent(spriteNode: SKSpriteNode(imageNamed: "dot"))
+        renderComponent.spriteNode.zPosition = CGFloat(RenderingPosition.dot.rawValue)
+        renderComponent.spriteNode.entity = self
+        renderComponent.spriteNode.name = "Dot"
         self.addComponent(renderComponent)
         
-        let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode(imageNamed: "dot"))
-        renderComponent.node.addChild(spriteComponent.spriteNode)
-        
-        self.addComponent(spriteComponent)
-        
         // Game Logic Components
-        
         let connectionComponent = ConnectionComponent()
         self.addComponent(connectionComponent)
-        
-        let dotComponent = DotComponent()
-        self.addComponent(dotComponent)
     }
     
     required init?(coder: NSCoder) {

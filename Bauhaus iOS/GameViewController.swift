@@ -21,9 +21,9 @@ class GameViewController: UIViewController {
         let skView = self.view as! SKView
         SKViewSize = skView.bounds.size
         
-//        skView.showsNodeCount = true
+        skView.showsNodeCount = true
         
-        if let skViewSize = SKViewSize {
+        if let _ = SKViewSize {
             SKViewSizeRect = getViewSizeRect()
         }
         

@@ -13,14 +13,14 @@ class Label : GKEntity {
     init(position: CGPoint, label: String) {
         super.init()
         
-        let renderComponent = RenderComponent(node: SKNode())
-        renderComponent.node.posByScreen(x: position.x, y: position.y)
+        let renderComponent = RenderComponent(spriteNode: SKSpriteNode())
+        renderComponent.spriteNode.posByScreen(x: position.x, y: position.y)
         self.addComponent(renderComponent)
         
         let labelComponent = LabelComponent(labelNode: SKLabelNode())
         labelComponent.labelNode.text = label.uppercased()
         labelComponent.labelNode.fontName = "Munro"
-        renderComponent.node.addChild(labelComponent.labelNode)
+        renderComponent.spriteNode.addChild(labelComponent.labelNode)
         self.addComponent(labelComponent)
     }
     

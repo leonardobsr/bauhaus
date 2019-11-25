@@ -29,9 +29,10 @@ class GridComponent : GKComponent {
         self.horizontalLineGrid = []
         self.verticalLineGrid = []
         self.boxCorners = []
-        
         super.init()
     }
+    
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     func setGrid(width: Int, height: Int, size: CGSize) {
         // Set Dots
@@ -43,7 +44,7 @@ class GridComponent : GKComponent {
             dotRow = []
             for j in 0 ..< width {
                 let newDot = Dot()
-                if let renderNode = newDot.component(ofType: RenderComponent.self)?.node {
+                if let renderNode = newDot.component(ofType: RenderComponent.self)?.spriteNode {
                     self.gridNode.addChild(renderNode)
                     renderNode.position = CGPoint(x: (CGFloat(j) * dotDistanceX) - size.width/2,
                                                   y: (CGFloat(i) * dotDistanceY) - size.height/2)
@@ -65,7 +66,7 @@ class GridComponent : GKComponent {
             hLineRow = []
             for j in 0 ..< (width - 1) {
                 let newHLine = Line(.horizontal, index: (j,i))
-                if let renderNode = newHLine.component(ofType: RenderComponent.self)?.node {
+                if let renderNode = newHLine.component(ofType: RenderComponent.self)?.spriteNode {
                     self.gridNode.addChild(renderNode)
                     renderNode.position = CGPoint(x: ((CGFloat(j) * dotDistanceX) + dotDistanceX/2) - size.width/2 ,
                                                   y: (CGFloat(i) * dotDistanceY) - size.height/2)
@@ -88,7 +89,7 @@ class GridComponent : GKComponent {
             vLineRow = []
             for j in 0 ..< width {
                 let newVLine = Line(.vertical, index: (j,i))
-                if let renderNode = newVLine.component(ofType: RenderComponent.self)?.node {
+                if let renderNode = newVLine.component(ofType: RenderComponent.self)?.spriteNode {
                     self.gridNode.addChild(renderNode)
                     renderNode.position = CGPoint(x: (CGFloat(j) * dotDistanceX) - size.width/2 ,
                                                   y: ((CGFloat(i) * dotDistanceY) + dotDistanceY/2) - size.height/2)
@@ -107,10 +108,6 @@ class GridComponent : GKComponent {
         
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     func connect(firstDot: (x: Int, y: Int), to secondDot: (x: Int, y: Int)) {
         // left to right, down up
         
@@ -119,22 +116,22 @@ class GridComponent : GKComponent {
         
         if firstDot.x < secondDot.x {
             first.component(ofType: ConnectionComponent.self)?.connect(direction: .right, to: second)
-            first.component(ofType: RenderComponent.self)?.node.alpha = 0.2
+            first.component(ofType: RenderComponent.self)?.spriteNode.alpha = 0.2
 //            print("Connected (\(firstDot.x),\(firstDot.y)) > (\(secondDot.x),\(secondDot.y))")
             
             second.component(ofType: ConnectionComponent.self)?.connect(direction: .left, to: first)
-            second.component(ofType: RenderComponent.self)?.node.alpha = 0.2
+            second.component(ofType: RenderComponent.self)?.spriteNode.alpha = 0.2
 //            print("Connected (\(secondDot.x),\(secondDot.y)) > (\(firstDot.x),\(firstDot.y))")
             
             lastConnectedDots.insert(first)
             lastConnectedDots.insert(second)
         } else if firstDot.y < secondDot.y {
             first.component(ofType: ConnectionComponent.self)?.connect(direction: .up, to: second)
-            first.component(ofType: RenderComponent.self)?.node.alpha = 0.2
+            first.component(ofType: RenderComponent.self)?.spriteNode.alpha = 0.2
 //            print("Connected (\(firstDot.x),\(firstDot.y)) ^ (\(secondDot.x),\(secondDot.y))")
             
             second.component(ofType: ConnectionComponent.self)?.connect(direction: .down, to: first)
-            second.component(ofType: RenderComponent.self)?.node.alpha = 0.2
+            second.component(ofType: RenderComponent.self)?.spriteNode.alpha = 0.2
 //            print("Connected (\(secondDot.x),\(secondDot.y)) v (\(firstDot.x),\(firstDot.y))")
             
             lastConnectedDots.insert(first)
