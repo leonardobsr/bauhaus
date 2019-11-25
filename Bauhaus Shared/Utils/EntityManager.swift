@@ -33,15 +33,15 @@ class EntityManager {
 //            componentSystem.addComponent(foundIn: entity)
 //        }
 
-        if !(entity is Dot) && !(entity is Line) {
-            if let node = entity.component(ofType: RenderComponent.self)?.node {
+        if !(entity is Dot) && !(entity is Line) && !(entity is Box) {
+            if let node = entity.component(ofType: RenderComponent.self)?.spriteNode {
                 scene.addChild(node)
             }
         }
     }
 
     func remove(_ entity: GKEntity) {
-        if let node = entity.component(ofType: RenderComponent.self)?.node {
+        if let node = entity.component(ofType: RenderComponent.self)?.spriteNode {
             node.removeFromParent()
         }
     

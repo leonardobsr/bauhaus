@@ -62,8 +62,8 @@ class MenuScene: SKScene {
 //        playButton = Button(position: playButtonSprite.position, sprite: "MenuPlayButton")
         playButton = Button(position: CGPoint(x: 0.615, y: 0.1897), sprite: "PlayButtonWithName")
         
-        playButton?.component(ofType: RenderComponent.self)?.node.xScale = widthProportion/100
-        playButton?.component(ofType: RenderComponent.self)?.node.yScale = heightProportion/100
+        playButton?.component(ofType: RenderComponent.self)?.spriteNode.xScale = widthProportion/100
+        playButton?.component(ofType: RenderComponent.self)?.spriteNode.yScale = heightProportion/100
         
         playButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         entityManager?.add(playButton!)
@@ -76,8 +76,8 @@ class MenuScene: SKScene {
         
         infoButton = Button(position: CGPoint(x: 0.14298, y: 0.79), sprite: "MenuButtonWithName")
         
-        infoButton?.component(ofType: RenderComponent.self)?.node.xScale = widthProportion/100
-        infoButton?.component(ofType: RenderComponent.self)?.node.yScale = heightProportion/100
+        infoButton?.component(ofType: RenderComponent.self)?.spriteNode.xScale = widthProportion/100
+        infoButton?.component(ofType: RenderComponent.self)?.spriteNode.yScale = heightProportion/100
         
         infoButton?.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         entityManager?.add(infoButton!)
@@ -95,7 +95,7 @@ class MenuScene: SKScene {
             
             if let button = node.entity as? Button {
                 self.touchedButton = button
-                button.component(ofType: RenderComponent.self)?.node.alpha = 0.5
+                button.component(ofType: RenderComponent.self)?.spriteNode.alpha = 0.5
             }
         }
     }
@@ -103,7 +103,7 @@ class MenuScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let button = self.touchedButton {
             button.component(ofType: TapComponent.self)?.changeState()
-            button.component(ofType: RenderComponent.self)?.node.alpha = 1
+            button.component(ofType: RenderComponent.self)?.spriteNode.alpha = 1
         }
     }
     

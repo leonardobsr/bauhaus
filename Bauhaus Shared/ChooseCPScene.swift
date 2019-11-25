@@ -15,11 +15,6 @@ class ChooseCPScene : SKScene {
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
-    var chooseCPGroup : Group?
-    var redPlayerGroup : Group?
-    var yellowPlayerGroup : Group?
-    var bluePlayerGroup : Group?
-    
     var backButton : Button?
     var redPlayerButton : Button?
     var yellowPlayerButton : Button?
@@ -150,21 +145,21 @@ class ChooseCPScene : SKScene {
         
         if let redPlayerButtonSM = self.redPlayerButton?.component(ofType: TapComponent.self)?.stateMachine {
             if redPlayerButtonSM.currentState is RestState {
-                self.redPlayerButton?.component(ofType: RenderComponent.self)?.node.alpha = 0.5
+                self.redPlayerButton?.component(ofType: RenderComponent.self)?.spriteNode.alpha = 0.5
                 self.redPlayerLabel?.changeText(newText: "COM")
             }
         }
         
         if let yellowPlayerButtonSM = self.yellowPlayerButton?.component(ofType: TapComponent.self)?.stateMachine {
             if yellowPlayerButtonSM.currentState is RestState {
-                self.yellowPlayerButton?.component(ofType: RenderComponent.self)?.node.alpha = 0.5
+                self.yellowPlayerButton?.component(ofType: RenderComponent.self)?.spriteNode.alpha = 0.5
                 self.yellowPlayerLabel?.changeText(newText: "COM")
             }
         }
         
         if let bluePlayerButtonSM = self.bluePlayerButton?.component(ofType: TapComponent.self)?.stateMachine {
             if bluePlayerButtonSM.currentState is RestState {
-                self.bluePlayerButton?.component(ofType: RenderComponent.self)?.node.alpha = 0.5
+                self.bluePlayerButton?.component(ofType: RenderComponent.self)?.spriteNode.alpha = 0.5
                 self.bluePlayerLabel?.changeText(newText: "COM")
             }
         }
@@ -199,7 +194,7 @@ extension ChooseCPScene {
             
             if let button = node.entity as? Button {
                 self.touchedButton = button
-                button.component(ofType: RenderComponent.self)?.node.alpha = 0.5
+                button.component(ofType: RenderComponent.self)?.spriteNode.alpha = 0.5
             }
             
         }
@@ -208,7 +203,7 @@ extension ChooseCPScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let button = self.touchedButton {
             button.component(ofType: TapComponent.self)?.changeState()
-            button.component(ofType: RenderComponent.self)?.node.alpha = 1
+            button.component(ofType: RenderComponent.self)?.spriteNode.alpha = 1
         }
         
         if self.touchedButton == self.redPlayerButton {

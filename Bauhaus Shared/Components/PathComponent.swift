@@ -48,18 +48,16 @@ class PathComponent : GKComponent {
         
         self.sprite = sprite
         
-        structurePoints.forEach {
-            let shape = SKShapeNode(circleOfRadius: 5)
-            shape.position = $0
-            sprite.addChild(shape)
-        }
+//        structurePoints.forEach {
+//            let shape = SKShapeNode(circleOfRadius: 5)
+//            shape.position = $0
+//            sprite.addChild(shape)
+//        }
         
         super.init()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
 }
 

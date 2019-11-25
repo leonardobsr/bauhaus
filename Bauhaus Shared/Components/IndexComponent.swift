@@ -21,14 +21,12 @@ class IndexComponent : GKComponent {
         super.init()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     func getConnectedDotsIndex() -> (firstDot: (x: Int,y: Int), secondDot: (x: Int,y: Int)) {
         switch orientation {
-        case .horizontal : return ((self.x,self.y), (self.x + 1,self.y))
-        case .vertical : return ((self.x,self.y), (self.x,self.y + 1))
+        case .horizontal : return ((self.y,self.x), (self.y,self.x + 1))
+        case .vertical : return ((self.y,self.x), (self.y + 1,self.x))
         }
     }
     
