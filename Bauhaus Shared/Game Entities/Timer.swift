@@ -32,7 +32,7 @@ class Timer : GKEntity {
     }
     
     override func update(deltaTime seconds: TimeInterval) {
-//        self.component(ofType: RenderComponent.self)?.node.position.y -= 1
+        self.component(ofType: RenderComponent.self)?.node.position.y -= 0.2
     }
     
 }

@@ -20,12 +20,11 @@ class GameViewController: UIViewController {
 
         let skView = self.view as! SKView
         SKViewSize = skView.bounds.size
-        skView.showsPhysics = true
+        
+//        skView.showsNodeCount = true
         
         if let skViewSize = SKViewSize {
             SKViewSizeRect = getViewSizeRect()
-//            let scene = ChooseCPScene.newChooseCPScene(size: skViewSize)
-//            skView.presentScene(scene)
         }
         
         let gameManager = GameManager.shared

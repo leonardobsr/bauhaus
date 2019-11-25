@@ -26,7 +26,6 @@ class IndexComponent : GKComponent {
     }
     
     func getConnectedDotsIndex() -> (firstDot: (x: Int,y: Int), secondDot: (x: Int,y: Int)) {
-        print(orientation)
         switch orientation {
         case .horizontal : return ((self.y,self.x), (self.y,self.x + 1))
         case .vertical : return ((self.y,self.x), (self.y + 1,self.x))

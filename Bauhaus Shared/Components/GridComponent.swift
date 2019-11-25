@@ -13,14 +13,13 @@ class GridComponent : GKComponent {
     var gridNode : SKNode
     
     var dotGrid : [[Dot]]
-    var lastConnectedDots : Set<Dot>
-    
-    var lastHoveredLines : [Line]
-    
     var horizontalLineGrid : [[Line]]
-    
     var verticalLineGrid : [[Line]]
     
+    var lastConnectedDots : Set<Dot>
+    var lastHoveredLines : [Line]
+    
+    var boxCorners : [(topLeft: CGPoint, topRight: CGPoint, bottomLeft: CGPoint, bottomRight: CGPoint)]
     
     init(gridNode: SKNode) {
         self.gridNode = gridNode
@@ -29,6 +28,7 @@ class GridComponent : GKComponent {
         self.lastHoveredLines = []
         self.horizontalLineGrid = []
         self.verticalLineGrid = []
+        self.boxCorners = []
         
         super.init()
     }
@@ -105,13 +105,6 @@ class GridComponent : GKComponent {
             self.verticalLineGrid.append(vLineRow)
         }
         
-//        for _ in 0 ... 50 {
-//            self.verticalLineGrid.randomElement()!.randomElement()!.component(ofType: LightSwitchComponent.self)?.turnOn()
-//        }
-//
-//        for _ in 0 ... 50 {
-//            self.horizontalLineGrid.randomElement()!.randomElement()!.component(ofType: LightSwitchComponent.self)?.turnOn()
-//        }
     }
     
     required init?(coder: NSCoder) {
@@ -127,22 +120,22 @@ class GridComponent : GKComponent {
         if firstDot.x < secondDot.x {
             first.component(ofType: ConnectionComponent.self)?.connect(direction: .right, to: second)
             first.component(ofType: RenderComponent.self)?.node.alpha = 0.2
-            print("Connected (\(firstDot.x),\(firstDot.y)) > (\(secondDot.x),\(secondDot.y))")
+//            print("Connected (\(firstDot.x),\(firstDot.y)) > (\(secondDot.x),\(secondDot.y))")
             
             second.component(ofType: ConnectionComponent.self)?.connect(direction: .left, to: first)
             second.component(ofType: RenderComponent.self)?.node.alpha = 0.2
-            print("Connected (\(secondDot.x),\(secondDot.y)) > (\(firstDot.x),\(firstDot.y))")
+//            print("Connected (\(secondDot.x),\(secondDot.y)) > (\(firstDot.x),\(firstDot.y))")
             
             lastConnectedDots.insert(first)
             lastConnectedDots.insert(second)
         } else if firstDot.y < secondDot.y {
             first.component(ofType: ConnectionComponent.self)?.connect(direction: .up, to: second)
             first.component(ofType: RenderComponent.self)?.node.alpha = 0.2
-            print("Connected (\(firstDot.x),\(firstDot.y)) ^ (\(secondDot.x),\(secondDot.y))")
+//            print("Connected (\(firstDot.x),\(firstDot.y)) ^ (\(secondDot.x),\(secondDot.y))")
             
             second.component(ofType: ConnectionComponent.self)?.connect(direction: .down, to: first)
             second.component(ofType: RenderComponent.self)?.node.alpha = 0.2
-            print("Connected (\(secondDot.x),\(secondDot.y)) v (\(firstDot.x),\(firstDot.y))")
+//            print("Connected (\(secondDot.x),\(secondDot.y)) v (\(firstDot.x),\(firstDot.y))")
             
             lastConnectedDots.insert(first)
             lastConnectedDots.insert(second)

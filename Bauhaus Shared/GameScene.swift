@@ -94,7 +94,7 @@ class GameScene: SKScene {
         loadRandomPieces()
         
         let newTimer = Timer()
-        newTimer.component(ofType: RenderComponent.self)?.node.posByScreen(x: 1, y: 1.5)
+        newTimer.component(ofType: RenderComponent.self)?.node.posByScreen(x: 0.95, y: 1)
         self.timer = newTimer
         entityManager?.add(newTimer)
     }
@@ -142,10 +142,9 @@ class GameScene: SKScene {
             }
         }
         
-        if let timerRenderNode = timer?.component(ofType: RenderComponent.self)?.node,
-            let timerShapeNode = timer?.component(ofType: RectangleComponent.self)?.shapeNode {
-            if timerRenderNode.position.y - timerShapeNode.frame.height/2 == self.frame.minY {
-                timerRenderNode.posByScreen(x: 1, y: 1.5)
+        if let timerRenderNode = timer?.component(ofType: RenderComponent.self)?.node {
+            if Int(timerRenderNode.position.y) == Int(self.frame.minY) {
+                timerRenderNode.posByScreen(x: 0.95, y: 1)
                 loadRandomPieces()
                 self.currentPlayer = nextPlayer()
             }
@@ -193,7 +192,7 @@ extension GameScene {
             if let entity = node.entity {
                 switch entity {
                 case is Button : tapOn(button: entity)
-                case is Line : tapOn(line: entity)
+//                case is Line : tapOn(line: entity)
                 case is Piece : tapOn(piece: entity)
                 default : return
                 }
@@ -228,18 +227,19 @@ extension GameScene {
             if touchEndTime - touchStartTime < 0.1 {
                 pieceNode.run(SKAction.rotate(byAngle: 90 * .pi/180, duration: 0.1))
             } else {
-                if (checkPiecePositionInBoard(piece: pieceNode)) {
-                    if findLinesHovered(by: piece) {
-                        guard let grid = self.board?.component(ofType: GridComponent.self) else { return }
+                if checkPiecePositionInBoard(piece: pieceNode) && findLinesHovered(by: piece) {
+                    guard let grid = self.board?.component(ofType: GridComponent.self) else { return }
                         
-                        entityManager?.remove(piece)
+                    entityManager?.remove(piece)
                         
-                        connectDots(lastHoveredLines: grid.lastHoveredLines)
-                        grid.lastHoveredLines = []
+                    connectDots(lastHoveredLines: grid.lastHoveredLines)
+                    grid.lastHoveredLines = []
                         
-                        findRectangles(lastConnectedDots: grid.lastConnectedDots)
-                        grid.lastConnectedDots = []
-                    }
+                    findRectangles(lastConnectedDots: grid.lastConnectedDots)
+                    grid.lastConnectedDots = []
+                        
+                    turnPass()
+                    loadRandomPieces()
                 } else {
                     if let originPosition = self.originPosition {
                         pieceNode.position = originPosition
@@ -272,7 +272,7 @@ extension GameScene {
 extension GameScene {
     
     func turnPass() {
-        timer?.component(ofType: RenderComponent.self)?.node.posByScreen(x: 1, y: 1.5)
+        timer?.component(ofType: RenderComponent.self)?.node.posByScreen(x: 0.95, y: 1)
         self.currentPlayer = nextPlayer()
     }
     
@@ -333,19 +333,31 @@ extension GameScene {
             let grid = self.board?.component(ofType: GridComponent.self)
         else { return false }
         
-        var wasPlaced = false
+        var isOverlapping = false
+        var hoveredLines : [Line] = []
+
         structurePoints.forEach { point in
             let pointPieceToWorld = self.convert(point, from: pieceNode)
             nodes(at: pointPieceToWorld).forEach { node in
                 if let line = node.entity as? Line {
-                    line.component(ofType: LightSwitchComponent.self)?.turnOn()
-                    grid.lastHoveredLines.append(line)
-                    wasPlaced = true
+                    if line.component(ofType: LightSwitchComponent.self)?.stateMachine.currentState is OnState {
+                        isOverlapping = true
+                    } else {
+                        hoveredLines.append(line)
+                    }
                 }
             }
         }
         
-        return wasPlaced
+        if !isOverlapping {
+            hoveredLines.forEach { line in
+                line.component(ofType: LightSwitchComponent.self)?.turnOn()
+                grid.lastHoveredLines.append(line)
+            }
+            return true
+        }
+        
+        return false
     }
     
     func connectDots(lastHoveredLines: [Line]) {
@@ -357,116 +369,138 @@ extension GameScene {
     }
     
     func findRectangles(lastConnectedDots: Set<Dot>) {
-        print("=========================================================================")
         lastConnectedDots.forEach { dot in
-            let result =
             findRectangle(startingDot: dot,
-                       currentDot: dot,
-                       originDirection: .none,
-                       moveTrack: [:],
-                       visitedDots: [],
-                       rectangleVertices: [])
-            
-            print(result)
+                          currentDot: dot,
+                          originDirection: .none,
+                          moveTrack: [:],
+                          visitedDots: [],
+                          rectangleVertices: [dot.component(ofType: RenderComponent.self)!.node.position])
         }
     }
 
-    func findRectangle(startingDot: Dot, currentDot: Dot, originDirection : Direction, moveTrack : [Axis : Direction], visitedDots: [Dot], rectangleVertices: [CGPoint]) -> Bool {
+    func findRectangle(startingDot: Dot, currentDot: Dot, originDirection: Direction, moveTrack: [Axis : Direction], visitedDots: [Dot], rectangleVertices: [CGPoint]) {
         
         var possibleMovements : [Direction] = [.up,.down,.left,.right]
         
-        possibleMovements.removeAll { ($0 == originDirection) || ($0 == moveTrack[.X]) || ($0 == moveTrack[.Y]) }
+        possibleMovements.removeAll { move in (move == originDirection) || (move == moveTrack[.X]) || (move == moveTrack[.Y]) }
         
-        if possibleMovements.isEmpty { return false }
-                
-        var foundRectangles : [Bool] = []
-                        
+        if possibleMovements.isEmpty { return }
+        
+        possibleMovements = sortMovementPriority(moves: possibleMovements, currentAxis: originDirection.axis())
+        
         possibleMovements.forEach { move in
             guard
                 let dotConnections = currentDot.component(ofType: ConnectionComponent.self)?.connections,
                 let dotRenderNode = currentDot.component(ofType: RenderComponent.self)?.node
             else { return }
-            
+                        
             var newMoveTrack = moveTrack
             var newVisitedDots = visitedDots ; newVisitedDots.append(currentDot)
             var newRectangleVertices = rectangleVertices
             
             if let nextDot = dotConnections[move] {
-                
                 let currentAxis = originDirection.axis()
                 let nextAxis = move.axis()
                 
                 if originDirection != .none && nextAxis != currentAxis {
+//                    signal(currentDot)
                     newMoveTrack[currentAxis] = originDirection.opposite()
                     newRectangleVertices.append(dotRenderNode.position)
                 }
                 
                 if newVisitedDots.contains(nextDot) {
                     if nextDot == startingDot {
-                        foundRectangles.append(true)
+//                        signal(nextDot)
+//                        print(newRectangleVertices)
                         drawRectangle(vertices: newRectangleVertices)
                     }
                 } else {
-                    let result = findRectangle(startingDot: startingDot,
-                                            currentDot: nextDot,
-                                            originDirection: move.opposite(),
-                                            moveTrack: newMoveTrack,
-                                            visitedDots: newVisitedDots,
-                                            rectangleVertices: newRectangleVertices)
-                    
-                    foundRectangles.append(result)
+                    findRectangle(startingDot: startingDot,
+                                  currentDot: nextDot,
+                                  originDirection: move.opposite(),
+                                  moveTrack: newMoveTrack,
+                                  visitedDots: newVisitedDots,
+                                  rectangleVertices: newRectangleVertices)
                 }
-                
             }
         }
+    }
+    
+    func sortMovementPriority(moves: [Direction], currentAxis: Axis) -> [Direction] {
+        var sortedMoves : [Direction] = []
+
+        let xMoves = moves.filter { $0 == .left || $0 == .right }
+        let yMoves = moves.filter { $0 == .up || $0 == .down }
         
-        return foundRectangles.reduce(false) { x, y in x || y }
+        if currentAxis == .Y {
+            sortedMoves.append(contentsOf: xMoves)
+            sortedMoves.append(contentsOf: yMoves)
+        } else {
+            sortedMoves.append(contentsOf: yMoves)
+            sortedMoves.append(contentsOf: xMoves)
+        }
+        
+        return sortedMoves
     }
     
     func drawRectangle(vertices: [CGPoint]) {
-        guard var topLeft = vertices.first, var bottomRight = vertices.first
+        guard
+            var topLeft = vertices.first, var topRight = vertices.first,
+            var bottomLeft = vertices.first, var bottomRight = vertices.first
         else { return }
                 
-        vertices.forEach {
-            if $0.x < topLeft.x && $0.y >= topLeft.y { topLeft = $0 }
-            else if $0.y < bottomRight.y && $0.x >= bottomRight.x { bottomRight = $0 }
+        vertices.forEach { point in
+            if point.x <= topLeft.x      &&  point.y >= topLeft.y        { topLeft = point }
+            if point.y >= topRight.y     &&  point.x >= topRight.x       { topRight = point }
+            if point.x <= bottomLeft.x   &&  point.y <= bottomLeft.y     { bottomLeft = point }
+            if point.y <= bottomRight.y  &&  point.x >= bottomRight.x    { bottomRight = point }
         }
         
-//        vertices.forEach {
-//            let rect = CGRect(x: $0.x,
-//                              y: $0.y,
-//                              width: 5,
-//                              height: 5)
-//
-//            let shape = SKShapeNode(rect: rect)
-//
-//            shape.fillColor = currentPlayer!
-//            shape.zPosition = 100
-//
-//            board?.component(ofType: GridComponent.self)?.gridNode.addChild(shape)
-//        }
+//        print("topLeft: \(topLeft), topRight: \(topRight), bottomLeft: \(bottomLeft), bottomRight: \(bottomRight)")
         
-//        let rect = CGRect(x: topLeft.x,
-//                          y: bottomRight.y,
-//                          width: bottomRight.x - topLeft.x,
-//                          height: topLeft.y - bottomRight.y)
-//                
-//        let shape = SKShapeNode(rect: rect)
-//        
-//        shape.fillColor = currentPlayer!
-//        shape.zPosition = CGFloat(RenderingPosition.box.rawValue)
-        
-        let size = CGSize(width: bottomRight.x - topLeft.x, height: topLeft.y - bottomRight.y)
-        let position = CGPoint(x: topLeft.x, y: bottomRight.y)
-        
-        if let color = currentPlayer {
-            let box = Box(color: color, size: size, position: position)
-            if let boxShapeNode = box.component(ofType: RectangleComponent.self)?.shapeNode {
-                self.board?.component(ofType: GridComponent.self)?.gridNode.addChild(boxShapeNode)
+        if  topLeft.x == bottomLeft.x && topRight.x == bottomRight.x &&
+            topLeft.y == topRight.y && bottomRight.y == bottomLeft.y {
+            
+            guard let gridComponent = self.board?.component(ofType: GridComponent.self) else { return }
+            
+            if gridComponent.boxCorners.contains(where: {
+                $0.topLeft == topLeft || $0.topRight == topRight || $0.bottomLeft == bottomLeft || $0.bottomRight == bottomRight
+            }) { return }
+            
+            if let color = currentPlayer {
+                let size = CGSize(width: bottomRight.x - topLeft.x, height: topLeft.y - bottomRight.y)
+                let position = CGPoint(x: topLeft.x, y: bottomRight.y)
+                let box = Box(color: color, size: size, position: position)
+                if let boxShapeNode = box.component(ofType: RectangleComponent.self)?.shapeNode {
+                    gridComponent.gridNode.addChild(boxShapeNode)
+                    gridComponent.boxCorners.append((topLeft,topRight,bottomLeft,bottomRight))
+                    entityManager?.add(box)
+                }
             }
-            entityManager?.add(box)
         }
+    }
+    
+    func signal(_ dot: Dot) {
+        guard let node = dot.component(ofType: RenderComponent.self)?.node else { return }
         
+        let shape = SKShapeNode(rectOf: CGSize(width: 10, height: 10))
+        shape.name = "shape"
+        shape.fillColor = currentPlayer!
+        shape.zPosition = 200
+        node.addChild(shape)
+        
+        let label = SKLabelNode(text: "\(node.position)")
+        label.fontColor = .green
+        label.fontSize = 10
+        label.fontName = "Munro"
+        label.position = CGPoint(x: 0, y: 0)
+        label.zPosition = 200
+        node.addChild(label)
+    }
+    
+    func unsignal(_ dot: Dot) {
+        dot.component(ofType: RenderComponent.self)?.node.childNode(withName: "shape")?.removeFromParent()
     }
     
 }
