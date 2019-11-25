@@ -23,10 +23,14 @@ class GameScene: SKScene {
     var board : Board?
     var originPosition: CGPoint?
     
+    var playerBorder : SKShapeNode?
+    
     var currentPlayer : UIColor? {
         didSet {
             if let player = self.currentPlayer {
-                self.backgroundColor = player
+                self.playerBorder?.fillColor = player
+                self.timer?.component(ofType: RectangleComponent.self)?.shapeNode.fillColor = player
+//                self.backgroundColor = player
             }
         }
     }
@@ -40,40 +44,45 @@ class GameScene: SKScene {
         
         self.lastUpdateTime = 0
         
-        self.currentPlayer = UIColor(red: 245, green: 49, blue: 60)
+        self.backgroundColor = .white
         
         self.entityManager = EntityManager(scene: self)
         
         self.board = Board(frame: self.frame)
         
-        var dots = [[Dot]]()
-        if let renderComponent = self.board?.component(ofType: RenderComponent.self) {
-//            renderComponent.node.position = CGPoint(x: -0.2 * self.frame.maxX, y: 0)
-            renderComponent.spriteNode.posByScreen(x: 0.35, y: 0.5)
+        var boardSize : CGSize = .zero
+        var boardPosition : CGPoint = .zero
+        
+        if let node = self.board?.component(ofType: RenderComponent.self)?.spriteNode {
+            node.posByScreen(x: 0.38, y: 0.5)
+            boardSize = node.size
+            boardPosition = node.position
         }
+        
+        var dots = [[Dot]]()
+        
         if let gridComponent = self.board?.component(ofType: GridComponent.self) {
             let gridSize = CGSize(width: 10 * 56, height: 10 * 56)
             gridComponent.setGrid(width: 11, height: 11, size: gridSize)
             dots = gridComponent.dotGrid
         }
 
-        if let board = self.board {
-            entityManager?.add(board)
-        }
-
+        if let board = self.board { entityManager?.add(board) }
         dots.forEach { row in row.forEach { dot in entityManager?.add(dot) } }
-                
-//        let newPauseButton = Button(position: CGPoint(x: -610, y: 450), sprite: "pauseButton")
+        
+        self.playerBorder = SKShapeNode(rectOf: CGSize(width: boardSize.width * 1.1, height: boardSize.height * 1.1))
+        self.playerBorder?.position = boardPosition
+        self.addChild(playerBorder!)
+
         let newPauseButton = Button(position: CGPoint(x: 0.05, y: 0.93), sprite: "pauseButton")
         newPauseButton.component(ofType: RenderComponent.self)?.spriteNode.setScale((self.size.height/self.size.width))
         newPauseButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         self.pauseButton = newPauseButton
         entityManager?.add(newPauseButton)
         
-//        let newTurnPassButton = Button(position: CGPoint(x: 610, y: -450), sprite: "backButton")
-        let newTurnPassButton = Button(position: CGPoint(x: 0.89, y: 0.07), sprite: "backButton")
+        let newTurnPassButton = Button(position: CGPoint(x: 0.89, y: 0.07), sprite: "nextPlayerButton")
         newTurnPassButton.component(ofType: RenderComponent.self)?.spriteNode.setScale((self.size.height/self.size.width))
-        newTurnPassButton.component(ofType: RenderComponent.self)?.spriteNode.zRotation = 180 * .pi/180
+//        newTurnPassButton.component(ofType: RenderComponent.self)?.spriteNode.zRotation = 180 * .pi/180
         newTurnPassButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         self.turnPassButton = newTurnPassButton
         entityManager?.add(newTurnPassButton)
@@ -81,9 +90,11 @@ class GameScene: SKScene {
         loadRandomPieces()
         
         let newTimer = Timer()
-        newTimer.component(ofType: RenderComponent.self)?.spriteNode.posByScreen(x: 0.95, y: 1)
+        newTimer.component(ofType: RectangleComponent.self)?.shapeNode.posByScreen(x: 0.95, y: 1)
         self.timer = newTimer
         entityManager?.add(newTimer)
+        
+        self.currentPlayer = UIColor.CustomGameColor.PieterRed
     }
     
     #if os(watchOS)
@@ -129,7 +140,7 @@ class GameScene: SKScene {
             }
         }
         
-        if let timerRenderNode = timer?.component(ofType: RenderComponent.self)?.spriteNode {
+        if let timerRenderNode = timer?.component(ofType: RectangleComponent.self)?.shapeNode {
             if Int(timerRenderNode.position.y) == Int(self.frame.minY) {
                 timerRenderNode.posByScreen(x: 0.95, y: 1)
                 loadRandomPieces()
@@ -259,17 +270,17 @@ extension GameScene {
 extension GameScene {
     
     func turnPass() {
-        timer?.component(ofType: RenderComponent.self)?.spriteNode.posByScreen(x: 0.95, y: 1)
+        timer?.component(ofType: RectangleComponent.self)?.shapeNode.posByScreen(x: 0.95, y: 1)
         self.currentPlayer = nextPlayer()
     }
     
     func nextPlayer() -> UIColor? {
         if let player = self.currentPlayer {
             switch player {
-            case UIColor(red: 245, green: 49, blue: 60) : return UIColor(red: 247, green: 242, blue: 74)
-            case UIColor(red: 247, green: 242, blue: 74) : return UIColor(red: 25, green: 117, blue: 168)
-            case UIColor(red: 25, green: 117, blue: 168) : return UIColor(red: 245, green: 49, blue: 60)
-            default : return .red
+            case UIColor.CustomGameColor.PieterRed : return UIColor.CustomGameColor.CornelisYellow
+            case UIColor.CustomGameColor.CornelisYellow : return UIColor.CustomGameColor.MondriaanBlue
+            case UIColor.CustomGameColor.MondriaanBlue : return UIColor.CustomGameColor.PieterRed
+            default : return .white
             }
         }
         return nil

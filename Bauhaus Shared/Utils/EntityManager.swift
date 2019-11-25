@@ -36,6 +36,8 @@ class EntityManager {
         if !(entity is Dot) && !(entity is Line) && !(entity is Box) {
             if let node = entity.component(ofType: RenderComponent.self)?.spriteNode {
                 scene.addChild(node)
+            } else if let node = entity.component(ofType: RectangleComponent.self)?.shapeNode {
+                scene.addChild(node)
             }
         }
     }

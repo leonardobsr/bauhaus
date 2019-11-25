@@ -22,5 +22,8 @@ extension UIColor {
 
     struct CustomGameColor {
         static let SpecialBlack = UIColor(netHex: 0x0E1607)
+        static let PieterRed = UIColor(netHex: 0xF5313C)
+        static let CornelisYellow = UIColor(netHex: 0xF7F24A)
+        static let MondriaanBlue = UIColor(netHex: 0x1975A8)
     }
 }
