@@ -26,10 +26,8 @@ class GameViewController: UIViewController {
         skView.showsFPS = true
         skView.showsNodeCount = true
         
-        if let skViewSize = SKViewSize {
+        if let _ = SKViewSize {
             SKViewSizeRect = getViewSizeRect()
-//            let scene = ChooseCPScene.newChooseCPScene(size: skViewSize)
-//            skView.presentScene(scene)
         }
         
         let gameManager = GameManager.shared

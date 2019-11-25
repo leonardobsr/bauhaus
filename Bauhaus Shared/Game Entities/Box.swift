@@ -14,13 +14,10 @@ class Box : GKEntity {
         super.init()
         
         // Visual Components
-        
-        let renderComponent = RenderComponent()
-        renderComponent.node.zPosition = CGFloat(RenderingPosition.box.rawValue)
-        self.addComponent(renderComponent)
-        
         let rectangleComponent = RectangleComponent(color: color, size: size, position: position)
-        renderComponent.node.addChild(rectangleComponent.shapeNode)
+        rectangleComponent.shapeNode.zPosition = CGFloat(RenderingPosition.box.rawValue)
+        rectangleComponent.shapeNode.entity = self
+        rectangleComponent.shapeNode.name = "Box"
         self.addComponent(rectangleComponent)
     }
     

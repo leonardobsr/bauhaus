@@ -14,25 +14,18 @@ class Board : GKEntity {
         super.init()
         
         // Visual Components
-        
-        let renderComponent = RenderComponent(node: SKNode())
-        renderComponent.node.zPosition = CGFloat(RenderingPosition.board.rawValue)
+        let renderComponent = RenderComponent(spriteNode: SKSpriteNode())
+        renderComponent.spriteNode.zPosition = CGFloat(RenderingPosition.board.rawValue)
+        renderComponent.spriteNode.size = CGSize(width: 0.7 * frame.height, height: 0.7 * frame.height)
+        renderComponent.spriteNode.color = .white
+        renderComponent.spriteNode.entity = self
+        renderComponent.spriteNode.name = "Board"
         self.addComponent(renderComponent)
         
-        let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode())
-        spriteComponent.spriteNode.size = CGSize(width: 0.7 * frame.height, height: 0.7 * frame.height)
-        spriteComponent.spriteNode.color = .white
-        renderComponent.node.addChild(spriteComponent.spriteNode)
-        self.addComponent(spriteComponent)
-        
         // Game Logic Components
-        
         let gridComponent = GridComponent(gridNode: SKNode())
-        spriteComponent.spriteNode.addChild(gridComponent.gridNode)
+        renderComponent.spriteNode.addChild(gridComponent.gridNode)
         self.addComponent(gridComponent)
-        
-        let boardComponent = BoardComponent()
-        self.addComponent(boardComponent)
     }
     
     required init?(coder: NSCoder) {

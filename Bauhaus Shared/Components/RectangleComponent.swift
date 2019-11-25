@@ -14,12 +14,11 @@ class RectangleComponent : GKComponent {
     var color : UIColor
     
     init(color: UIColor, size: CGSize, position: CGPoint) {
-        self.shapeNode = SKShapeNode(rectOf: size)
-        self.shapeNode.position = position
+        let rect = CGRect(x: position.x, y: position.y, width: size.width, height: size.height)
+        self.shapeNode = SKShapeNode(rect: rect)
         self.shapeNode.fillColor = color
         self.shapeNode.strokeColor = .clear
         self.color = color
-        
         super.init()
     }
     

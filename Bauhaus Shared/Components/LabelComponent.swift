@@ -17,12 +17,8 @@ class LabelComponent : GKComponent {
        super.init()
     }
 
-    required init?(coder: NSCoder) {
-       fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    func changeText(newText: String) {
-        self.labelNode.text = newText
-    }
+    func changeText(newText: String) { self.labelNode.text = newText }
 
 }

@@ -13,16 +13,13 @@ class Button : GKEntity {
     init(position: CGPoint, sprite: String) {
         super.init()
         
-        let renderComponent = RenderComponent(node: SKNode())
-        renderComponent.node.zPosition = CGFloat(RenderingPosition.button.rawValue)
-        renderComponent.node.posByScreen(x: position.x, y: position.y)
+        let renderComponent = RenderComponent(spriteNode: SKSpriteNode(imageNamed: sprite))
+        renderComponent.spriteNode.posByScreen(x: position.x, y: position.y)
+        renderComponent.spriteNode.zPosition = CGFloat(RenderingPosition.button.rawValue)
+        renderComponent.spriteNode.entity = self
+        renderComponent.spriteNode.name = "Button"
         self.addComponent(renderComponent)
-        
-        let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode(imageNamed: sprite))
-        renderComponent.node.addChild(spriteComponent.spriteNode)
-        spriteComponent.spriteNode.entity = self
-        self.addComponent(spriteComponent)
-        
+                
         let tapComponent = TapComponent()
         self.addComponent(tapComponent)
         

@@ -18,28 +18,21 @@ class Line : GKEntity {
         super.init()
         
         // Visual Components
-        let renderComponent = RenderComponent(node: SKNode())
-        renderComponent.node.zPosition = CGFloat(RenderingPosition.line.rawValue)
+        let renderComponent = RenderComponent(spriteNode: SKSpriteNode(imageNamed: "lineOff"))
+        renderComponent.spriteNode.zPosition = CGFloat(RenderingPosition.line.rawValue)
+        renderComponent.spriteNode.entity = self
+        renderComponent.spriteNode.name = "Line"
         self.addComponent(renderComponent)
         
-        let spriteComponent = SpriteComponent(spriteNode: SKSpriteNode(imageNamed: "lineOff"))
-        spriteComponent.spriteNode.entity = self
-        spriteComponent.spriteNode.name = "Line"
-        renderComponent.node.addChild(spriteComponent.spriteNode)
-        self.addComponent(spriteComponent)
-        
         switch lineOrientation {
-        case .vertical : spriteComponent.spriteNode.zRotation = 0
-        case .horizontal : spriteComponent.spriteNode.zRotation = .pi/2
+        case .vertical : renderComponent.spriteNode.zRotation = 0
+        case .horizontal : renderComponent.spriteNode.zRotation = .pi/2
         }
         
         // Game Logic Components
-        let lightSwitchComponent = LightSwitchComponent(node: spriteComponent.spriteNode)
+        let lightSwitchComponent = LightSwitchComponent(node: renderComponent.spriteNode)
         lightSwitchComponent.stateMachine.enter(OffState.self)
         self.addComponent(lightSwitchComponent)
-        
-//        let physicsComponent = PhysicsComponent(node: spriteComponent.spriteNode, categoryBitMask: .boardLine)
-//        self.addComponent(physicsComponent)
         
         let indexComponent = IndexComponent(x: index.x, y: index.y, orientation: lineOrientation)
         self.addComponent(indexComponent)

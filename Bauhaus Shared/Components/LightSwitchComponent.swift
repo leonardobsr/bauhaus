@@ -16,13 +16,10 @@ class LightSwitchComponent : GKComponent {
     init(node: SKSpriteNode) {
         self.node = node
         self.stateMachine = GKStateMachine(states: [OnState(), OffState()])
-        
         super.init()
     }
  
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     func turnOn() {
         if self.stateMachine.enter(OnState.self) {
