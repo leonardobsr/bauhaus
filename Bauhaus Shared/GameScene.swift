@@ -13,16 +13,16 @@ class GameScene: SKScene {
     
     var entityManager: EntityManager?
 
+    var availablePieces : [Piece] = []
     var touchedPiece : Piece?
-    var availablePieces = [Piece]()
+    var originPosition: CGPoint?
     
     var pauseButton : Button?
     var turnPassButton : Button?
     var timer : Timer?
     
     var board : Board?
-    var originPosition: CGPoint?
-    
+    var dots = [[Dot]]()
     var playerBorder : SKShapeNode?
     
     var currentPlayer : UIColor? {
@@ -30,7 +30,6 @@ class GameScene: SKScene {
             if let player = self.currentPlayer {
                 self.playerBorder?.fillColor = player
                 self.timer?.component(ofType: RectangleComponent.self)?.shapeNode.fillColor = player
-//                self.backgroundColor = player
             }
         }
     }
@@ -41,10 +40,9 @@ class GameScene: SKScene {
 
     func setUpScene() {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        self.backgroundColor = .white
         
         self.lastUpdateTime = 0
-        
-        self.backgroundColor = .white
         
         self.entityManager = EntityManager(scene: self)
         
@@ -58,12 +56,25 @@ class GameScene: SKScene {
             boardSize = node.size
             boardPosition = node.position
         }
-        
-        var dots = [[Dot]]()
-        
+                
         if let gridComponent = self.board?.component(ofType: GridComponent.self) {
-            let gridSize = CGSize(width: 10 * 56, height: 10 * 56)
-            gridComponent.setGrid(width: 11, height: 11, size: gridSize)
+//            let gridSize = CGSize(width: 10 * 56, height: 10 * 56)
+//            gridComponent.setGrid(width: 11, height: 11, size: gridSize)
+            
+            let boardEdge = Int(boardSize.width * 0.85)
+            
+            let dotAmount = boardEdge/56
+            let n1 = dotAmount * 56
+            let n2 = 56 * (dotAmount + 1)
+            
+            var gridEdge = 0
+
+            if abs(boardEdge - n1) < abs(boardEdge - n2) { gridEdge = n1 }
+            else { gridEdge = n2 }
+            
+            let gridSize = CGSize(width: Double(gridEdge), height: Double(gridEdge))
+            
+            gridComponent.setGrid(width: Int(gridEdge/56) + 1, height: Int(gridEdge/56) + 1, size: gridSize)
             dots = gridComponent.dotGrid
         }
 
@@ -75,76 +86,62 @@ class GameScene: SKScene {
         self.addChild(playerBorder!)
 
         let newPauseButton = Button(position: CGPoint(x: 0.05, y: 0.93), sprite: "pauseButton")
-        newPauseButton.component(ofType: RenderComponent.self)?.spriteNode.setScale((self.size.height/self.size.width))
+        newPauseButton.component(ofType: RenderComponent.self)?.spriteNode.setScale((self.size.height/self.size.width) * 2)
         newPauseButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         self.pauseButton = newPauseButton
         entityManager?.add(newPauseButton)
         
         let newTurnPassButton = Button(position: CGPoint(x: 0.89, y: 0.07), sprite: "nextPlayerButton")
-        newTurnPassButton.component(ofType: RenderComponent.self)?.spriteNode.setScale((self.size.height/self.size.width))
-//        newTurnPassButton.component(ofType: RenderComponent.self)?.spriteNode.zRotation = 180 * .pi/180
+        newTurnPassButton.component(ofType: RenderComponent.self)?.spriteNode.setScale((self.size.height/self.size.width) * 2)
         newTurnPassButton.component(ofType: TapComponent.self)?.stateMachine.enter(RestState.self)
         self.turnPassButton = newTurnPassButton
         entityManager?.add(newTurnPassButton)
         
         loadRandomPieces()
         
-        let newTimer = Timer()
-        newTimer.component(ofType: RectangleComponent.self)?.shapeNode.posByScreen(x: 0.95, y: 1)
+        let newTimer = Timer(position: CGPoint(x: 0.95, y: 1))
         self.timer = newTimer
         entityManager?.add(newTimer)
         
         self.currentPlayer = UIColor.CustomGameColor.PieterRed
+        timer?.start()
     }
     
-    #if os(watchOS)
-    override func sceneDidLoad() {
-        self.setUpScene()
-    }
-    #else
     override func didMove(to view: SKView) {
         self.setUpScene()
     }
-    #endif
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
         // Initialize _lastUpdateTime if it has not already been
-        if (self.lastUpdateTime == 0) {
-            self.lastUpdateTime = currentTime
-        }
+        if (self.lastUpdateTime == 0) { self.lastUpdateTime = currentTime }
         
         // Calculate time since last update
         let dt = currentTime - self.lastUpdateTime
         
         // Update entities
-        for entity in self.entityManager!.entities {
-            entity.update(deltaTime: dt)
-        }
+        for entity in self.entityManager!.entities { entity.update(deltaTime: dt) }
         
         self.lastUpdateTime = currentTime
         
         if let pauseButtonSM = self.pauseButton?.component(ofType: TapComponent.self)?.stateMachine {
             if pauseButtonSM.currentState is ActState {
-                GameManager.shared.pauseGame()
                 pauseButtonSM.enter(RestState.self)
+                GameManager.shared.pauseGame()
             }
         }
         
         if let turnPassButtonSM = self.turnPassButton?.component(ofType: TapComponent.self)?.stateMachine {
             if turnPassButtonSM.currentState is ActState {
-                turnPass()
-                loadRandomPieces()
                 turnPassButtonSM.enter(RestState.self)
+                nextPlayer()
             }
         }
         
         if let timerRenderNode = timer?.component(ofType: RectangleComponent.self)?.shapeNode {
             if Int(timerRenderNode.position.y) == Int(self.frame.minY) {
-                timerRenderNode.posByScreen(x: 0.95, y: 1)
-                loadRandomPieces()
-                self.currentPlayer = nextPlayer()
+               nextPlayer()
             }
         }
         
@@ -225,6 +222,7 @@ extension GameScene {
             if touchEndTime - touchStartTime < 0.1 {
                 pieceNode.run(SKAction.rotate(byAngle: 90 * .pi/180, duration: 0.1))
             } else {
+                snapToGrid(piece: pieceNode)
                 if checkPiecePositionInBoard(piece: pieceNode) && findLinesHovered(by: piece) {
                     guard let grid = self.board?.component(ofType: GridComponent.self) else { return }
                         
@@ -236,8 +234,7 @@ extension GameScene {
                     findRectangles(lastConnectedDots: grid.lastConnectedDots)
                     grid.lastConnectedDots = []
                         
-                    turnPass()
-                    loadRandomPieces()
+                    nextPlayer()
                 } else {
                     if let originPosition = self.originPosition {
                         pieceNode.position = originPosition
@@ -269,21 +266,18 @@ extension GameScene {
 
 extension GameScene {
     
-    func turnPass() {
-        timer?.component(ofType: RectangleComponent.self)?.shapeNode.posByScreen(x: 0.95, y: 1)
-        self.currentPlayer = nextPlayer()
-    }
-    
-    func nextPlayer() -> UIColor? {
+    func nextPlayer() {
         if let player = self.currentPlayer {
             switch player {
-            case UIColor.CustomGameColor.PieterRed : return UIColor.CustomGameColor.CornelisYellow
-            case UIColor.CustomGameColor.CornelisYellow : return UIColor.CustomGameColor.MondriaanBlue
-            case UIColor.CustomGameColor.MondriaanBlue : return UIColor.CustomGameColor.PieterRed
-            default : return .white
+            case UIColor.CustomGameColor.PieterRed : self.currentPlayer = UIColor.CustomGameColor.CornelisYellow
+            case UIColor.CustomGameColor.CornelisYellow : self.currentPlayer = UIColor.CustomGameColor.MondriaanBlue
+            case UIColor.CustomGameColor.MondriaanBlue : self.currentPlayer = UIColor.CustomGameColor.PieterRed
+            default : self.currentPlayer = .white
             }
+            
+            self.timer?.reset()
+            loadRandomPieces()
         }
-        return nil
     }
     
     func loadRandomPieces() {
@@ -292,15 +286,15 @@ extension GameScene {
         
         let possiblePieces : [PathSprite] = [.I1, .I2, .L1, .L2, .U1, .U2, .T1, .T2, .Z1, .Z2]
         
-        let piece = Piece(pathType: .Z, edgeSize: 2, pathSprite: possiblePieces.randomElement()!)
+        let piece = Piece(pathSprite: possiblePieces.randomElement()!)
         piece.component(ofType: RenderComponent.self)?.spriteNode.posByScreen(x: 0.8, y: 0.2)
         entityManager?.add(piece)
                 
-        let piece2 = Piece(pathType: .Z, edgeSize: 2, pathSprite: possiblePieces.randomElement()!)
+        let piece2 = Piece(pathSprite: possiblePieces.randomElement()!)
         piece2.component(ofType: RenderComponent.self)?.spriteNode.posByScreen(x: 0.8, y: 0.5)
         entityManager?.add(piece2)
                 
-        let piece3 = Piece(pathType: .Z, edgeSize: 2, pathSprite: possiblePieces.randomElement()!)
+        let piece3 = Piece(pathSprite: possiblePieces.randomElement()!)
         piece3.component(ofType: RenderComponent.self)?.spriteNode.posByScreen(x: 0.8, y: 0.8)
         entityManager?.add(piece3)
         
@@ -319,6 +313,44 @@ extension GameScene {
             return false
         }
     }
+    
+    func snapToGrid(piece: SKNode) {
+        let pieceCAF = piece.calculateAccumulatedFrame()
+        let pieceTopLeft = CGPoint(x: piece.position.x - pieceCAF.width / 2,
+                                    y: piece.position.y + pieceCAF.height / 2)
+        let allDots = self.dots
+
+        var minDistBetweenPoints = CGFloat(9999)
+        var closerDot = SKSpriteNode()
+        var closerDotPos = CGPoint()
+
+        for dots in allDots {
+            for dot in dots {
+                if let dotNode = dot.component(ofType: RenderComponent.self)?.spriteNode {
+                    let dotNodePosScene = dotNode.parent?.convert(dotNode.position, to: self)
+                    if let dotNodePosScene = dotNodePosScene {
+                        let delta = distance(pieceTopLeft, dotNodePosScene)
+                        if delta < minDistBetweenPoints {
+                            minDistBetweenPoints = delta
+                            closerDot = dotNode
+                            closerDotPos = dotNodePosScene
+                        }
+                    }
+                }
+            }
+        }
+
+        let closeDotCAF = closerDot.calculateAccumulatedFrame()
+        piece.position = CGPoint(x: closerDotPos.x - ((closeDotCAF.width) - (pieceCAF.width / 2)),
+                                    y: closerDotPos.y + ((closeDotCAF.height) - (pieceCAF.height / 2)))
+    }
+    
+    func distance(_ a: CGPoint, _ b: CGPoint) -> CGFloat {
+        let xDist = a.x - b.x
+        let yDist = a.y - b.y
+        return CGFloat(sqrt(xDist * xDist + yDist * yDist))
+    }
+    
 }
 
 // Find Rectangles

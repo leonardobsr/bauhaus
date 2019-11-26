@@ -59,7 +59,6 @@ class MenuScene: SKScene {
         
         playButtonSprite.removeFromParent()
         
-//        playButton = Button(position: playButtonSprite.position, sprite: "MenuPlayButton")
         playButton = Button(position: CGPoint(x: 0.615, y: 0.1897), sprite: "PlayButtonWithName")
         
         playButton?.component(ofType: RenderComponent.self)?.spriteNode.xScale = widthProportion/100
@@ -129,7 +128,7 @@ class MenuScene: SKScene {
                 node.size.height = CGFloat(Float(blackMenuHeightProporcional!))
                 node.posByScreen(x: 0.081912152, y: 0.890525)
                 
-                let nodeDeveloper = node.childNode(withName: "DevelopersLogo-1") as! SKSpriteNode
+                let nodeDeveloper = node.childNode(withName: "developersLogo-1") as! SKSpriteNode
                 nodeDeveloper.xScale = widthProportion/100
                 nodeDeveloper.yScale = heightProportion/100
                 nodeDeveloper.anchorPoint = CGPoint(x: 0, y: 0)
