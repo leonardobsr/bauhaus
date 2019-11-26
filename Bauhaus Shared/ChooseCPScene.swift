@@ -98,15 +98,9 @@ class ChooseCPScene : SKScene {
         }
     }
     
-    #if os(watchOS)
-    override func sceneDidLoad() {
-        self.setUpScene()
-    }
-    #else
     override func didMove(to view: SKView) {
         self.setUpScene()
     }
-    #endif
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
@@ -166,14 +160,10 @@ class ChooseCPScene : SKScene {
         
         for (i, player) in players.enumerated() {
             switch player {
-            case UIColor(red: 245, green: 49, blue: 60):
-                self.redPlayerLabel?.changeText(newText: "P" + (i+1).description)
-            case UIColor(red: 25, green: 117, blue: 168):
-                self.bluePlayerLabel?.changeText(newText: "P" + (i+1).description)
-            case UIColor(red: 247, green: 242, blue: 74):
-                self.yellowPlayerLabel?.changeText(newText: "P" + (i+1).description)
-            default:
-                break
+            case UIColor.CustomGameColor.PieterRed: self.redPlayerLabel?.changeText(newText: "P" + (i+1).description)
+            case UIColor.CustomGameColor.CornelisYellow: self.yellowPlayerLabel?.changeText(newText: "P" + (i+1).description)
+            case UIColor.CustomGameColor.MondriaanBlue: self.bluePlayerLabel?.changeText(newText: "P" + (i+1).description)
+            default: break
             }
         }
         
@@ -186,7 +176,6 @@ class ChooseCPScene : SKScene {
 }
 
 extension ChooseCPScene {
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let t = touches.first {
@@ -206,29 +195,35 @@ extension ChooseCPScene {
             button.component(ofType: RenderComponent.self)?.spriteNode.alpha = 1
         }
         
-        if self.touchedButton == self.redPlayerButton {
-            if players.contains(where: { $0 == UIColor(red: 245, green: 49, blue: 60) }) {
-                players.removeAll(where: { $0 == UIColor(red: 245, green: 49, blue: 60) })
+        switch self.touchedButton {
+        case self.redPlayerButton :
+            
+            if players.contains(where: { $0 == UIColor.CustomGameColor.PieterRed }) {
+                players.removeAll(where: { $0 == UIColor.CustomGameColor.PieterRed })
             } else {
-                players.append(UIColor(red: 245, green: 49, blue: 60))
+                players.append(UIColor.CustomGameColor.PieterRed)
             }
+            
+        case self.yellowPlayerButton :
+            
+            if players.contains(where: { $0 == UIColor.CustomGameColor.CornelisYellow }) {
+                players.removeAll(where: { $0 == UIColor.CustomGameColor.CornelisYellow })
+            } else {
+                players.append(UIColor.CustomGameColor.CornelisYellow)
+            }
+            
+        case self.bluePlayerButton :
+            
+            if players.contains(where: { $0 == UIColor.CustomGameColor.MondriaanBlue }) {
+                players.removeAll(where: { $0 == UIColor.CustomGameColor.MondriaanBlue })
+            } else {
+                players.append(UIColor.CustomGameColor.MondriaanBlue)
+            }
+            
+        default : return
         }
         
-        if self.touchedButton == self.bluePlayerButton {
-            if players.contains(where: { $0 == UIColor(red: 25, green: 117, blue: 168) }) {
-                players.removeAll(where: { $0 == UIColor(red: 25, green: 117, blue: 168) })
-            } else {
-                players.append(UIColor(red: 25, green: 117, blue: 168))
-            }
-        }
-        
-        if self.touchedButton == self.yellowPlayerButton {
-            if players.contains(where: { $0 == UIColor(red: 247, green: 242, blue: 74) }) {
-                players.removeAll(where: { $0 == UIColor(red: 247, green: 242, blue: 74) })
-            } else {
-                players.append(UIColor(red: 247, green: 242, blue: 74))
-            }
-        }
+        self.touchedButton = nil
         
     }
     

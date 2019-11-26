@@ -10,7 +10,7 @@ import GameplayKit
 
 class Piece : GKEntity {
     
-    init(pathType: PathType, edgeSize: Int, pathSprite: PathSprite) {
+    init(pathSprite: PathSprite) {
         super.init()
         
         // Visual Components
@@ -20,7 +20,7 @@ class Piece : GKEntity {
         renderComponent.spriteNode.name = "Piece"
         self.addComponent(renderComponent)
         
-        renderComponent.spriteNode.setScale(2)
+        renderComponent.spriteNode.setScale((SKViewSize!.height/SKViewSize!.width) * 2.5)
                 
         // Game Logic Components
         let pathComponent = PathComponent(pathSprite: pathSprite, sprite: renderComponent.spriteNode)
