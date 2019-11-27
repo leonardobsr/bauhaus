@@ -46,14 +46,24 @@ enum RenderingPosition : Int {
 }
 
 enum PathSprite : String {
-    case I1 = "Unselected_I1"
-    case I2 = "Unselected_I2"
-    case L1 = "Unselected_L1"
-    case L2 = "Unselected_L2"
-    case T1 = "Unselected_T1"
-    case T2 = "Unselected_T2"
-    case Z1 = "Unselected_Z1"
-    case Z2 = "Unselected_Z2"
-    case U1 = "Unselected_U1"
-    case U2 = "Unselected_U2"
+//    case I1 = "Unselected_I1"
+//    case I2 = "Unselected_I2"
+//    case L1 = "Unselected_L1"
+//    case L2 = "Unselected_L2"
+//    case T1 = "Unselected_T1"
+//    case T2 = "Unselected_T2"
+//    case Z1 = "Unselected_Z1"
+//    case Z2 = "Unselected_Z2"
+//    case U1 = "Unselected_U1"
+//    case U2 = "Unselected_U2"
+    case I1
+    case I2
+    case L1
+    case L2
+    case T1
+    case T2
+    case Z1
+    case Z2
+    case U1
+    case U2
 }

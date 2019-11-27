@@ -62,18 +62,18 @@ class GameScene: SKScene {
 //            gridComponent.setGrid(width: 11, height: 11, size: gridSize)
             
             let boardEdge = Int(boardSize.width * 0.85)
-            
+
             let dotAmount = boardEdge/56
             let n1 = dotAmount * 56
             let n2 = 56 * (dotAmount + 1)
-            
+
             var gridEdge = 0
 
             if abs(boardEdge - n1) < abs(boardEdge - n2) { gridEdge = n1 }
             else { gridEdge = n2 }
-            
+
             let gridSize = CGSize(width: Double(gridEdge), height: Double(gridEdge))
-            
+
             gridComponent.setGrid(width: Int(gridEdge/56) + 1, height: Int(gridEdge/56) + 1, size: gridSize)
             dots = gridComponent.dotGrid
         }
@@ -223,23 +223,23 @@ extension GameScene {
                 pieceNode.run(SKAction.rotate(byAngle: 90 * .pi/180, duration: 0.1))
             } else {
                 snapToGrid(piece: pieceNode)
-                if checkPiecePositionInBoard(piece: pieceNode) && findLinesHovered(by: piece) {
-                    guard let grid = self.board?.component(ofType: GridComponent.self) else { return }
-                        
-                    entityManager?.remove(piece)
-                        
-                    connectDots(lastHoveredLines: grid.lastHoveredLines)
-                    grid.lastHoveredLines = []
-                        
-                    findRectangles(lastConnectedDots: grid.lastConnectedDots)
-                    grid.lastConnectedDots = []
-                        
-                    nextPlayer()
-                } else {
-                    if let originPosition = self.originPosition {
-                        pieceNode.position = originPosition
-                    }
-                }
+//                if checkPiecePositionInBoard(piece: pieceNode) && findLinesHovered(by: piece) {
+//                    guard let grid = self.board?.component(ofType: GridComponent.self) else { return }
+//
+//                    entityManager?.remove(piece)
+//
+//                    connectDots(lastHoveredLines: grid.lastHoveredLines)
+//                    grid.lastHoveredLines = []
+//
+//                    findRectangles(lastConnectedDots: grid.lastConnectedDots)
+//                    grid.lastConnectedDots = []
+//
+//                    nextPlayer()
+//                } else {
+//                    if let originPosition = self.originPosition {
+//                        pieceNode.position = originPosition
+//                    }
+//                }
             }
             
             touchedPiece = nil
@@ -317,7 +317,8 @@ extension GameScene {
     func snapToGrid(piece: SKNode) {
         let pieceCAF = piece.calculateAccumulatedFrame()
         let pieceTopLeft = CGPoint(x: piece.position.x - pieceCAF.width / 2,
-                                    y: piece.position.y + pieceCAF.height / 2)
+                                   y: piece.position.y + pieceCAF.height / 2)
+
         let allDots = self.dots
 
         var minDistBetweenPoints = CGFloat(9999)
@@ -339,10 +340,17 @@ extension GameScene {
                 }
             }
         }
+        
+//        allDots.forEach { dotRow in
+//            dotRow.forEach { dot in
+//                
+//            }
+//        }
 
         let closeDotCAF = closerDot.calculateAccumulatedFrame()
+        
         piece.position = CGPoint(x: closerDotPos.x - ((closeDotCAF.width) - (pieceCAF.width / 2)),
-                                    y: closerDotPos.y + ((closeDotCAF.height) - (pieceCAF.height / 2)))
+                                 y: closerDotPos.y + ((closeDotCAF.height) - (pieceCAF.height / 2)))
     }
     
     func distance(_ a: CGPoint, _ b: CGPoint) -> CGFloat {
@@ -509,6 +517,17 @@ extension GameScene {
                 }
             }
         }
+    }
+    
+    func signal(piece: Piece, position: CGPoint) {
+        guard let node = piece.component(ofType: RenderComponent.self)?.spriteNode else { return }
+        
+        let shape = SKShapeNode(rectOf: CGSize(width: 10, height: 10))
+        shape.name = "shape"
+        shape.fillColor = currentPlayer!
+        shape.zPosition = 200
+        shape.position = position
+        node.addChild(shape)
     }
     
     func signal(_ dot: Dot) {

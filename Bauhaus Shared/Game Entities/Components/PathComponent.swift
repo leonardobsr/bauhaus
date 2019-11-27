@@ -13,37 +13,58 @@ class PathComponent : GKComponent {
     var pathSprite : PathSprite
     var sprite : SKSpriteNode
     var structurePoints : [CGPoint]
+    var anchorDotPoint : CGPoint
         
     init(pathSprite: PathSprite, sprite: SKSpriteNode) {
         self.pathSprite = pathSprite
         
         switch pathSprite {
-        case .I2 : self.structurePoints = [CGPoint(x: 0, y: 15), CGPoint(x: 0, y: -15)]
+        case .I1 :
+            self.structurePoints =  [.zero]
+            self.anchorDotPoint = CGPoint(x: 0, y: 15)
             
-        case .L1 : self.structurePoints = [CGPoint(x: -15, y: 0), CGPoint(x: 0, y: 15)]
+        case .I2 :
+            self.structurePoints = [CGPoint(x: 0, y: 15), CGPoint(x: 0, y: -15)]
+            self.anchorDotPoint = CGPoint(x: 0, y: 30)
             
-        case .L2 : self.structurePoints = [CGPoint(x: -30, y: 15), CGPoint(x: -30, y: -15),
+        case .L1 :
+            self.structurePoints = [CGPoint(x: -15, y: 0), CGPoint(x: 0, y: 15)]
+            self.anchorDotPoint = CGPoint(x: -15, y: 15)
+            
+        case .L2 :
+            self.structurePoints = [CGPoint(x: -30, y: 15), CGPoint(x: -30, y: -15),
                                            CGPoint(x: 15, y: 30), CGPoint(x: -15, y: 30)]
+            self.anchorDotPoint = CGPoint(x: -30, y: 30)
             
-        case .U1 : self.structurePoints = [CGPoint(x: -15, y: 0), CGPoint(x: 0, y: 15), CGPoint(x: 15, y: 0)]
+        case .U1 :
+            self.structurePoints = [CGPoint(x: -15, y: 0), CGPoint(x: 0, y: 15), CGPoint(x: 15, y: 0)]
+            self.anchorDotPoint = CGPoint(x: -15, y: 15)
             
-        case .U2 : self.structurePoints = [CGPoint(x: -30, y: 15), CGPoint(x: -30, y: -15),
+        case .U2 :
+            self.structurePoints = [CGPoint(x: -30, y: 15), CGPoint(x: -30, y: -15),
                                            CGPoint(x: 15, y: 30), CGPoint(x: -15, y: 30),
                                            CGPoint(x: 30, y: 15), CGPoint(x: 30, y: -15)]
+            self.anchorDotPoint = CGPoint(x: 0, y: 30)
             
-        case .T1 : self.structurePoints = [.zero, CGPoint(x: -15, y: 15), CGPoint(x: 15, y: 15)]
+        case .T1 :
+            self.structurePoints = [.zero, CGPoint(x: -15, y: 15), CGPoint(x: 15, y: 15)]
+            self.anchorDotPoint = CGPoint(x: 0, y: 15)
             
-        case .T2 : self.structurePoints = [CGPoint(x: 0, y: -15), CGPoint(x: 0, y: 15),
+        case .T2 :
+            self.structurePoints = [CGPoint(x: 0, y: -15), CGPoint(x: 0, y: 15),
                                            CGPoint(x: -15, y: 30), CGPoint(x: 15, y: 30),
                                            CGPoint(x: -45, y: 30), CGPoint(x: 45, y: 30)]
+            self.anchorDotPoint = CGPoint(x: 0, y: 30)
             
-        case .Z1 : self.structurePoints = [.zero, CGPoint(x: -15, y: -15), CGPoint(x: 15, y: 15)]
+        case .Z1 :
+            self.structurePoints = [.zero, CGPoint(x: -15, y: -15), CGPoint(x: 15, y: 15)]
+            self.anchorDotPoint = CGPoint(x: 0, y: 15)
             
-        case .Z2 : self.structurePoints = [CGPoint(x: 0, y: -15), CGPoint(x: 0, y: 15),
+        case .Z2 :
+            self.structurePoints = [CGPoint(x: 0, y: -15), CGPoint(x: 0, y: 15),
                                            CGPoint(x: -15, y: -30), CGPoint(x: 15, y: 30),
                                            CGPoint(x: -45, y: -30), CGPoint(x: 45, y: 30)]
-            
-        default : self.structurePoints = [.zero]
+            self.anchorDotPoint = CGPoint(x: 0, y: 30)
         }
         
         self.sprite = sprite
@@ -53,6 +74,10 @@ class PathComponent : GKComponent {
 //            shape.position = $0
 //            sprite.addChild(shape)
 //        }
+        
+//        let shape = SKShapeNode(circleOfRadius: 5)
+//        shape.position = anchorDotPoint
+//        sprite.addChild(shape)
         
         super.init()
     }
