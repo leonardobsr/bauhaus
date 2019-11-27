@@ -9,6 +9,18 @@
 import SpriteKit
 import GameplayKit
 
+class Player {
+    var color : UIColor
+    var score : Int
+    var boxCount : Int
+    
+    init(color: UIColor, score: Int, boxCount: Int) {
+        self.color = color
+        self.score = score
+        self.boxCount = boxCount
+    }
+}
+
 class GameScene: SKScene {
     
     var entityManager: EntityManager?
@@ -33,11 +45,17 @@ class GameScene: SKScene {
             }
         }
     }
+    
+    var playerBoard : [Player] = []
         
     private var touchStartTime : TimeInterval = 0
     
     private var lastUpdateTime : TimeInterval = 0
 
+    override func didMove(to view: SKView) {
+        self.setUpScene()
+    }
+    
     func setUpScene() {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.backgroundColor = .white
@@ -58,9 +76,6 @@ class GameScene: SKScene {
         }
                 
         if let gridComponent = self.board?.component(ofType: GridComponent.self) {
-//            let gridSize = CGSize(width: 10 * 56, height: 10 * 56)
-//            gridComponent.setGrid(width: 11, height: 11, size: gridSize)
-            
             let boardEdge = Int(boardSize.width * 0.85)
 
             let dotAmount = boardEdge/56
@@ -83,6 +98,7 @@ class GameScene: SKScene {
         
         self.playerBorder = SKShapeNode(rectOf: CGSize(width: boardSize.width * 1.1, height: boardSize.height * 1.1))
         self.playerBorder?.position = boardPosition
+        self.playerBorder?.strokeColor = .clear
         self.addChild(playerBorder!)
 
         let newPauseButton = Button(position: CGPoint(x: 0.05, y: 0.93), sprite: "pauseButton")
@@ -103,12 +119,47 @@ class GameScene: SKScene {
         self.timer = newTimer
         entityManager?.add(newTimer)
         
-        self.currentPlayer = UIColor.CustomGameColor.PieterRed
+        GameManager.shared.players.forEach { color in self.playerBoard.append(Player(color: color, score: 0, boxCount: 0)) }
+        self.playerBoard.shuffle()
+        
+        let playerExMachina = Player(color: UIColor.white, score: 0, boxCount: 0)
+        self.playerBoard.append(playerExMachina)
+        
+        nextPlayer()
+        
         timer?.start()
     }
     
-    override func didMove(to view: SKView) {
-        self.setUpScene()
+    func nextPlayer() {
+        let nextPlayer = playerBoard.removeFirst()
+        
+        self.currentPlayer = nextPlayer.color
+        self.playerBoard.append(nextPlayer)
+        
+        self.timer?.reset()
+        
+        loadRandomPieces()
+    }
+    
+    func loadRandomPieces() {
+        self.touchedPiece = nil
+        self.availablePieces.forEach { entityManager?.remove($0) }
+        
+        let possiblePieces : [PathSprite] = [.I1, .I2, .L1, .L2, .U1, .U2, .T1, .T2, .Z1, .Z2]
+        
+        let piece = Piece(pathSprite: possiblePieces.randomElement()!)
+        piece.component(ofType: RenderComponent.self)?.spriteNode.posByScreen(x: 0.8, y: 0.2)
+        entityManager?.add(piece)
+                
+        let piece2 = Piece(pathSprite: possiblePieces.randomElement()!)
+        piece2.component(ofType: RenderComponent.self)?.spriteNode.posByScreen(x: 0.8, y: 0.5)
+        entityManager?.add(piece2)
+                
+        let piece3 = Piece(pathSprite: possiblePieces.randomElement()!)
+        piece3.component(ofType: RenderComponent.self)?.spriteNode.posByScreen(x: 0.8, y: 0.8)
+        entityManager?.add(piece3)
+        
+        self.availablePieces.append(contentsOf: [piece, piece2, piece3])
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -142,6 +193,16 @@ class GameScene: SKScene {
         if let timerRenderNode = timer?.component(ofType: RectangleComponent.self)?.shapeNode {
             if Int(timerRenderNode.position.y) == Int(self.frame.minY) {
                nextPlayer()
+            }
+        }
+        
+        self.playerBoard.forEach { player in
+            if player.boxCount >= 3 {
+                print("Game Over! \(player.color) wins!")
+                self.currentPlayer = player.color
+                self.backgroundColor = player.color
+                timer?.reset()
+                timer?.stop()
             }
         }
         
@@ -267,54 +328,27 @@ extension GameScene {
 }
 #endif
 
+// Piece positioning handling
 extension GameScene {
-    
-    func nextPlayer() {
-        if let player = self.currentPlayer {
-            switch player {
-            case UIColor.CustomGameColor.PieterRed : self.currentPlayer = UIColor.CustomGameColor.CornelisYellow
-            case UIColor.CustomGameColor.CornelisYellow : self.currentPlayer = UIColor.CustomGameColor.MondriaanBlue
-            case UIColor.CustomGameColor.MondriaanBlue : self.currentPlayer = UIColor.CustomGameColor.PieterRed
-            default : self.currentPlayer = .white
-            }
-            
-            self.timer?.reset()
-            loadRandomPieces()
-        }
-    }
-    
-    func loadRandomPieces() {
-        self.touchedPiece = nil
-        self.availablePieces.forEach { entityManager?.remove($0) }
-        
-        let possiblePieces : [PathSprite] = [.I1, .I2, .L1, .L2, .U1, .U2, .T1, .T2, .Z1, .Z2]
-        
-        let piece = Piece(pathSprite: possiblePieces.randomElement()!)
-        piece.component(ofType: RenderComponent.self)?.spriteNode.posByScreen(x: 0.8, y: 0.2)
-        entityManager?.add(piece)
-                
-        let piece2 = Piece(pathSprite: possiblePieces.randomElement()!)
-        piece2.component(ofType: RenderComponent.self)?.spriteNode.posByScreen(x: 0.8, y: 0.5)
-        entityManager?.add(piece2)
-                
-        let piece3 = Piece(pathSprite: possiblePieces.randomElement()!)
-        piece3.component(ofType: RenderComponent.self)?.spriteNode.posByScreen(x: 0.8, y: 0.8)
-        entityManager?.add(piece3)
-        
-        self.availablePieces.append(contentsOf: [piece, piece2, piece3])
-    }
     
     func checkPiecePositionInBoard(piece: SKNode) -> Bool {
         if let nodeBoard = self.board?.component(ofType: RenderComponent.self)?.spriteNode {
-            let topLeft = CGPoint(x: piece.position.x - piece.calculateAccumulatedFrame().width / 2, y: piece.position.y + piece.calculateAccumulatedFrame().height / 2)
-            let topRight = CGPoint(x: piece.position.x + piece.calculateAccumulatedFrame().width / 2, y: piece.position.y + piece.calculateAccumulatedFrame().height / 2)
-            let bottomLeft = CGPoint(x: piece.position.x - piece.calculateAccumulatedFrame().width / 2, y: piece.position.y - piece.calculateAccumulatedFrame().height / 2)
-            let bottomRight = CGPoint(x: piece.position.x + piece.calculateAccumulatedFrame().width / 2, y: piece.position.y - piece.calculateAccumulatedFrame().height / 2)
+            let topLeft = CGPoint(x: piece.position.x - piece.calculateAccumulatedFrame().width / 2,
+                                  y: piece.position.y + piece.calculateAccumulatedFrame().height / 2)
+            
+            let topRight = CGPoint(x: piece.position.x + piece.calculateAccumulatedFrame().width / 2,
+                                   y: piece.position.y + piece.calculateAccumulatedFrame().height / 2)
+            
+            let bottomLeft = CGPoint(x: piece.position.x - piece.calculateAccumulatedFrame().width / 2,
+                                     y: piece.position.y - piece.calculateAccumulatedFrame().height / 2)
+            
+            let bottomRight = CGPoint(x: piece.position.x + piece.calculateAccumulatedFrame().width / 2,
+                                      y: piece.position.y - piece.calculateAccumulatedFrame().height / 2)
 
-            return (nodeBoard.contains(topLeft) && nodeBoard.contains(topRight) && nodeBoard.contains(bottomLeft) && nodeBoard.contains(bottomRight))
-        } else {
-            return false
+            return (nodeBoard.contains(topLeft) && nodeBoard.contains(topRight) &&
+                    nodeBoard.contains(bottomLeft) && nodeBoard.contains(bottomRight))
         }
+        return false
     }
     
     func snapToGrid(piece: SKNode) {
@@ -356,7 +390,7 @@ extension GameScene {
     
 }
 
-// Find Rectangles
+// Rectangle recognition handling
 extension GameScene {
     
     func findLinesHovered(by piece: Piece) -> Bool {
@@ -403,16 +437,16 @@ extension GameScene {
     
     func findRectangles(lastConnectedDots: Set<Dot>) {
         lastConnectedDots.forEach { dot in
-            findRectangle(startingDot: dot,
-                          currentDot: dot,
-                          originDirection: .none,
-                          moveTrack: [:],
-                          visitedDots: [],
-                          rectangleVertices: [dot.component(ofType: RenderComponent.self)!.spriteNode.position])
+            findRectangles(startingDot: dot,
+                           currentDot: dot,
+                           originDirection: .none,
+                           moveTrack: [:],
+                           visitedDots: [],
+                           rectangleVertices: [dot.component(ofType: RenderComponent.self)!.spriteNode.position])
         }
     }
 
-    func findRectangle(startingDot: Dot, currentDot: Dot, originDirection: Direction, moveTrack: [Axis : Direction], visitedDots: [Dot], rectangleVertices: [CGPoint]) {
+    func findRectangles(startingDot: Dot, currentDot: Dot, originDirection: Direction, moveTrack: [Axis : Direction], visitedDots: [Dot], rectangleVertices: [CGPoint]) {
         
         var possibleMovements : [Direction] = [.up,.down,.left,.right]
         
@@ -437,24 +471,19 @@ extension GameScene {
                 let nextAxis = move.axis()
                 
                 if originDirection != .none && nextAxis != currentAxis {
-//                    signal(currentDot)
                     newMoveTrack[currentAxis] = originDirection.opposite()
                     newRectangleVertices.append(dotRenderNode.position)
                 }
                 
                 if newVisitedDots.contains(nextDot) {
-                    if nextDot == startingDot {
-//                        signal(nextDot)
-//                        print(newRectangleVertices)
-                        drawRectangle(vertices: newRectangleVertices)
-                    }
+                    if nextDot == startingDot { drawRectangle(vertices: newRectangleVertices) }
                 } else {
-                    findRectangle(startingDot: startingDot,
-                                  currentDot: nextDot,
-                                  originDirection: move.opposite(),
-                                  moveTrack: newMoveTrack,
-                                  visitedDots: newVisitedDots,
-                                  rectangleVertices: newRectangleVertices)
+                    findRectangles(startingDot: startingDot,
+                                   currentDot: nextDot,
+                                   originDirection: move.opposite(),
+                                   moveTrack: newMoveTrack,
+                                   visitedDots: newVisitedDots,
+                                   rectangleVertices: newRectangleVertices)
                 }
             }
         }
@@ -489,9 +518,7 @@ extension GameScene {
             if point.x <= bottomLeft.x   &&  point.y <= bottomLeft.y     { bottomLeft = point }
             if point.y <= bottomRight.y  &&  point.x >= bottomRight.x    { bottomRight = point }
         }
-        
-//        print("topLeft: \(topLeft), topRight: \(topRight), bottomLeft: \(bottomLeft), bottomRight: \(bottomRight)")
-        
+                
         if  topLeft.x == bottomLeft.x && topRight.x == bottomRight.x &&
             topLeft.y == topRight.y && bottomRight.y == bottomLeft.y {
             
@@ -509,6 +536,9 @@ extension GameScene {
                     gridComponent.gridNode.addChild(boxShapeNode)
                     gridComponent.boxCorners.append((topLeft,topRight,bottomLeft,bottomRight))
                     entityManager?.add(box)
+                    
+                    let board = playerBoard.last
+                    board?.boxCount += 1
                 }
             }
         }

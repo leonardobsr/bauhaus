@@ -14,7 +14,7 @@ class GameManager {
     
     weak var gameViewController : GameViewController?
     
-    var playersColors: [UIColor] = []
+    var players: [UIColor] = []
     
     var currentScene : SKScene? {
         didSet {

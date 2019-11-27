@@ -130,7 +130,7 @@ class ChooseCPScene : SKScene {
         if let playButtonSM = self.playButton?.component(ofType: TapComponent.self)?.stateMachine {
             if playButtonSM.currentState is ActState {
                 if !players.isEmpty {
-                    GameManager.shared.playersColors = players
+                    GameManager.shared.players = players
                     GameManager.shared.nextScreen()
                 }
                 playButtonSM.enter(RestState.self)
