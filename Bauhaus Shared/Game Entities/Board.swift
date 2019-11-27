@@ -16,7 +16,7 @@ class Board : GKEntity {
         // Visual Components
         let renderComponent = RenderComponent(spriteNode: SKSpriteNode())
         renderComponent.spriteNode.zPosition = CGFloat(RenderingPosition.board.rawValue)
-        renderComponent.spriteNode.size = CGSize(width: 0.7 * frame.height, height: 0.7 * frame.height)
+        renderComponent.spriteNode.size = CGSize(width: 0.8 * frame.height, height: 0.8 * frame.height)
         renderComponent.spriteNode.color = .white
         renderComponent.spriteNode.entity = self
         renderComponent.spriteNode.name = "Board"

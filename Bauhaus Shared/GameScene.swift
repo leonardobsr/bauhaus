@@ -22,6 +22,7 @@ class GameScene: SKScene {
     
     var board : Board?
     var originPosition: CGPoint?
+    var dots = [[Dot]]()
     
     var currentPlayer : UIColor? {
         didSet {
@@ -46,7 +47,6 @@ class GameScene: SKScene {
         
         self.board = Board(frame: self.frame)
         
-        var dots = [[Dot]]()
         if let renderComponent = self.board?.component(ofType: RenderComponent.self) {
 //            renderComponent.node.position = CGPoint(x: -0.2 * self.frame.maxX, y: 0)
             renderComponent.spriteNode.posByScreen(x: 0.35, y: 0.5)
@@ -214,24 +214,32 @@ extension GameScene {
             if touchEndTime - touchStartTime < 0.1 {
                 pieceNode.run(SKAction.rotate(byAngle: 90 * .pi/180, duration: 0.1))
             } else {
-                if checkPiecePositionInBoard(piece: pieceNode) && findLinesHovered(by: piece) {
-                    guard let grid = self.board?.component(ofType: GridComponent.self) else { return }
-                        
-                    entityManager?.remove(piece)
-                        
-                    connectDots(lastHoveredLines: grid.lastHoveredLines)
-                    grid.lastHoveredLines = []
-                        
-                    findRectangles(lastConnectedDots: grid.lastConnectedDots)
-                    grid.lastConnectedDots = []
-                        
-                    turnPass()
-                    loadRandomPieces()
-                } else {
-                    if let originPosition = self.originPosition {
-                        pieceNode.position = originPosition
-                    }
-                }
+                snapToGrid(piece: pieceNode)
+//                if checkPiecePositionInBoard(piece: pieceNode) {
+//                    
+//                    if findLinesHovered(by: piece) {
+//                        guard let grid = self.board?.component(ofType: GridComponent.self) else { return }
+//
+//                        entityManager?.remove(piece)
+//
+//                        connectDots(lastHoveredLines: grid.lastHoveredLines)
+//                        grid.lastHoveredLines = []
+//
+//                        findRectangles(lastConnectedDots: grid.lastConnectedDots)
+//                        grid.lastConnectedDots = []
+//
+//                        turnPass()
+//                        loadRandomPieces()
+//                    } else {
+//                        if let originPosition = self.originPosition {
+//                            pieceNode.position = originPosition
+//                        }
+//                    }
+//                } else {
+//                    if let originPosition = self.originPosition {
+//                        pieceNode.position = originPosition
+//                    }
+//                }
             }
             
             touchedPiece = nil
@@ -298,10 +306,11 @@ extension GameScene {
     
     func checkPiecePositionInBoard(piece: SKNode) -> Bool {
         if let nodeBoard = self.board?.component(ofType: RenderComponent.self)?.spriteNode {
-            let topLeft = CGPoint(x: piece.position.x - piece.calculateAccumulatedFrame().width / 2, y: piece.position.y + piece.calculateAccumulatedFrame().height / 2)
-            let topRight = CGPoint(x: piece.position.x + piece.calculateAccumulatedFrame().width / 2, y: piece.position.y + piece.calculateAccumulatedFrame().height / 2)
-            let bottomLeft = CGPoint(x: piece.position.x - piece.calculateAccumulatedFrame().width / 2, y: piece.position.y - piece.calculateAccumulatedFrame().height / 2)
-            let bottomRight = CGPoint(x: piece.position.x + piece.calculateAccumulatedFrame().width / 2, y: piece.position.y - piece.calculateAccumulatedFrame().height / 2)
+            let pieceCAF = piece.calculateAccumulatedFrame()
+            let topLeft = CGPoint(x: piece.position.x - pieceCAF.width / 2, y: piece.position.y + pieceCAF.height / 2)
+            let topRight = CGPoint(x: piece.position.x + pieceCAF.width / 2, y: piece.position.y + pieceCAF.height / 2)
+            let bottomLeft = CGPoint(x: piece.position.x - pieceCAF.width / 2, y: piece.position.y - pieceCAF.height / 2)
+            let bottomRight = CGPoint(x: piece.position.x + pieceCAF.width / 2, y: piece.position.y - pieceCAF.height / 2)
 
             return (nodeBoard.contains(topLeft) && nodeBoard.contains(topRight) && nodeBoard.contains(bottomLeft) && nodeBoard.contains(bottomRight))
         } else {
@@ -309,24 +318,46 @@ extension GameScene {
         }
     }
     
-    func snapToGrid(piece: SKNode) -> CGPoint {
-        if let shapes = piece.entity?.component(ofType: PathComponent.self)?.structurePoints {
-            print(shapes)
-        }
-        print(piece.position)
-        let gridWidth = CGFloat(11.0)
-        let gridHeight = CGFloat(11.0)
-        
-        let x = ((piece.position.x / gridWidth) * gridWidth).rounded(.down)
-        let y = ((piece.position.y / gridHeight) * gridHeight).rounded(.down)
-        
-//        let x = ((piece.position.x.truncatingRemainder(dividingBy: gridWidth)) * gridWidth).rounded(.down)
-//        let y = ((piece.position.y.truncatingRemainder(dividingBy: gridHeight)) * gridHeight).rounded(.down)
+    func snapToGrid(piece: SKNode) {
+        let pieceCAF = piece.calculateAccumulatedFrame()
+        let pieceTopLeft = CGPoint(x: piece.position.x - pieceCAF.width / 2,
+                                   y: piece.position.y + pieceCAF.height / 2)
+        let allDots = self.dots
 
-        print(x, y)
-        return CGPoint(x: x, y: y)
+        var minDistBetweenPoints = CGFloat(9999)
+        var closerDot = SKSpriteNode()
+        var closerDotPos = CGPoint()
+
+        for dots in allDots {
+            for dot in dots {
+                if let dotNode = dot.component(ofType: RenderComponent.self)?.spriteNode {
+                    let dotNodePosScene = dotNode.parent?.convert(dotNode.position, to: self)
+                    if let dotNodePosScene = dotNodePosScene {
+                        let delta = distance(pieceTopLeft, dotNodePosScene)
+                        if delta < minDistBetweenPoints {
+                            minDistBetweenPoints = delta
+                            closerDot = dotNode
+                            closerDotPos = dotNodePosScene
+                        }
+                    }
+                }
+            }
+        }
+
+        let closeDotCAF = closerDot.calculateAccumulatedFrame()
+        piece.position = CGPoint(x: closerDotPos.x - ((closeDotCAF.width) - (pieceCAF.width / 2)),
+                                 y: closerDotPos.y + ((closeDotCAF.height) - (pieceCAF.height / 2)))
+    }
+    
+    
+    func distance(_ a: CGPoint, _ b: CGPoint) -> CGFloat {
+        let xDist = a.x - b.x
+        let yDist = a.y - b.y
+        return CGFloat(sqrt(xDist * xDist + yDist * yDist))
     }
 }
+
+
 
 // Find Rectangles
 extension GameScene {
