@@ -20,7 +20,7 @@ class Piece : GKEntity {
         renderComponent.spriteNode.name = "Piece"
         self.addComponent(renderComponent)
         
-        renderComponent.spriteNode.setScale((SKViewSize!.height/SKViewSize!.width) * 2.5)
+        renderComponent.spriteNode.setScale((SKViewSize!.height/SKViewSize!.width) * 2)
                 
         // Game Logic Components
         let pathComponent = PathComponent(pathSprite: pathSprite, sprite: renderComponent.spriteNode)

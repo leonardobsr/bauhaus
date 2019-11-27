@@ -178,6 +178,7 @@ extension GameScene {
             self.touchedPiece = piece
             self.originPosition = piece.component(ofType: RenderComponent.self)?.spriteNode.position
             self.touchStartTime = CACurrentMediaTime()
+            piece.component(ofType: RenderComponent.self)?.spriteNode.setScale(2)
         }
     }
 
@@ -220,26 +221,29 @@ extension GameScene {
             guard let pieceNode = piece.component(ofType: RenderComponent.self)?.spriteNode else { return }
 
             if touchEndTime - touchStartTime < 0.1 {
-                pieceNode.run(SKAction.rotate(byAngle: 90 * .pi/180, duration: 0.1))
+                pieceNode.run(SKAction.rotate(byAngle: 90 * .pi/180, duration: 0.1), completion: {
+                    pieceNode.setScale((SKViewSize!.height/SKViewSize!.width) * 2)
+                })
             } else {
                 snapToGrid(piece: pieceNode)
-//                if checkPiecePositionInBoard(piece: pieceNode) && findLinesHovered(by: piece) {
-//                    guard let grid = self.board?.component(ofType: GridComponent.self) else { return }
-//
-//                    entityManager?.remove(piece)
-//
-//                    connectDots(lastHoveredLines: grid.lastHoveredLines)
-//                    grid.lastHoveredLines = []
-//
-//                    findRectangles(lastConnectedDots: grid.lastConnectedDots)
-//                    grid.lastConnectedDots = []
-//
-//                    nextPlayer()
-//                } else {
-//                    if let originPosition = self.originPosition {
-//                        pieceNode.position = originPosition
-//                    }
-//                }
+                if checkPiecePositionInBoard(piece: pieceNode) && findLinesHovered(by: piece) {
+                    guard let grid = self.board?.component(ofType: GridComponent.self) else { return }
+
+                    entityManager?.remove(piece)
+
+                    connectDots(lastHoveredLines: grid.lastHoveredLines)
+                    grid.lastHoveredLines = []
+
+                    findRectangles(lastConnectedDots: grid.lastConnectedDots)
+                    grid.lastConnectedDots = []
+
+                    nextPlayer()
+                } else {
+                    if let originPosition = self.originPosition {
+                        pieceNode.position = originPosition
+                        pieceNode.setScale((SKViewSize!.height/SKViewSize!.width) * 2)
+                    }
+                }
             }
             
             touchedPiece = nil
