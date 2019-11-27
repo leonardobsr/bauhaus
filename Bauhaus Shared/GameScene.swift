@@ -149,7 +149,6 @@ class GameScene: SKScene {
     
 }
 
-#if os(iOS) || os(tvOS)
 // Touch-based event handling
 extension GameScene {
     
@@ -178,21 +177,24 @@ extension GameScene {
             self.touchedPiece = piece
             self.originPosition = piece.component(ofType: RenderComponent.self)?.spriteNode.position
             self.touchStartTime = CACurrentMediaTime()
-            piece.component(ofType: RenderComponent.self)?.spriteNode.setScale(2)
+            piece
+                .component(ofType: RenderComponent.self)?
+                .spriteNode
+                .setScale(2)
         }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let t = touches.first {
-            let node = atPoint(t.location(in: self))
-            if let entity = node.entity {
-                switch entity {
-                case is Button : tapOn(button: entity)
-//                case is Line : tapOn(line: entity)
-                case is Piece : tapOn(piece: entity)
-                default : return
-                }
-            }
+        guard
+            let t = touches.first,
+            let entity = atPoint(t.location(in: self)).entity
+        else { return }
+        
+        switch entity {
+        case is Button : tapOn(button: entity)
+        case is Piece : tapOn(piece: entity)
+//        case is Line : tapOn(line: entity)
+        default : return
         }
     }
     
@@ -249,11 +251,8 @@ extension GameScene {
             touchedPiece = nil
         }
     }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {}
-    
+        
 }
-#endif
 
 #if os(OSX)
 // Mouse-based event handling
@@ -319,42 +318,34 @@ extension GameScene {
     }
     
     func snapToGrid(piece: SKNode) {
+        let dotMatrix = self.dots
         let pieceCAF = piece.calculateAccumulatedFrame()
         let pieceTopLeft = CGPoint(x: piece.position.x - pieceCAF.width / 2,
                                    y: piece.position.y + pieceCAF.height / 2)
 
-        let allDots = self.dots
+        var minDistance = CGFloat(9999)
+        var nearestDot = SKSpriteNode()
+        var nearestDotScenePosition = CGPoint()
 
-        var minDistBetweenPoints = CGFloat(9999)
-        var closerDot = SKSpriteNode()
-        var closerDotPos = CGPoint()
-
-        for dots in allDots {
-            for dot in dots {
-                if let dotNode = dot.component(ofType: RenderComponent.self)?.spriteNode {
-                    let dotNodePosScene = dotNode.parent?.convert(dotNode.position, to: self)
-                    if let dotNodePosScene = dotNodePosScene {
-                        let delta = distance(pieceTopLeft, dotNodePosScene)
-                        if delta < minDistBetweenPoints {
-                            minDistBetweenPoints = delta
-                            closerDot = dotNode
-                            closerDotPos = dotNodePosScene
-                        }
-                    }
+        dotMatrix.forEach { dotRow in
+            dotRow.forEach { dot in
+                guard
+                    let dotNode = dot.component(ofType: RenderComponent.self)?.spriteNode,
+                    let dotScenePosition = dotNode.parent?.convert(dotNode.position, to: self)
+                else { return }
+                let delta = distance(pieceTopLeft, dotScenePosition)
+                if delta < minDistance {
+                    minDistance = delta
+                    nearestDot = dotNode
+                    nearestDotScenePosition = dotScenePosition
                 }
             }
         }
-        
-//        allDots.forEach { dotRow in
-//            dotRow.forEach { dot in
-//                
-//            }
-//        }
 
-        let closeDotCAF = closerDot.calculateAccumulatedFrame()
-        
-        piece.position = CGPoint(x: closerDotPos.x - ((closeDotCAF.width) - (pieceCAF.width / 2)),
-                                 y: closerDotPos.y + ((closeDotCAF.height) - (pieceCAF.height / 2)))
+        let nearestDotCAF = nearestDot.calculateAccumulatedFrame()
+
+        piece.position = CGPoint(x: nearestDotScenePosition.x - ((nearestDotCAF.width) - (pieceCAF.width / 2)),
+                                 y: nearestDotScenePosition.y + ((nearestDotCAF.height) - (pieceCAF.height / 2)))
     }
     
     func distance(_ a: CGPoint, _ b: CGPoint) -> CGFloat {
