@@ -25,5 +25,6 @@ extension UIColor {
         static let PieterRed = UIColor(netHex: 0xF5313C)
         static let CornelisYellow = UIColor(netHex: 0xF7F24A)
         static let MondriaanBlue = UIColor(netHex: 0x1975A8)
+        static let MondriaanWhite = UIColor(netHex: 0xFFFFFF)
     }
 }

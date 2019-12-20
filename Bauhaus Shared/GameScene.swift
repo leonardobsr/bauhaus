@@ -275,12 +275,17 @@ extension GameScene {
             switch player {
             case UIColor.CustomGameColor.PieterRed : self.currentPlayer = UIColor.CustomGameColor.CornelisYellow
             case UIColor.CustomGameColor.CornelisYellow : self.currentPlayer = UIColor.CustomGameColor.MondriaanBlue
-            case UIColor.CustomGameColor.MondriaanBlue : self.currentPlayer = UIColor.CustomGameColor.PieterRed
+            case UIColor.CustomGameColor.MondriaanBlue : self.currentPlayer = UIColor.CustomGameColor.MondriaanWhite
+            case UIColor.CustomGameColor.MondriaanWhite : self.currentPlayer = UIColor.CustomGameColor.PieterRed
             default : self.currentPlayer = .white
             }
             
             self.timer?.reset()
-            loadRandomPieces()
+            if (self.currentPlayer != UIColor.CustomGameColor.MondriaanWhite) {
+                loadRandomPieces()
+            } else {
+                playFromCPU()
+            }
         }
     }
     
@@ -344,17 +349,12 @@ extension GameScene {
                 }
             }
         }
-        
-//        allDots.forEach { dotRow in
-//            dotRow.forEach { dot in
-//                
-//            }
-//        }
 
         let closeDotCAF = closerDot.calculateAccumulatedFrame()
         
         piece.position = CGPoint(x: closerDotPos.x - ((closeDotCAF.width) - (pieceCAF.width / 2)),
                                  y: closerDotPos.y + ((closeDotCAF.height) - (pieceCAF.height / 2)))
+        
     }
     
     func distance(_ a: CGPoint, _ b: CGPoint) -> CGFloat {
@@ -363,6 +363,46 @@ extension GameScene {
         return CGFloat(sqrt(xDist * xDist + yDist * yDist))
     }
     
+    func playFromCPU() {
+        let allDots = self.dots
+        var closerDot = SKSpriteNode()
+        var closerDotPos = CGPoint()
+        let dots = allDots.randomElement()!
+        let dot = dots.randomElement()!
+        if let dotNode = dot.component(ofType: RenderComponent.self)?.spriteNode {
+            let dotNodePosScene = dotNode.parent?.convert(dotNode.position, to: self)
+            if let dotNodePosScene = dotNodePosScene {
+                closerDot = dotNode
+                closerDotPos = dotNodePosScene
+            }
+        }
+        
+        let closeDotCAF = closerDot.calculateAccumulatedFrame()
+
+        let possiblePieces : [PathSprite] = [.I1, .I2, .L1, .L2, .U1, .U2, .T1, .T2, .Z1, .Z2]
+        let pieceEntity = Piece(pathSprite: possiblePieces.randomElement()!)
+        guard let piece = pieceEntity.component(ofType: RenderComponent.self)?.spriteNode else { return }
+        piece.setScale(2)
+        let pieceCAF = piece.calculateAccumulatedFrame()
+        piece.position = CGPoint(x: closerDotPos.x - ((closeDotCAF.width) - (pieceCAF.width / 2)),
+                                 y: closerDotPos.y + ((closeDotCAF.height) - (pieceCAF.height / 2)))
+        
+        if (findLinesHovered(by: pieceEntity)) {
+            guard let grid = self.board?.component(ofType: GridComponent.self) else { return }
+
+            entityManager?.remove(pieceEntity)
+
+            connectDots(lastHoveredLines: grid.lastHoveredLines)
+            grid.lastHoveredLines = []
+
+            findRectangles(lastConnectedDots: grid.lastConnectedDots)
+            grid.lastConnectedDots = []
+
+            nextPlayer()
+        } else {
+           playFromCPU()
+        }
+    }
 }
 
 // Find Rectangles
@@ -382,6 +422,18 @@ extension GameScene {
             let pointPieceToWorld = self.convert(point, from: pieceNode)
             nodes(at: pointPieceToWorld).forEach { node in
                 if let line = node.entity as? Line {
+                    if (currentPlayer == UIColor.CustomGameColor.MondriaanWhite) {
+                        print("wqwqw")
+                        nodes(at: (line.component(ofType: RenderComponent.self)?.spriteNode.position)!).forEach { node in
+                            if let shape = node as? SKShapeNode {
+                                print("dssddssddssdssds")
+                                if shape.name == "Box" {
+                                    print("dssdds")
+                                    playFromCPU()
+                                }
+                            }
+                        }
+                    }
                     if line.component(ofType: LightSwitchComponent.self)?.stateMachine.currentState is OnState {
                         isOverlapping = true
                     } else {
